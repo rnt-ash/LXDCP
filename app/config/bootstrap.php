@@ -329,7 +329,23 @@ $loader->registerDirs(array(
     $config->application->servicesDir,
     $config->application->modelsDir,
     $config->application->formsDir,
-))->register();
+    BASE_PATH . '/vendor/rnt-forest/core/controllers/',
+    BASE_PATH . '/vendor/rnt-forest/core/models/',
+    BASE_PATH . '/vendor/rnt-forest/ovz/controllers/',
+    BASE_PATH . '/vendor/rnt-forest/ovz/models/',
+));
+
+$loader->registerNamespaces(array(
+  //  "RNTForest\core\controllers" => BASE_PATH . '/vendor/rnt-forest/core/controllers/'
+));
+
+$loader->registerClasses(array(
+ //   "ControllerBase" => BASE_PATH . "/vendor/rnt-forest/core/controllers/ControllerBase.php",
+ //   "IndexController" => BASE_PATH . "/vendor/rnt-forest/core/controllers/IndexController.php",
+ //   "AccessController" => BASE_PATH . "/vendor/rnt-forest/core/controllers/AccessController.php",
+));
+
+$loader->register();
 
 // Composer Autoloading
-require_once $config->application->vendorDir.'/autoload.php';
+//require_once $config->application->vendorDir.'/autoload.php';
