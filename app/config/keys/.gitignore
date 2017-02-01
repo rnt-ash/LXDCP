@@ -1,0 +1,5 @@
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+# one file has to be in this directory so that git will allow to commit and push an "empty" directory

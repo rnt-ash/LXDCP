@@ -1,0 +1,133 @@
+#pageWrapper {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebarWrapper {
+    left: 180px;
+    top: 40px;
+    height: 100%;
+    margin-left: -180px;
+    display: none;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    line-height: 30px;
+    overflow-y: hidden;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sidebar-nav {
+    width: 198px;
+}
+
+#menu-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 14px;
+    height: 30px;
+    width: 30px;
+    padding: 5px 0px;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: normal;
+    border-width: 1px;
+    text-transform: none;
+} 
+
+.navbar-right {
+    margin-right: 0px !important;
+}
+
+.headerNavText {
+    display: block;
+}
+
+#sidebarWrapper .sidebar-nav a {
+    font-size: 15px;
+}
+
+.large .sidebar-nav a {
+    font-size: 20px !important;
+}
+
+.navbar-brand {
+    left: 44px;
+    position: absolute;
+}
+
+@media(min-width:992px) {
+    #pageWrapper > nav.navbar {
+        height: 60px;
+    }
+    
+    #pageWrapper > .navbar > .navbar-wrapper {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+    }
+    
+    #pageWrapper {
+        padding-left: 200px;
+    }
+
+    #pageWrapper.toggled {
+        padding-left: 58px;
+    }
+
+    #sidebarWrapper {
+        display: block;
+        width: 200px;
+    }
+
+    #pageWrapper.toggled #sidebarWrapper {
+        width: 58px;
+    }
+    
+    .headerNavText {
+        display: none !important;
+    }
+}
+
+/* Menu toggle auch bei Tablet */
+@media (max-width: 992px) {
+    #pageWrapper .navbar .navbar-header {
+        float: none !important;
+    }
+    #pageWrapper .navbar .navbar-toggle {
+        display: block !important;
+    }
+    #pageWrapper .navbar .navbar-collapse.collapse {
+        display: none !important;
+        max-height: 100% !important;
+    }
+    #pageWrapper .navbar .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    #pageWrapper .navbar .navbar-nav {
+        float: none!important;
+        margin: 7.5px 0px !important;
+    }
+    #pageWrapper .navbar .navbar-nav>li {
+        float: none !important;
+    }
+    
+    #menu-toggle {
+        display: none;
+    }
+    
+    .navbar-brand {
+        left: 0px;
+        position: absolute;
+    }
+}
+
+#navbar #account hr {
+    margin: 10px 0px !important;
+}

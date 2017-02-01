@@ -1,0 +1,15 @@
+[database]
+host     = localhost
+username = dbuser
+password = dbpasswd
+dbname   = dbovzcp
+
+[application]
+securitySalt = extremlySecure
+
+[mail]
+relayhost = mail.server.org
+rootalias = root@domain.org
+
+[push]
+jwtsigningkey = ALPH4NUM3RiCSTRINGMIN128BIT

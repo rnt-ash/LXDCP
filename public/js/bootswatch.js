@@ -1,0 +1,46 @@
+$.getJSON("https://bootswatch.com/api/3.json", function (data) {
+    var themes = data.themes;
+    var select = $(".selectTheme");
+    
+    themes.forEach(function(value, index){
+        if(value.name.toLowerCase() == $('.selectTheme').attr('id')) {
+            var thumbnailClass = 'thumbnail current'
+        } else {
+            var thumbnailClass = 'thumbnail'
+        }
+        select.append($(
+        '<div class="col-lg-3 col-sm-4 col-xs-12">'+
+            '<div class="'+thumbnailClass+'">'+
+                '<img id="'+index+'" src="'+value.thumbnail+'" class="bootswatchThemes" />'+
+                '<div class="caption">'+
+                    '<h4>'+value.name+'</h4>'+
+                    '<p>'+value.description+'</p>'+
+                '</div>'+
+            '</div>'+
+        '</div>'
+        ));
+    });
+
+    $(".selectTheme img").click(function(){
+        var theme = themes[$(this).attr('id')];
+        console.log($(this).attr('id'))
+        $("link[name='bootswatch']").attr("href", theme.css);
+        $.ajax({
+            url: "/logins/saveBootswatchTheme/" + theme.name,
+        });
+        $(".selectTheme .thumbnail").removeClass("current");
+        $(this).parent().addClass("current");
+        $("#changeTheme #currentTheme").text(theme.name.toLowerCase());
+    });
+    
+    $("a#defaultTheme").click(function(){
+        $("link[name='bootswatch']").attr("href", "");
+        $.ajax({
+            url: "/logins/saveBootswatchTheme",
+        });
+        $(".selectTheme .thumbnail").removeClass("current");
+        $("#changeTheme #currentTheme").text("default");
+    });
+}, "json").fail(function(){
+    alert("Json for Bootswatch themes could not be retrieved.")
+});

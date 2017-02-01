@@ -1,0 +1,36 @@
+td#snapshots ul {
+    list-style: none;
+}
+
+td#snapshots ul:first-child {
+    padding-left: 0px !important;
+} 
+
+@media (max-width: 767px) {
+    td#snapshots ul {
+        padding-left: 20px !important;
+    }
+}
+
+.selectTheme {
+    margin-top: 15px;
+}
+
+.selectTheme .thumbnail:hover .bootswatchThemes, .selectTheme .current img {
+    opacity: 1;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.selectTheme .current {
+    border-width: 5px;
+    margin-bottom: 5px;
+}
+
+.selectTheme .bootswatchThemes {
+    opacity: 0.6;
+    margin-bottom: 5px;
+}

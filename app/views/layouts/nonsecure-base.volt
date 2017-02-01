@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>
+            {% block title %}{{ appTitle }}
+                {% if pageTitle is defined %}
+                    &bull; {{ pageTitle }}
+                {% endif %}
+            {% endblock %}
+        </title>
+        <meta name="apple-mobile-web-app-title" content="{{ appTitle }}">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        {% block head %}
+            {# css includes #}
+            {{ stylesheet_link("/css/style.css") }}
+        {% endblock %}
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        <style>body { padding-top: 70px;}</style>
+        
+        <!-- FAVICONS -->
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="page-header">{{ appTitle }}</h1>
+
+            <div id="main" role="main">
+                <div id="content" class="container">
+                    {% block main %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
