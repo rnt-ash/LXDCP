@@ -331,21 +331,25 @@ $loader->registerDirs(array(
     $config->application->formsDir,
     BASE_PATH . '/vendor/rnt-forest/core/controllers/',
     BASE_PATH . '/vendor/rnt-forest/core/models/',
+    BASE_PATH . '/vendor/rnt-forest/core/forms/',
+    BASE_PATH . '/vendor/rnt-forest/core/services/',
+    BASE_PATH . '/vendor/rnt-forest/core/library/',
     BASE_PATH . '/vendor/rnt-forest/ovz/controllers/',
     BASE_PATH . '/vendor/rnt-forest/ovz/models/',
+    BASE_PATH . '/vendor/rnt-forest/ovz/forms/',
+    BASE_PATH . '/vendor/rnt-forest/ovz/services/',
 ));
 
 $loader->registerNamespaces(array(
-  //  "RNTForest\core\controllers" => BASE_PATH . '/vendor/rnt-forest/core/controllers/'
+ //   "RNTForest\\core\\controllers" => BASE_PATH . "/vendor/rnt-forest/core/controllers/",
 ));
 
 $loader->registerClasses(array(
- //   "ControllerBase" => BASE_PATH . "/vendor/rnt-forest/core/controllers/ControllerBase.php",
+ //   "ControllerBase"  => BASE_PATH . "/vendor/rnt-forest/core/controllers/ControllerBase.php",
  //   "IndexController" => BASE_PATH . "/vendor/rnt-forest/core/controllers/IndexController.php",
- //   "AccessController" => BASE_PATH . "/vendor/rnt-forest/core/controllers/AccessController.php",
 ));
 
 $loader->register();
 
 // Composer Autoloading
-//require_once $config->application->vendorDir.'/autoload.php';
+require_once $config->application->vendorDir.'/autoload.php';
