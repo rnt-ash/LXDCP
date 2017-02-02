@@ -68,7 +68,6 @@ class Security extends Plugin
         }
 
         // Obtain the ACL list
-        // Just development mode..
         $acl = $this->getAcl();
 
         if($config->application->mode == 'production'){

@@ -1,4 +1,4 @@
-{% extends "templates/tabledata.volt" %}
+{% extends "templates/core/tabledata.volt" %}
 
 {% block header %}
 <div class="page-header">
