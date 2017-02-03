@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `params` text,
   `created` datetime NOT NULL  DEFAULT '0000-00-00 00:00:00',
   `dependency` int(11) unsigned COMMENT 'FK jobs',
+  `pending` text,
   `sent` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `done` tinyint(1) NOT NULL DEFAULT '0' COMMENT '-1: wird ausgeführt, 0: erstellt, 1: erfolgreich, 2: error',
   `executed` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -90,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `physical_servers` (
   `memory` int(11) unsigned NOT NULL DEFAULT '1024' COMMENT 'Arbeitsspeicher in MB',
   `space` int(11) unsigned NOT NULL DEFAULT '100' COMMENT 'Speicherplatz in GB',
   `activation_date` date NOT NULL,
+  `pending` text,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -118,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
   `memory` int(11) unsigned NOT NULL DEFAULT '1024' COMMENT 'Arbeitsspeicher in MB',
   `space` int(11) unsigned NOT NULL DEFAULT '100' COMMENT 'Speicherplatz in GB',
   `activation_date` date NOT NULL,
-  `pending` tinyint(1) unsigned DEFAULT '0',
+  `pending` text,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
