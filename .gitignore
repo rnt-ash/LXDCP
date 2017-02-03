@@ -5,6 +5,9 @@ composer.lock
 # do not publish the config file
 /app/config/config.ini
 
+# do not publish the keys
+/app/config/keys/*
+
 # do not publish cache and logs
 /cache
 /logs
