@@ -137,7 +137,7 @@ function install(){
     if(empty($_POST['rootalias'])){
         $rootAlias = 'user@domain.tld';
     }else{
-        $relayHost = trim($_POST['rootalias']);
+        $rootAlias = trim($_POST['rootalias']);
         $oldFormValues['rootalias'] = $rootAlias; 
     }
     
