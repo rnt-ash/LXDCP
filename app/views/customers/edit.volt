@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/colocations/edit") }}
+{{ partial("partials/core/customers/edit") }}
