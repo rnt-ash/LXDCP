@@ -23,6 +23,13 @@ define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
 try {
+    // check the environment
+    if(!file_exists(BASE_PATH."/cache/security")) mkdir(BASE_PATH."/cache/security",0770,true);
+    if(!file_exists(BASE_PATH."/cache/volt")) mkdir(BASE_PATH."/cache/volt",0770,true);
+    if(!file_exists(APP_PATH."/views/templates/core")) symlink("../../../vendor/rnt-forest/core/views/templates",APP_PATH."/views/templates/core");
+    if(!file_exists(APP_PATH."/views/partials/core")) symlink("../../../vendor/rnt-forest/core/views",APP_PATH."/views/partials/core");
+    if(!file_exists(APP_PATH."/views/partials/ovz")) symlink("../../../vendor/rnt-forest/ovz/views",APP_PATH."/views/partials/ovz");
+    
     // Bootstrap
     include APP_PATH . "/config/bootstrap.php";
     
