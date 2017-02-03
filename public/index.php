@@ -26,6 +26,10 @@ try {
     // check the environment
     if(!file_exists(BASE_PATH."/cache/security")) mkdir(BASE_PATH."/cache/security",0770,true);
     if(!file_exists(BASE_PATH."/cache/volt")) mkdir(BASE_PATH."/cache/volt",0770,true);
+    if(!file_exists(BASE_PATH."/logs")) mkdir(BASE_PATH."/logs",0770,true);
+    if(!file_exists(APP_PATH."/config/keys")) mkdir(APP_PATH."/config/keys",0770,true);
+    if(!file_exists(APP_PATH."/views/templates")) mkdir(APP_PATH."/views/templates",0770,true);
+    if(!file_exists(APP_PATH."/views/partials")) mkdir(APP_PATH."/views/partials",0770,true);
     if(!file_exists(APP_PATH."/views/templates/core")) symlink("../../../vendor/rnt-forest/core/views/templates",APP_PATH."/views/templates/core");
     if(!file_exists(APP_PATH."/views/partials/core")) symlink("../../../vendor/rnt-forest/core/views",APP_PATH."/views/partials/core");
     if(!file_exists(APP_PATH."/views/partials/ovz")) symlink("../../../vendor/rnt-forest/ovz/views",APP_PATH."/views/partials/ovz");
