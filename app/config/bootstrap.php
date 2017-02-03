@@ -314,7 +314,6 @@ $di->setShared('logger', function() {
 // Push
 $di->setShared('push', function() use ($di) {
     $push = new Push($di);
-    $push->setSideEffect(new NoSideEffect());
     return $push;
 });
 
