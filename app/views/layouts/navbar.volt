@@ -14,6 +14,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="headerNavText">{{ link_to('index/index', '<i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>&nbsp; Dashboard') }}</li>
                 <li class="headerNavText">{{ link_to('customers/tabledata', '<i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Customers') }}</li>
+                <li class="headerNavText">{{ link_to('logins/tabledata', '<i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; Logins') }}</li>
                 <li class="headerNavText">{{ link_to('colocations/slidedata', '<i class="fa fa-globe fa-fw" aria-hidden="true"></i>&nbsp; Colocations') }}</li>
                 <li class="headerNavText">{{ link_to('physical_servers/slidedata', '<i class="fa fa-server fa-fw" aria-hidden="true"></i>&nbsp; Physical Servers') }}</li>
                 <li class="headerNavText">{{ link_to('virtual_servers/slidedata', '<i class="fa fa-cube fa-fw" aria-hidden="true"></i>&nbsp; Virtual Servers')}}</li>

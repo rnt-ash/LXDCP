@@ -227,6 +227,7 @@ $di->setShared('simpleview', function () {
 
 function compiler($compiler){
     $compiler->addFunction('is_a', 'is_a');
+    $compiler->addFunction('get_class', 'get_class');
     $compiler->addFilter('formatBytesHelper', function($resolvedArgs, $exprArgs) 
     {
             return  'Helpers::formatBytesHelper(' . $resolvedArgs . ');';

@@ -34,3 +34,9 @@ td#snapshots ul:first-child {
     opacity: 0.6;
     margin-bottom: 5px;
 }
+
+.form-group input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin-left: 2px;
+}

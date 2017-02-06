@@ -65,15 +65,15 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `hashtoken_reset` varchar(100) DEFAULT NULL,
   `hashtoken_expire` datetime DEFAULT NULL,
   `customers_id` int(11) unsigned NOT NULL,
-  `admin` tinyint(1) unsigned NOT NULL,
+  `admin` tinyint(1) DEFAULT NULL,
   `title` varchar(25) DEFAULT NULL,
   `lastname` varchar(50) DEFAULT NULL,
   `firstname` varchar(20) DEFAULT NULL,
   `phone` text,
   `comment` text,
   `email` varchar(128) NOT NULL,
-  `active` tinyint(1) unsigned NOT NULL,
-  `settings` text NOT NULL
+  `active` tinyint(1) DEFAULT NULL,
+  `settings` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `physical_servers` (

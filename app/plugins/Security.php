@@ -143,7 +143,7 @@ class Security extends Plugin
             'customers'         => array('index', 'new', 'edit', 'save', 'delete', 'tabledata'),
             'dcoipobjects'      => array('edit', 'save', 'cancel', 'delete', 'makeMain'),
             'jobs'              => array('index', 'delete', 'updateJobs'),
-            'logins'            => array('index', 'search', 'create', 'new', 'edit', 'save', 'delete', 'profile', 
+            'logins'            => array('index', 'new', 'edit', 'save', 'delete', 'profile', 'tabledata', 
                                             'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword'),
             'physical_servers'  => array('index', 'new', 'edit', 'save', 'delete', 
                                             'addIpObject', 'editIpObject', 'deleteIpObject',
