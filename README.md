@@ -1,28 +1,28 @@
 # OVZCP
-Control Panel auf Basis des Phalcon Framework für die neuste OpenVZ Version 7.
+Control Panel on basis of Phalcon Framework for the newest OpenVZ Version 7.
 
 ## Features
-- Funktionelle und responsive Weboberfläche auf Basis von Bootstrap
-- Schnelle Ausführung dank Einsatz von PHP7 und dem Phalcon Framework
-- Verwalten von VirtualServers, PhysicalServers und Colocations
-- Administrieren von VirtualServers (create, modify, destroy)
-- Einfacher Connector zum Anbinden PhysicalServers
-- Inventarisierung bestehender VirtualServers
+- Functional and responsive webinterface on basis of Bootstrap
+- Fast execution due to usage of PHP7 and Phalcon framework
+- Management of VirtualServers, PhysicalServers und Colocations
+- Administration of VirtualServers (create, modify, destroy)
+- Simplyfied connector for connecting PhysicalServers
+- Inventory of existing VirtualServers
 
 ## Based on
-Folgende Techniken sollen angewendet werden:
-- OpenVZ 7 für Virtualisierung
-- Debian Stretch für Webpanel
-- Basisframework Phalcon 3.0
-- PHP 7.0 Scriptsprache
-- Nginx/Apache Webserver
-- MariaDB Datenbank 
+Following technology should be used:
+- OpenVZ 7 for virtualization
+- Debian Stretch for the webpanel
+- Basisframework: Phalcon 3.0
+- PHP 7.0 scripting language
+- Nginx/Apache webserver
+- MariaDB database 
 
 ## Links
-- OpenVZ 7 Dokumentation: https://docs.openvz.org/ 
-- Phalcon https://phalconphp.com/de/
+- OpenVZ 7 documentation: https://docs.openvz.org/ 
+- Phalcon: https://phalconphp.com/en/
 
-## Verwendete Abhängigkeiten
+## Used dependency
 - [Faker] (https://packagist.org/packages/fzaninotto/faker)
 - [JQuery] (https://jquery.com/)
 - [Bootstrap] (http://getbootstrap.com/)
@@ -30,8 +30,8 @@ Folgende Techniken sollen angewendet werden:
 - [Bootbox.js] (http://bootboxjs.com/)
 
 ## Installation
-- OVZCP App siehe [INSTALL.DE.md](INSTALL.DE.md) 
-- OpenVZ 7 PhysicalServer vorbereiten und Hostingserver für OVZCP App siehe [INSTALL-OVZ7LEMP.DE.md](INSTALL-OVZ7LEMP.DE.md)
+- OVZCP App see [INSTALL.EN.md](INSTALL.EN.md) 
+- Prepare OpenVZ 7 PhysicalServer and Hostingserver for OVZCP app see [INSTALL-OVZ7LEMP.EN.md](INSTALL-OVZ7LEMP.EN.md)
 
 ## Getting Started
-- Erste Schritte in OVZCP App nach der Installation [GETTING-STARTED.DE.md](GETTING-STARTED.DE.md)
+- First steps in the OVZCP App after the installation [GETTING-STARTED.EN.md](GETTING-STARTED.EN.md)
