@@ -3,12 +3,12 @@ $( document ).ready(
 );
 
 function activateGadgets() {
-    activateTableSlideButton(),
+    activateConfirmButton(),
     activateToolTips()
 }
 
-function activateTableSlideButton() {
-    $(".delete-tableslide-item").click(function(){
+function activateConfirmButton() {
+    $(".confirm-button").click(function(){
         var link = $(this).attr("link"); 
         var text = $(this).attr("text"); 
         bootbox.confirm({

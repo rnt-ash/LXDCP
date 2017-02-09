@@ -27,6 +27,14 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `active` tinyint(1) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `customers_partners` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `customers_id` int(11) unsigned NOT NULL,
+  `partners_id` int(11) unsigned NOT NULL,
+  KEY `customers_id` (`customers_id`),
+  KEY `partners_id` (`partners_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `dcoipobjects` (
   `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `version` tinyint(1) unsigned NOT NULL DEFAULT '4' COMMENT 'IP version 4 or 6',
@@ -40,6 +48,12 @@ CREATE TABLE IF NOT EXISTS `dcoipobjects` (
   `virtual_servers_id` int(11) unsigned,
   `comment` varchar(50)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `permissions` text
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -67,13 +81,14 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `hashtoken_expire` datetime DEFAULT NULL,
   `customers_id` int(11) unsigned NOT NULL,
   `admin` tinyint(1) DEFAULT NULL,
+  `groups` text,
   `title` varchar(25) DEFAULT NULL,
   `lastname` varchar(50) DEFAULT NULL,
   `firstname` varchar(20) DEFAULT NULL,
   `phone` text,
   `comment` text,
   `email` varchar(128) NOT NULL,
-  `active` tinyint(1) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT '1',
   `settings` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -123,6 +138,12 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
   `pending` text,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
+(1, 'employes', 'index:general:*,\ncolocations:general:*,\ncustomers:general:*,\ndcoipobjects:general:*,\njobs:general:*,\nlogins:general:*,\nphysical_servers:general:*,\nvirtual_servers:general:*,\n'),
+(5, 'partners', 'index:general:*,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nvirtual_servers:general:partners,\r\n'),
+(10, 'customers', 'index:general:*,\r\ncolocations:general:customers,\r\nphysical_servers:general:customers,\r\nvirtual_servers:general:customers,\r\n');
+
 
 /* this commands must be executed but are normally done in the installer (install.php) */
 /*

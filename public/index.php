@@ -26,6 +26,7 @@ try {
     // check the environment
     if(!file_exists(BASE_PATH."/cache/security")) mkdir(BASE_PATH."/cache/security",0770,true);
     if(!file_exists(BASE_PATH."/cache/volt")) mkdir(BASE_PATH."/cache/volt",0770,true);
+    if(!file_exists(BASE_PATH."/cache/pdf")) mkdir(BASE_PATH."/cache/pdf",0770,true);
     if(!file_exists(BASE_PATH."/logs")) mkdir(BASE_PATH."/logs",0770,true);
     if(!file_exists(APP_PATH."/config/keys")) mkdir(APP_PATH."/config/keys",0770,true);
     if(!file_exists(APP_PATH."/views/templates")) mkdir(APP_PATH."/views/templates",0770,true);

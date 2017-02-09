@@ -12,6 +12,7 @@ Im Kontroller muss die Methode getTableDataInfo() implementiert sein, welche den
 ```
 protected function getTableDataInfo() {
     return array(
+        "type" => "tableData",
         "controller" => "myCustomers",
         "action" => "index",
         "scope" => "",
@@ -55,11 +56,13 @@ Im Kontroller muss die Methode getSlideDataInfo() implementiert sein, welche den
 ```
 protected function getSlideDataInfo() {
     return array(
+        "type" => "slideData",
         "controller" => "myController",
         "action" => "slidedata",
         "slidenamefield" => "name",
         "slidenamefielddescription" => "Name",
         "scope" => "",
+        "join" => "",
         "order" => "name",
         "orderdir" => "ASC",
         "filters" => array(),
@@ -67,7 +70,7 @@ protected function getSlideDataInfo() {
         "limit" => 10,
         "childtable" => array(
             "classname"=>"myChildController",
-            "join"=>"my_id",
+            "parentjoin"=>"my_id",
             "order" => "id",
             "orderdir" => "ASC",
         )

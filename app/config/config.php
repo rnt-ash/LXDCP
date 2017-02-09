@@ -42,6 +42,7 @@ return new \Phalcon\Config([
         'servicesDir'           => APP_PATH . '/services/',
         'cacheDir'              => BASE_PATH . '/cache/volt/',
         'securityDir'           => BASE_PATH . '/cache/security/',
+        'pdfDir'                => BASE_PATH . '/cache/pdf/',
         'logsDir'               => BASE_PATH . '/logs/',
         'vendorDir'             => BASE_PATH . '/vendor/',
         'baseUri'               => '/',
@@ -53,6 +54,5 @@ return new \Phalcon\Config([
     'push' => [
         'adminpublickeyfile'    => APP_PATH."/config/keys/public.pem",
         'adminprivatekeyfile'   => APP_PATH."/config/keys/private.key",
-    ]
-    
+    ],
 ]);

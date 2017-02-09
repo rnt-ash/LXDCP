@@ -82,10 +82,12 @@ $di->set('dispatcher', function () {
     return $dispatcher;
 });
 
-
 // Shared configuration service
 $di->setShared('config', function () {
     $config = include APP_PATH . "/config/config.php";
+    $permissionbase = include APP_PATH . "/config/permissionbase.php";
+    $config->merge($permissionbase);
+    
     if (is_readable(APP_PATH . '/config/config.ini')) {
         $override = new ConfigIni(APP_PATH . '/config/config.ini');
         $config->merge($override);
@@ -323,18 +325,13 @@ $config = $di->getConfig();
 $loader = new \Phalcon\Loader();
 
 $loader->registerDirs(array(
-    $config->application->controllersDir,
-    $config->application->libraryDir,
-    $config->application->pluginsDir,
-    $config->application->servicesDir,
-    $config->application->modelsDir,
-    $config->application->formsDir,
     BASE_PATH . '/vendor/rnt-forest/core/controllers/',
     BASE_PATH . '/vendor/rnt-forest/core/models/',
     BASE_PATH . '/vendor/rnt-forest/core/forms/',
     BASE_PATH . '/vendor/rnt-forest/core/services/',
     BASE_PATH . '/vendor/rnt-forest/core/libraries/',
     BASE_PATH . '/vendor/rnt-forest/core/interfaces/',
+    BASE_PATH . '/vendor/rnt-forest/core/plugins/',
     BASE_PATH . '/vendor/rnt-forest/ovz/controllers/',
     BASE_PATH . '/vendor/rnt-forest/ovz/models/',
     BASE_PATH . '/vendor/rnt-forest/ovz/forms/',

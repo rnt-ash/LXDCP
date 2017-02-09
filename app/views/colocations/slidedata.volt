@@ -1,1 +1,1 @@
-{% extends "templates/core/slidedata.volt" %}
+{{ partial("partials/ovz/colocations/slidedata") }}
