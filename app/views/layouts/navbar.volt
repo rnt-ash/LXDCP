@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>            
-            {{ link_to('index', appTitle, 'class': 'navbar-brand') }}
+            {{ link_to('index/', appTitle, 'class': 'navbar-brand') }}
             <a id="menu-toggle" class="btn btn-primary pull-right" title="Navigation ein-/ausblenden"><i class="fa fa-navicon"></i></a><br />
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -25,7 +25,7 @@
                     </a>
                     <ul class="dropdown-menu list-group col-sm-12" role="menu">
                         <li>{{ link_to('logins/profile', '<span class="fa fa-home"></span> Profile') }}</li>
-                        <li>{{ link_to('logins/resetPasswordForm/'~sessionLoginId, '<span class="fa fa-key"></span> Reset password') }}</li>
+                        <li>{{ link_to('logins/resetPasswordForm/'~sessionLoginId~'/true', '<span class="fa fa-key"></span> Reset password') }}</li>
                         <hr>
                         <li>{{ link_to('access/logout', '<span class="fa fa-sign-out"></span> Logout') }}</li>
                     </ul>

@@ -144,7 +144,7 @@ class Security extends Plugin
             'dcoipobjects'      => array('edit', 'save', 'cancel', 'delete', 'makeMain'),
             'jobs'              => array('index', 'delete', 'updateJobs'),
             'logins'            => array('index', 'new', 'edit', 'save', 'delete', 'profile', 'tabledata', 
-                                            'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword'),
+                                            'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword', 'getPDF', 'sendPDF'),
             'physical_servers'  => array('index', 'new', 'edit', 'save', 'delete', 
                                             'addIpObject', 'editIpObject', 'deleteIpObject',
                                             'slidedata', 'slideSlide', 'ovzHostInfo', 'connectForm', 'connect'),
