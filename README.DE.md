@@ -1,5 +1,4 @@
 # OVZCP
----
 *serial 2017020902*
 
 Control Panel auf Basis des Phalcon Framework für die neuste OpenVZ Version 7.
