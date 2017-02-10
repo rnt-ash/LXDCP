@@ -1,16 +1,15 @@
 # OVZCP
 Control Panel on basis of Phalcon Framework for the newest OpenVZ Version 7.
-
+serial 2017021001
 ## Features
 - Functional and responsive webinterface on basis of Bootstrap
 - Fast execution due to usage of PHP7 and Phalcon framework
-- Management of VirtualServers, PhysicalServers und Colocations
 - Administration of VirtualServers (create, modify, destroy)
 - Simplyfied connector for connecting PhysicalServers
 - Inventory of existing VirtualServers
 
 ## Based on
-Following technology should be used:
+Following technology has to be used:
 - OpenVZ 7 for virtualization
 - Debian Stretch for the webpanel
 - Basisframework: Phalcon 3.0
@@ -28,6 +27,8 @@ Following technology should be used:
 - [Bootstrap] (http://getbootstrap.com/)
 - [Font Awesome] (https://packagist.org/packages/fortawesome/font-awesome)
 - [Bootbox.js] (http://bootboxjs.com/)
+- [PhpMailer] (https://packagist.org/packages/phpmailer/phpmailer)
+- [TCPDF] (https://packagist.org/packages/tecnickcom/tcpdf)
 
 ## Installation
 - OVZCP App see [INSTALL.EN.md](INSTALL.EN.md) 
