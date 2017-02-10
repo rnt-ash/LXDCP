@@ -1,6 +1,8 @@
 # OVZCP
+*serial 2017021002*
+
 Control Panel on basis of Phalcon Framework for the newest OpenVZ Version 7.
-serial 2017021001
+
 ## Features
 - Functional and responsive webinterface on basis of Bootstrap
 - Fast execution due to usage of PHP7 and Phalcon framework
