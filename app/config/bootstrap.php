@@ -35,6 +35,8 @@ use Phalcon\Mvc\Router;
 use Phalcon\Logger as Logger;
 use Phalcon\Logger\Adapter\File as LoggerFileAdapter;
 
+use RNTForest\core\plugins\Security;
+
 // FactoryDefault Dependency Injector
 $di = new FactoryDefault();
 
@@ -49,8 +51,9 @@ $di->set('dispatcher', function () {
         // Handle 404 exceptions
         if ($exception instanceof DispatchException) {
             $dispatcher->forward(array(
-                'controller' => 'errors',
-                'action' => 'show404'
+                "namespace"  => "RNTForest\\OVZCP\\controllers",
+                "controller" => "errors",
+                "action" => "show404"
             ));
             return false;
         }
@@ -61,8 +64,9 @@ $di->set('dispatcher', function () {
                 case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                 case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                     $dispatcher->forward(array(
-                        'controller' => 'errors',
-                        'action' => 'show404'
+                        "namespace"  => "RNTForest\\OVZCP\\controllers",
+                        "controller" => "errors",
+                        "action" => "show404"
                     ));
                     return false;
             }
@@ -70,7 +74,7 @@ $di->set('dispatcher', function () {
     });
 
     // Instantiate the Security plugin
-    $security = new Security($di);
+    $security = new Security();
 
     // Listen for events produced in the dispatcher using the Security plugin
     $eventsManager->attach('dispatch', $security);
@@ -110,6 +114,7 @@ $di->setShared('url', function () {
 $di->setShared('router',function (){
     
     $router = new Router();
+    $router->setDefaultNamespace("RNTForest\\OVZCP\\controllers");
     
     // default
     $router->add(
@@ -232,7 +237,7 @@ function compiler($compiler){
     $compiler->addFunction('get_class', 'get_class');
     $compiler->addFilter('formatBytesHelper', function($resolvedArgs, $exprArgs) 
     {
-            return  'Helpers::formatBytesHelper(' . $resolvedArgs . ');';
+            return  '\RNTForest\core\libraries\Helpers::formatBytesHelper(' . $resolvedArgs . ');';
     });
 }
 
@@ -300,7 +305,7 @@ $di->set('flashSession', function () {
     ]);
 });
 
-// Start the session the first time some component request the session service
+// Session
 $di->setShared('session', function () {
     $session = new SessionAdapter();
     $session->start();
@@ -314,9 +319,15 @@ $di->setShared('logger', function() {
     return new LoggerFileAdapter($config->application->logsDir."app.log");
 });
 
+// Acl
+$di->setShared('acl', function() use ($di) {
+    $acl = new RNTForest\core\libraries\Acl();
+    return $acl;
+});
+
 // Push
 $di->setShared('push', function() use ($di) {
-    $push = new Push($di);
+    $push = new \RNTForest\core\services\Push($di);
     return $push;
 });
 
@@ -324,27 +335,26 @@ $di->setShared('push', function() use ($di) {
 $config = $di->getConfig();
 $loader = new \Phalcon\Loader();
 
-$loader->registerDirs(array(
-    BASE_PATH . '/vendor/rnt-forest/core/controllers/',
-    BASE_PATH . '/vendor/rnt-forest/core/models/',
-    BASE_PATH . '/vendor/rnt-forest/core/forms/',
-    BASE_PATH . '/vendor/rnt-forest/core/services/',
-    BASE_PATH . '/vendor/rnt-forest/core/libraries/',
-    BASE_PATH . '/vendor/rnt-forest/core/interfaces/',
-    BASE_PATH . '/vendor/rnt-forest/core/plugins/',
-    BASE_PATH . '/vendor/rnt-forest/ovz/controllers/',
-    BASE_PATH . '/vendor/rnt-forest/ovz/models/',
-    BASE_PATH . '/vendor/rnt-forest/ovz/forms/',
-    BASE_PATH . '/vendor/rnt-forest/ovz/services/',
-));
-
 $loader->registerNamespaces(array(
- //   "RNTForest\\core\\controllers" => BASE_PATH . "/vendor/rnt-forest/core/controllers/",
-));
+    // OVZCP
+    "RNTForest\\OVZCP\\controllers" => APP_PATH . "/controllers/",
+    "RNTForest\\OVZCP\\models" => APP_PATH . "/models/",
+    "RNTForest\\OVZCP\\forms" => APP_PATH . "/forms/",
 
-$loader->registerClasses(array(
- //   "ControllerBase"  => BASE_PATH . "/vendor/rnt-forest/core/controllers/ControllerBase.php",
- //   "IndexController" => BASE_PATH . "/vendor/rnt-forest/core/controllers/IndexController.php",
+    // core
+    "RNTForest\\core\\controllers" => BASE_PATH . "/vendor/rnt-forest/core/controllers/",
+    "RNTForest\\core\\models" => BASE_PATH . "/vendor/rnt-forest/core/models/",
+    "RNTForest\\core\\forms" => BASE_PATH . "/vendor/rnt-forest/core/forms/",
+    "RNTForest\\core\\services" => BASE_PATH . "/vendor/rnt-forest/core/services/",
+    "RNTForest\\core\\libraries" => BASE_PATH . "/vendor/rnt-forest/core/libraries/",
+    "RNTForest\\core\\interfaces" => BASE_PATH . "/vendor/rnt-forest/core/interfaces/",
+    "RNTForest\\core\\plugins" => BASE_PATH . "/vendor/rnt-forest/core/plugins/",
+
+    // ovz
+    "RNTForest\\ovz\\controllers" => BASE_PATH . "/vendor/rnt-forest/ovz/controllers/",
+    "RNTForest\\ovz\\models" => BASE_PATH . "/vendor/rnt-forest/ovz/models/",
+    "RNTForest\\ovz\\forms" => BASE_PATH . "/vendor/rnt-forest/ovz/forms/",
+    "RNTForest\\ovz\\services" => BASE_PATH . "/vendor/rnt-forest/ovz/services/",
 ));
 
 $loader->register();
