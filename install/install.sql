@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
-(1, 'employes', 'index:general:*,\ncolocations:general:*,\ncustomers:general:*,\ndcoipobjects:general:*,\njobs:general:*,\nlogins:general:*,\nphysical_servers:general:*,\nvirtual_servers:general:*,\n'),
+(1, 'employees', 'index:general:*,\ncolocations:general:*,\ncustomers:general:*,\ndcoipobjects:general:*,\njobs:general:*,\nlogins:general:*,\nphysical_servers:general:*,\nvirtual_servers:general:*,\n'),
 (5, 'partners', 'index:general:*,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nvirtual_servers:general:partners,\r\n'),
 (10, 'customers', 'index:general:*,\r\ncolocations:general:customers,\r\nphysical_servers:general:customers,\r\nvirtual_servers:general:customers,\r\n');
 
