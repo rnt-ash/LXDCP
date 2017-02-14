@@ -19,6 +19,11 @@
 
 namespace RNTForest\OVZCP\controllers;
 
+use \RNTForest\ovz\models\PhysicalServers;
+use \RNTForest\ovz\models\VirtualServers;
+use \RNTForest\ovz\models\Dcoipobjects;
+use \RNTForest\core\libraries\Helpers;
+
 class IndexController extends \RNTForest\core\controllers\IndexControllerBase
 {
 
@@ -77,8 +82,8 @@ class IndexController extends \RNTForest\core\controllers\IndexControllerBase
                 $virtualServer->setOvzSettings($job->getRetval());
                 $virtualServer->setOvzVstype($settings['Type']);
                 $virtualServer->setCore(intval($settings['Hardware']['cpu']['cpus']));
-                $virtualServer->setMemory(intval(\Helpers::convertToBytes($settings['Hardware']['memory']['size'])/1024/1024));
-                $virtualServer->setSpace(intval(\Helpers::convertToBytes($settings['Hardware']['hdd0']['size'])/1024/1024/1024));
+                $virtualServer->setMemory(intval(Helpers::convertToBytes($settings['Hardware']['memory']['size'])/1024/1024));
+                $virtualServer->setSpace(intval(Helpers::convertToBytes($settings['Hardware']['hdd0']['size'])/1024/1024/1024));
                 $virtualServer->setActivationDate(date("Y-m-d"));
 
                 // save virtual server
