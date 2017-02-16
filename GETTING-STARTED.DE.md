@@ -1,5 +1,7 @@
 # Getting Started im OVZCP
 
+*serial 2017021601*
+
 ## Login und Dashboard
 Nach der Installation von OVZCP (siehe [INSTALL.DE.md](INSTALL.DE.md)) sollte man sich nun im OVZCP einloggen können.
 Dafür wird als User 'admin' und als Passwort das im Installer gesetzte Passwort genommen.

@@ -1,5 +1,7 @@
 # Installation OpenVZ 7 inkl. Debian Stretch Gastsystem
 
+*serial 2017021601*
+
 In dieser Anleitung werden folgende Themen behandelt:
  - Grundinstallation OpenVZ 7 PhysicalServer
  - Grundinstallation Debian Stretch als VirtualServer
