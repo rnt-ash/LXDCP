@@ -235,10 +235,17 @@ $di->setShared('simpleview', function () {
 function compiler($compiler){
     $compiler->addFunction('is_a', 'is_a');
     $compiler->addFunction('get_class', 'get_class');
+    $compiler->addFunction('_', function ($resolvedArgs, $exprArgs) {
+        return sprintf('$this->translate->query(\'%s\')', $exprArgs[0]['expr']['value']);
+    });    
+    
+    
     $compiler->addFilter('formatBytesHelper', function($resolvedArgs, $exprArgs) 
     {
             return  '\RNTForest\core\libraries\Helpers::formatBytesHelper(' . $resolvedArgs . ');';
     });
+
+    
 }
 
 // Database connection is created based in the parameters defined in the configuration file
@@ -311,6 +318,28 @@ $di->setShared('session', function () {
     $session->start();
 
     return $session;
+});
+
+// Translation
+$di->setShared('translate', function() use($di) {
+    $config = $this->getConfig();
+    $session = $this->getSession();
+    if ($session->has("auth")){
+        $locale = $session->auth['locale'];
+    } else {
+        $locale = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+    }
+    $lang = substr($locale,0,2);
+    
+    if (file_exists($config->application['messagesDir'].$lang.".php")) {
+        require $config->application['messagesDir'].$lang.".php";
+    } else {
+        require $config->application['messagesDir']."en.php";
+    }
+
+    return new \Phalcon\Translate\Adapter\NativeArray(array(
+        "content" => $messages
+    ));
 });
 
 // Logger

@@ -1,1 +1,0 @@
-{{ partial("partials/ovz/virtual_servers/edit") }}

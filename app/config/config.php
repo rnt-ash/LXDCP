@@ -33,6 +33,7 @@ return new \Phalcon\Config([
         'mode'                  => 'production', // or debug
         'appDir'                => APP_PATH . '/',
         'viewsDir'              => APP_PATH . '/views/',
+        'messagesDir'           => APP_PATH . '/messages/',
         'cacheDir'              => BASE_PATH . '/cache/volt/',
         'pdfDir'                => BASE_PATH . '/cache/pdf/',
         'logsDir'               => BASE_PATH . '/logs/',

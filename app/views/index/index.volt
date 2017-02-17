@@ -4,11 +4,11 @@
 
 
 <div class="jumbotron">
-    <p>Welcome to the World of OVZ Control Panel.</p>
+    <p>{{ _("index_welcome") }}</p>
 </div>
 
 <div class="well well">
-    <h2>Inventory</h2>
-    <p>Looking for VirtualServers on connected PhysicalServers and collect those VirtualServers and save them in OVZ Control Panel.</p>
+    <h2>{{_("index_inventory")}}</h2>
+    <p>{{_("index_inventory_teaser")}}</p>
     {{ link_to("index/scanAllVS/",'Start','class': 'btn btn-primary') }}
 </div>

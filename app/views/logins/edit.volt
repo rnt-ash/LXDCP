@@ -1,1 +1,0 @@
-{{ partial("partials/core/logins/edit") }}

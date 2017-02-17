@@ -44,7 +44,7 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'colocations' => [
-                        'index', 'search', 'create', 'new', 'edit', 
+                        'index', 'search', 'create', 'new', 'edit', 'form',
                         'addIpObject', 'editIpObject', 'deleteIpObject',
                         'save', 'delete', 'tabledata', 'slidedata', 'slideSlide'                
                     ]
@@ -61,7 +61,7 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'customers' => [
-                        'index', 'new', 'edit', 'save', 'delete', 'tabledata', 'tableDetail' 
+                        'index', 'new', 'edit', 'form', 'save', 'delete', 'tabledata', 'tableDetail' 
                     ]
                 ],
             ],
@@ -75,7 +75,7 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'dcoipobjects' => [
-                        'index', 'new', 'edit', 'save', 'delete', 'tabledata'
+                        'index', 'new', 'edit', 'form', 'save', 'delete', 'tabledata'
                     ]
                 ],
             ],
@@ -103,8 +103,28 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'logins' => [
-                        'index', 'new', 'edit', 'save', 'delete', 'profile', 'tabledata', 'tableDetail' ,
-                        'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword', 'getPDF', 'sendPDF'
+                        'index', 'new', 'delete', 'tabledata', 'tableDetail' ,
+                        'getPDF', 'sendPDF'
+                    ]
+                ],
+            ],
+            'profile' => [
+                'description' => 'Profile access', 
+                'scopes' => [
+                    '1' => "Access to all profiles", 
+                    'own' => "Access to owners profile", 
+                    '0' => "Access to no profiles", 
+                ],
+                'functions' => array(
+                    'own' => function (\RNTForest\core\models\Logins $login) {
+                        $customers_id = $this->session->get('auth')['customers_id'];
+                        return false;
+                    },
+                ),
+                'actions' => [
+                    'logins' => [
+                        'profile', 'edit', 'save', 'form',
+                        'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword',
                     ]
                 ],
             ],
@@ -120,7 +140,7 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'physical_servers' => [
-                        'index', 'new', 'edit', 'save', 'delete', 
+                        'index', 'new', 'edit', 'form', 'save', 'delete', 
                         'addIpObject', 'editIpObject', 'deleteIpObject',
                         'slidedata', 'slideSlide', 'ovzHostInfo', 'connectForm', 'connect'                
                     ]
@@ -138,22 +158,21 @@ return new \Phalcon\Config([
                     '0' => "Show no virtual servers", 
                 ],
                 'functions' => $vsfunctions = array(
-                    'partners' => function (VirtualServers $virtualServer) {
-                        $customers_id = $this->session->get('auth')['customers_id'];
+                    'partners' => function ($item) {
+                        if($item->customers_id == $this->getSession()->get('auth')['customers_id']) return true;
+                        foreach($item->customers->partners as $partner){
+                            if($partner->id == $this->getSession()->get('auth')['customers_id']) return true;
+                        }
                         return false;
                     },
-                    'customers' => function (VirtualServers $virtualServer) {
-                        $customers_id = $this->session->get('auth')['customers_id'];
-                        if($virtualServer->getCustomersId() == $customers_id)
-                            return true;
-                        else
-                            return true;
-
+                    'customers' => function ($item) {
+                        if($item->customers_id == $this->getSession()->get('auth')['customers_id']) return true;
+                        else return false;
                     },
                 ),
                 'actions' => [
                     'virtual_servers' => [
-                        'index', 'edit', 
+                        'index', 
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
                         'save', 'slidedata', 'slideSlide', 'ovzListInfo', 
                         'ovzListSnapshots', 'ovzCreateSnapshot', 'ovzDeleteSnapshot', 
@@ -161,19 +180,67 @@ return new \Phalcon\Config([
                     ]
                 ],
             ],
-            // create and delete permission
-            'createdelete' => [
-                'description' => 'create an delete virtual servers', 
+            // create permission
+            'create' => [
+                'description' => 'create a virtual servers', 
                 'scopes' => [
-                    '1' => "Create/delete all virtual servers", 
-                    'partners' => "Create/delete virtual servers from partners and own only", 
-                    'customers' => "Create/delete own virtual servers only", 
-                    '0' => "Create/delete no virtual servers", 
+                    '1' => "Create on all physical servers", 
+                    'partners' => "Create virtual servers on partners and own physical servers only", 
+                    'customers' => "Create virtual servers on own physical servers only", 
+                    '0' => "Create no virtual servers", 
                 ],
                 'functions' => $vsfunctions,
                 'actions' => [
                     'virtual_servers' => [
-                        'newVS', 'newCT', 'newVM', 'delete',
+                        'newVS', 'newCT', 'newVM',
+                    ]
+                ],
+            ],
+            // delete permission
+            'delete' => [
+                'description' => 'delete virtual servers', 
+                'scopes' => [
+                    '1' => "delete all virtual servers", 
+                    'partners' => "delete virtual servers from partners and own only", 
+                    'customers' => "delete own virtual servers only", 
+                    '0' => "delete no virtual servers", 
+                ],
+                'functions' => $vsfunctions,
+                'actions' => [
+                    'virtual_servers' => [
+                        'delete',
+                    ]
+                ],
+            ],
+            // edit permission
+            'edit' => [
+                'description' => 'edit a virtual servers', 
+                'scopes' => [
+                    '1' => "edit all virtual servers", 
+                    'partners' => "edit virtual servers from partners and own only", 
+                    'customers' => "edit own virtual servers only", 
+                    '0' => "edit no virtual servers", 
+                ],
+                'functions' => $vsfunctions,
+                'actions' => [
+                    'virtual_servers' => [
+                        'edit', 'form',
+                    ]
+                ],
+            ],
+            // save permission
+            'save' => [
+                'description' => 'save a virtual servers', 
+                'scopes' => [
+                    '1' => "save all virtual servers", 
+                    'partners' => "save virtual servers from partners and own only", 
+                    'customers' => "save own virtual servers only", 
+                    '0' => "save no virtual servers", 
+                ],
+                'functions' => $vsfunctions,
+                'actions' => [
+                    'virtual_servers' => [
+                        'save',
                     ]
                 ],
             ],
