@@ -348,16 +348,16 @@ $di->setShared('logger', function() {
     return new LoggerFileAdapter($config->application->logsDir."app.log");
 });
 
-// Acl
-$di->setShared('acl', function() use ($di) {
-    $acl = new RNTForest\core\libraries\Acl();
-    return $acl;
-});
-
 // Push
 $di->setShared('push', function() use ($di) {
     $push = new \RNTForest\core\services\Push($di);
     return $push;
+});
+
+// Permissions
+$di->setShared('permissions', function() {
+    $permissions = new \RNTForest\core\libraries\Permissions();
+    return $permissions;
 });
 
 // Autoloader
@@ -369,6 +369,7 @@ $loader->registerNamespaces(array(
     "RNTForest\\OVZCP\\controllers" => APP_PATH . "/controllers/",
     "RNTForest\\OVZCP\\models" => APP_PATH . "/models/",
     "RNTForest\\OVZCP\\forms" => APP_PATH . "/forms/",
+    "RNTForest\\OVZCP\\libraries" => APP_PATH . "/libraries/",
 
     // core
     "RNTForest\\core\\controllers" => BASE_PATH . "/vendor/rnt-forest/core/controllers/",

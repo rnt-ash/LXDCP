@@ -116,10 +116,7 @@ return new \Phalcon\Config([
                     '0' => "Access to no profiles", 
                 ],
                 'functions' => array(
-                    'own' => function (\RNTForest\core\models\Logins $login) {
-                        $customers_id = $this->session->get('auth')['customers_id'];
-                        return false;
-                    },
+                    'own' => '\RNTForest\OVZCP\libraries\PermissionFunctions::own',
                 ),
                 'actions' => [
                     'logins' => [
@@ -157,18 +154,9 @@ return new \Phalcon\Config([
                     'customers' => "Show own virtual servers only", 
                     '0' => "Show no virtual servers", 
                 ],
-                'functions' => $vsfunctions = array(
-                    'partners' => function ($item) {
-                        if($item->customers_id == $this->getSession()->get('auth')['customers_id']) return true;
-                        foreach($item->customers->partners as $partner){
-                            if($partner->id == $this->getSession()->get('auth')['customers_id']) return true;
-                        }
-                        return false;
-                    },
-                    'customers' => function ($item) {
-                        if($item->customers_id == $this->getSession()->get('auth')['customers_id']) return true;
-                        else return false;
-                    },
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
                 ),
                 'actions' => [
                     'virtual_servers' => [
@@ -180,8 +168,8 @@ return new \Phalcon\Config([
                     ]
                 ],
             ],
-            // create permission
-            'create' => [
+            // new permission
+            'new' => [
                 'description' => 'create a virtual servers', 
                 'scopes' => [
                     '1' => "Create on all physical servers", 
@@ -189,10 +177,13 @@ return new \Phalcon\Config([
                     'customers' => "Create virtual servers on own physical servers only", 
                     '0' => "Create no virtual servers", 
                 ],
-                'functions' => $vsfunctions,
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
                 'actions' => [
                     'virtual_servers' => [
-                        'newVS', 'newCT', 'newVM',
+                        'new', 'newVS', 'newCT', 'newVM',
                     ]
                 ],
             ],
@@ -205,7 +196,10 @@ return new \Phalcon\Config([
                     'customers' => "delete own virtual servers only", 
                     '0' => "delete no virtual servers", 
                 ],
-                'functions' => $vsfunctions,
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
                 'actions' => [
                     'virtual_servers' => [
                         'delete',
@@ -221,7 +215,10 @@ return new \Phalcon\Config([
                     'customers' => "edit own virtual servers only", 
                     '0' => "edit no virtual servers", 
                 ],
-                'functions' => $vsfunctions,
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
                 'actions' => [
                     'virtual_servers' => [
                         'edit', 'form',
@@ -237,7 +234,10 @@ return new \Phalcon\Config([
                     'customers' => "save own virtual servers only", 
                     '0' => "save no virtual servers", 
                 ],
-                'functions' => $vsfunctions,
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
                 'actions' => [
                     'virtual_servers' => [
                         'save',
@@ -253,7 +253,10 @@ return new \Phalcon\Config([
                     'customers' => "Change state on own virtual servers only", 
                     '0' => "Change state on no virtual servers", 
                 ],
-                'functions' => $vsfunctions,
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
                 'actions' => [
                     'virtual_servers' => [
                         'startVS', 'stopVS', 'restartVS', 

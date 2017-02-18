@@ -5,11 +5,19 @@ Jedes Modul definiert eigene Berechtigungen welche in Berechtigungsgruppen zusam
 Die Berechtigungen werden in der "Permission Base" zusammengefasst und beschrieben. Es können nur Berechtigungen verwenden welche in der Permission Base deklariert sind.
 
 ## Wo
+Permissions setzt sich aus drei Teilen zusammen:
+    1. `Permissions Class` mit der eigentlichen Funktionalität
+    2. `Permission Base` mit den verfügbaren Permissions
+    3. `Permission Functions` mit den in der Permissions Base deklarierten Funktionen
+
 Berechtigungen können an zwei Orten gesetzt werden:
     1. In den Benutzergruppen (groups)
     2. In den Logins (logins)
     
 Dabei werden Berechtigungen von unten nach oben überschrieben. D.h. Berechtigungen von Benutzergruppen werden von den Logins überschrieben.
+
+Bei einloggen werden die Permissions für den jeweiligen User berechnet und in der Session unter `session['auth']['permissions']` abgelegt.
+Gleichzeitig werden auch alle erlaubten actions anhand der `Permission Base` ermitelt und unter `session['auth']['actions']` abgelegt.
 
 ## Aufbau
 Der Aufbau des Feldes "permissions" ist folgender:
@@ -22,16 +30,12 @@ Wobei gilt:
 [Value] Zusätzliche Werte welche frei definiert werden können. z.B. bei Scope='id' wo die entsprechenden ID's mit Pipe (|) separiert aufgelistet werden könnten. Ansonsten ist Value leer.
 Komma nach jeder Linie nicht vergessen!
    
-## Aufruf (ToDo)
-$acl->isAllowed('myRole', $controller, $action."Action")!=Acl::ALLOW)
+## Aufruf
+Abfragen ob der Angemeldete User Berechtigung für eine "Berechtigung" hat.
+`$permissions->checkPermission(%Berechtigungsgruppe%,%Name%);`
 
-Abfragen welchen Scope eine Berechtigung bei angemeldeten User hat. 
-Returnwert: [Scope], siehe Beschreibung [Scope]
-$this->App->checkPermissions($this->ModuleName,'delitem');
-If($this->App->checkPermissions($this->ModuleName,'delitem') === 'customer') {}
-Achtung! Drei Gleichheitszeichen, damit auch Typ überprüft wird. Ansonsten entspricht true='customer' !!
+Abfragen ob der Angemeldete User Berechtigung bei genau diesem Objekt hat.
+`$permissions->checkPermission(%Berechtigungsgruppe%,%Name%,%Objekt%);`
 
-Abfragen ob ein der Angemeldeter User eine gewisse Berechtigung bei genau diesem Tabellenelement hat.
-Returnwert: true (User darf Operation auf diese Tabellenzeile ausführen), false (keine Berechtigung)
-$this->App->checkPermissions($this->ModuleName,'delhosting',[id],[tabellenname]);
-$this->App->checkPermissions($this->ModuleName,'delhosting',[aktuelle hostingid],'hostings');
+Abfragen ob der Angemeldete User Berechtigung zu einer Action hat.
+`$permissions->checkActionPermission(%Kontroller%,%Action%);`
