@@ -33,7 +33,7 @@ Following technology has to be used:
 - [TCPDF] (https://packagist.org/packages/tecnickcom/tcpdf)
 
 ## Installation
-- OVZCP App see [INSTALL.md](INSTALL.,d) 
+- OVZCP App see [INSTALL.md](INSTALL.md) 
 - Prepare OpenVZ 7 PhysicalServer and Hostingserver for OVZCP app see [INSTALL-OVZ7LEMP.md](INSTALL-OVZ7LEMP.md)
 
 ## Getting Started
