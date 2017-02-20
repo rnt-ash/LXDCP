@@ -24,19 +24,18 @@ Gleichzeitig werden auch alle erlaubten actions anhand der `Permission Base` erm
 
 ## Aufbau
 Der Aufbau des Feldes "permissions" ist folgender:
-
-\[Berechtigungsgruppe]:[Name]:[Scope]:[Value],
+```
+[Berechtigungsgruppe]:[Name]:[Scope]:[Value],
+```
 
 Wobei gilt:
-
-\[Berechtigungsgruppe] Zugehörigkeit von Berechtigungen zu einer Gruppe. Meist identisch mit einem Kontroller.
-
-\[Name] Name welcher die Berechtigung beschreibt
-
-\[Scope] Die Werte * (1,true) oder ! (0,false) oder einen beliebig selber definierten Wert annehmen kann. z.B. 'customer'.
-
-\[Value] Zusätzliche Werte welche frei definiert werden können. z.B. bei Scope='id' wo die entsprechenden ID's mit Pipe (|) separiert aufgelistet werden könnten. Ansonsten ist Value leer.
+```
+[Berechtigungsgruppe] Zugehörigkeit von Berechtigungen zu einer Gruppe. Meist identisch mit einem Kontroller.
+[Name] Name welcher die Berechtigung beschreibt
+[Scope] Die Werte * (1,true) oder ! (0,false) oder einen beliebig selber definierten Wert annehmen kann. z.B. 'customer'.
+[Value] Zusätzliche Werte welche frei definiert werden können. z.B. bei Scope='id' wo die entsprechenden ID's mit Pipe (|) separiert aufgelistet werden könnten. Ansonsten ist Value leer.
 Komma nach jeder Linie nicht vergessen!
+```
    
 ## Aufruf
 Abfragen ob der Angemeldete User Berechtigung für eine "Berechtigung" hat.
