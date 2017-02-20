@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `email` varchar(128) NOT NULL,
   `active` tinyint(1) DEFAULT '1',
   `locale` varchar(20),
-  `permissions` text
+  `permissions` text,
   `settings` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
