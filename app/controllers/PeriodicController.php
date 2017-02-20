@@ -17,7 +17,7 @@
 *
 */
 
-//namespace RNTForest\core\controllers;
+namespace RNTForest\core\controllers;
 
 class PeriodicController extends ControllerBase{   
     public function pushAction(){
