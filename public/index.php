@@ -17,12 +17,17 @@
 *
 */
 
+//debug
+ini_set('display_errors', "On");
 error_reporting(E_ALL);
+$debug = new \Phalcon\Debug();
+$debug->listen();
 
+// paths
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-try {
+// try {
     // check the environment
     if(!file_exists(BASE_PATH."/cache/volt")) mkdir(BASE_PATH."/cache/volt",0770,true);
     if(!file_exists(BASE_PATH."/cache/pdf")) mkdir(BASE_PATH."/cache/pdf",0770,true);
@@ -42,8 +47,10 @@ try {
 
     // NGINX - PHP-FPM already set PATH_INFO variable to handle route
     echo $application->handle(!empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : null)->getContent();
-    
+   
+/*   
 } catch (\Exception $e) {
     echo $e->getMessage() . '<br>';
     echo '<pre>' . $e->getTraceAsString() . '</pre>';
 }
+*/
