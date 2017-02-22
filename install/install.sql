@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `hashtoken_expire` datetime DEFAULT NULL,
   `customers_id` int(11) unsigned NOT NULL,
   `admin` tinyint(1) DEFAULT NULL,
+  `main` tinyint(1) DEFAULT NULL,
   `groups` text,
   `title` varchar(25) DEFAULT NULL,
   `lastname` varchar(50) DEFAULT NULL,
@@ -91,7 +92,8 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `active` tinyint(1) DEFAULT '1',
   `locale` varchar(20),
   `permissions` text,
-  `settings` text
+  `settings` text,
+  `newsletter` tinyint(1) DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `physical_servers` (
