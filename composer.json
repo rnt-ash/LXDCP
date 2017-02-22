@@ -19,8 +19,8 @@
         "ext-gmp": "*",
         "ext-curl": "*",
         "ext-ssh2": "*",
-        "rnt-forest/core": "0.1.*",
-        "rnt-forest/ovz": "0.1.*",
+        "rnt-forest/core": "dev-develop",
+        "rnt-forest/ovz": "dev-develop",
         "tecnickcom/tcpdf": "6.2.*",
         "phpmailer/phpmailer": "v5.2.*"
     },
