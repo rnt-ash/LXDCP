@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `done` tinyint(1) NOT NULL DEFAULT '0' COMMENT '-1: wird ausgeführt, 0: erstellt, 1: erfolgreich, 2: error',
   `executed` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `error` text,
+  `warning` text,
   `retval` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
