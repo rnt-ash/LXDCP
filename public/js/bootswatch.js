@@ -23,11 +23,10 @@ $.getJSON("https://bootswatch.com/api/3.json", function (data) {
 
     $(".selectTheme img").click(function(){
         var theme = themes[$(this).attr('id')];
-        console.log($(this).attr('id'))
-        $("link[name='bootswatch']").attr("href", theme.css);
         $.ajax({
             url: "/logins/saveBootswatchTheme/" + theme.name,
         });
+        $("link[name='bootswatch']").attr("href", theme.css);
         $(".selectTheme .thumbnail").removeClass("current");
         $(this).parent().addClass("current");
         $("#changeTheme #currentTheme").text(theme.name.toLowerCase());
