@@ -12,20 +12,34 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="headerNavText">{{ link_to('index/index', '<i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>&nbsp; Dashboard') }}</li>
-                <li class="headerNavText">{{ link_to('customers/tabledata', '<i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Customers') }}</li>
-                <li class="headerNavText">{{ link_to('logins/tabledata', '<i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; Logins') }}</li>
-                <li class="headerNavText">{{ link_to('colocations/slidedata', '<i class="fa fa-globe fa-fw" aria-hidden="true"></i>&nbsp; Colocations') }}</li>
-                <li class="headerNavText">{{ link_to('physical_servers/slidedata', '<i class="fa fa-server fa-fw" aria-hidden="true"></i>&nbsp; Physical Servers') }}</li>
-                <li class="headerNavText">{{ link_to('virtual_servers/slidedata', '<i class="fa fa-cube fa-fw" aria-hidden="true"></i>&nbsp; Virtual Servers')}}</li>
-                <li class="headerNavText">{{ link_to('jobs/index', '<i class="fa fa-tasks fa-fw" aria-hidden="true"></i>&nbsp; Jobs') }}</li>
+                {% if permissions.checkPermission('index','general') %}
+                    <li class="headerNavText">{{ link_to('index/index', '<i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>&nbsp; Dashboard') }}</li>
+                {% endif %}
+                {% if permissions.checkPermission('customers','general') %}
+                    <li class="headerNavText">{{ link_to('customers/tabledata', '<i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Customers') }}</li>
+                {% endif %}
+                {% if permissions.checkPermission('logins','general') %}
+                    <li class="headerNavText">{{ link_to('logins/tabledata', '<i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; Logins') }}</li>
+                {% endif %}
+                {% if permissions.checkPermission('colocations','general') %}
+                    <li class="headerNavText">{{ link_to('colocations/slidedata', '<i class="fa fa-globe fa-fw" aria-hidden="true"></i>&nbsp; Colocations') }}</li>
+                {% endif %}
+                {% if permissions.checkPermission('physical_servers','general') %}
+                    <li class="headerNavText">{{ link_to('physical_servers/slidedata', '<i class="fa fa-server fa-fw" aria-hidden="true"></i>&nbsp; Physical Servers') }}</li>
+                {% endif %}
+                {% if permissions.checkPermission('virtual_servers','general') %}
+                    <li class="headerNavText">{{ link_to('virtual_servers/slidedata', '<i class="fa fa-cube fa-fw" aria-hidden="true"></i>&nbsp; Virtual Servers')}}</li>
+                {% endif %}
+                {% if permissions.checkPermission('jobs','general') %}
+                    <li class="headerNavText">{{ link_to('jobs/index', '<i class="fa fa-tasks fa-fw" aria-hidden="true"></i>&nbsp; Jobs') }}</li>
+                {% endif %}
                 <li id="account">
                     <a href="#" class="navbar-link dropdown-toggle" data-toggle="dropdown">
                         <span class="fa fa-user-circle fa-fw"></span>&nbsp;{{ sessionLoginname }}
                     </a>
                     <ul class="dropdown-menu list-group col-sm-12" role="menu">
                         <li>{{ link_to('logins/profile', '<span class="fa fa-home"></span> Profile') }}</li>
-                        <li>{{ link_to('logins/resetPasswordForm/'~sessionLoginId~'/true', '<span class="fa fa-key"></span> Reset password') }}</li>
+                        <li>{{ link_to('logins/resetPasswordForm/'~sessionLoginId, '<span class="fa fa-key"></span> Reset password') }}</li>
                         <hr>
                         <li>{{ link_to('access/logout', '<span class="fa fa-sign-out"></span> Logout') }}</li>
                     </ul>
