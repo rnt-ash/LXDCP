@@ -49,4 +49,8 @@ return new \Phalcon\Config([
         'adminpublickeyfile'    => APP_PATH."/config/keys/public.pem",
         'adminprivatekeyfile'   => APP_PATH."/config/keys/private.key",
     ],
+    'pdf' => [
+        'logo' => "/public/img/OpenVZ.png",
+        'footer' => "My PDF Footer",
+    ]
 ]);
