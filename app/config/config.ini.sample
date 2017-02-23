@@ -13,3 +13,7 @@ rootalias = root@domain.org
 
 [push]
 jwtsigningkey = ALPH4NUM3RiCSTRINGMIN128BIT
+
+[pdf]
+logo=/public/img/OpenVZ.png
+footer=My PDF Footer
