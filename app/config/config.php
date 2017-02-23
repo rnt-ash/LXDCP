@@ -36,6 +36,7 @@ return new \Phalcon\Config([
         'messagesDir'           => APP_PATH . '/messages/',
         'cacheDir'              => BASE_PATH . '/cache/volt/',
         'pdfDir'                => BASE_PATH . '/cache/pdf/',
+        'mailTemplateDir'       => APP_PATH . '/mail/',
         'logsDir'               => BASE_PATH . '/logs/',
         'vendorDir'             => BASE_PATH . '/vendor/',
         'baseUri'               => '/',
