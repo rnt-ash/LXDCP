@@ -225,6 +225,25 @@ return new \Phalcon\Config([
                     ]
                 ],
             ],
+            // configure permission
+            'configure' => [
+                'description' => 'configure a virtual servers', 
+                'scopes' => [
+                    '1' => "configure all virtual servers", 
+                    'partners' => "configure virtual servers from partners and own only", 
+                    'customers' => "configure own virtual servers only", 
+                    '0' => "configure no virtual servers", 
+                ],
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
+                'actions' => [
+                    'virtual_servers' => [
+                        'configureVirtualServers', 'configureVirtualServersForm', 'sendConfigureVirtualServers'
+                    ]
+                ],
+            ],
             // save permission
             'save' => [
                 'description' => 'save a virtual servers', 
