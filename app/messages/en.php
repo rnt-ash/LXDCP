@@ -16,7 +16,28 @@ $messages = [
     "access_login_button" => "Login",
     
     // index
+    "index_dashboard" => "Dashboard",
     "index_welcome" => "Welcome to the World of OVZ Control Panel.",
     "index_inventory" => "Inventory",
     "index_inventory_teaser" =>"Looking for VirtualServers on connected PhysicalServers and collect those VirtualServers and save them in OVZ Control Panel.",
+    
+    // Colocations
+    
+    // IP Objects
+       
+    // Physical Servers
+    "physicalserver_does_not_exist" => "Physical Server does not exist: ",
+    "physicalserver_not_ovz_enabled" => "Server ist not OVZ enabled!",
+    "physicalserver_job_failed" => "Executing the following job failed: ",
+    "physicalserver_update_failed" => "Updating the server failed: ",
+    "physicalserver_update_success" => "Settings successfully updated",
+    "physicalserver_remove_server_first" => "Please remove virtual server first !",
+    "physicalserver_not_found" => "Physical server not found !",
+    "physicalserver_connection_success" => "Connection successfully established to: ",
+    "physicalserver_connection_restart" => "It's strongly recommended to restart the server after connecting!",
+    "physicalserver_connection_failed" => "Connection to OVZ failed: ",
+    
+    
+        
+    // Virtual Server
 ];
