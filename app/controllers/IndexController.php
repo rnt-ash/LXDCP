@@ -23,6 +23,7 @@ use \RNTForest\ovz\models\PhysicalServers;
 use \RNTForest\ovz\models\VirtualServers;
 use \RNTForest\ovz\models\Dcoipobjects;
 use \RNTForest\core\libraries\Helpers;
+use \RNTForest\core\libraries\PDF;
 
 class IndexController extends \RNTForest\core\controllers\IndexControllerBase
 {
@@ -129,5 +130,121 @@ class IndexController extends \RNTForest\core\controllers\IndexControllerBase
         return $this->redirectTo("index/index");
     }
 
+    /**
+    * The methode is collecting the permissionbase information
+    * and then putting it out as an PDF file.
+    */
+    public function genPermissionsPDFAction(){
+        // create PDF Object, set date variable,
+        $this->PDF = new PDF();
+        $this->PDF->setPrintHeader(false);
+        $permissions = $this->config->permissionbase;
+        $date = date("F j, Y");
+        
+        //Author and title        
+        $this->PDF->SetAuthor('ARONET GmbH');
+        $this->PDF->SetTitle('Permissions');
+        $this->PDF->SetTopMargin(11);
+        
+        //Creating page with title and date on top
+        $this->PDF->AddPage();
+        $this->PDF->SetFont('', 'B', 19);
+        $this->PDF->Cell(0, 0, 'Permissionbase', 0, 1, '', 0, '', 0);
+        
+        $this->PDF->SetFont('', '', 12);
+        $this->PDF->Cell(0,0, $date, 0, 1, '', 0, '', 0);
+        $this->PDF->Ln(6);
+        
+        // print Logo
+        if(key_exists('logo',$this->config->pdf))
+            if(file_exists(BASE_PATH.$this->config->pdf['logo']))
+                $this->PDF->Image(BASE_PATH.$this->config->pdf['logo'], 180, 10, 20, 20, 'PNG', '', '', false, 300, '', false, false, 0, false, false, false);
+        
+        //Zwei Spalte definieren        
+        $this->PDF->resetColumns();
+        $this->PDF->setEqualColumns(2,0,0);
+        
+        //Creating a title for each main category
+        foreach ($permissions as $key=>$kategorie) {
+            $this->PDF->SetFillColor(100);
+            $this->PDF->SetTextColor(255);
+            $this->PDF->SetFont('', 'B', 9);
+            
+            if ($this->PDF->getY() > ($this->PDF->getPageHeight() - 60)) {
+                    $this->PDF->AddPage();
+            }
+                      
+            $this->PDF->Cell(0,0,$key, 0, 1, '',true);
+            //creating a title for each under-category            
+            foreach ($kategorie as $key=>$firstobj){
+                $this->PDF->SetTextColor(0);
+                $this->PDF->SetFont('', 'B', 7);
+                $this->PDF->SetFillColor(220);
+                
+                if ($this->PDF->getY() > ($this->PDF->getPageHeight() - 60)) {
+                    $this->PDF->AddPage();
+            }
+                //Setting the absolut position to 15 and creating the cell with the informations
+                $this->PDF->SetAbsX(15);
+                $this->PDF->Cell(0,0,$key.": ".$firstobj->description, 0, 1,'', true);
+                                
+                //Setting the absolut position to 10 and writing the title scopes
+                $this->PDF->SetFont('', 'B', 6);
+                $this->PDF->SetAbsX(20);
+                $this->PDF->Cell(0,0,"scopes: ", 0, 1,'', false);
+                $this->PDF->SetFont('', '', 6);
+                //Printing all the scope information
+                foreach ($firstobj->scopes as $key=>$secondobj){
+                    $this->PDF->SetAbsX(23);
+                    $this->PDF->Cell(0,0,$key.": ".$secondobj, 0, 1,'', false);    
+                }
+                $this->PDF->Ln(1);
+                //Settigng the absolut posititon to 20 and printing out actions
+                foreach ($firstobj->actions as $thirdobj){
+                    $actions_elemente = "";
+                    $this->PDF->SetFont('', 'B', 6);
+                    $this->PDF->SetAbsX(20);
+                    $this->PDF->Cell(0,0,"actions: ", 0, 1,'', false);
+                    $this->PDF->SetFont('', '', 6);
+                    //Getting all the actions and saving information into variable
+                    foreach ($thirdobj as $result){
+                        $actions_elemente .= $result.", ";    
+                    }
+                    //Printing out the variable with the actions
+                    $this->PDF->SetAbsX(23);
+                    $this->PDF->MultiCell(0,0,$actions_elemente,0,1,false,1);   
+                }    
+            }
+            $this->PDF->Ln(2);
+        }
+                
+        // dispaly the PDF on the monitor
+        $this->PDF->Output('permission.pdf', 'I');
+        die();
+    }
+    
+    
+    public function genOVZJobsPDFAction(){
+        // create PDF Object, set date variable,
+        $this->PDF = new \TCPDF();
+        $this->PDF->setPrintHeader(false);
+        $date = date("F j, Y");
+        
+        //Author and title        
+        $this->PDF->SetAuthor('ARONET GmbH');
+        $this->PDF->SetTitle('OVZ Jobs');
+        $this->PDF->SetTopMargin(11);
+        
+        $this->PDF->AddPage();
+        $this->PDF->SetFont('', 'B', 16);
+        $this->PDF->Cell(0, 0, 'OVZ Jobs', 0, 1, '', 0, '', 0);
+        
+        $this->PDF->SetFont('', '', 10);
+        $this->PDF->Cell(0,0, $date, 0, 1, '', 0, '', 0);
+        $this->PDF->Ln(4);
+        
+        // dispaly the PDF on the monitor
+        $this->PDF->Output('OVZJobsPDF.pdf', 'I');
+        die();
+    }
 }
-
