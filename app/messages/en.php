@@ -21,6 +21,10 @@ $messages = [
     "index_inventory" => "Inventory",
     "index_inventory_teaser" =>"Looking for VirtualServers on connected PhysicalServers and collect those VirtualServers and save them in OVZ Control Panel.",
     
+    // Customers
+    "customers_customers" => "customers",
+    "customers_at_least_lastname_or_company_must_be_set" => "At least lastname or company must be set.",
+    
     // Colocations
     
     // IP Objects

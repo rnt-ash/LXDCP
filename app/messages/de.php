@@ -21,6 +21,10 @@ $messages = [
     "index_inventory" => "Inventar",
     "index_inventory_teaser" =>"Suchen nach virtuellen Gastystemen auf Physical Servern um diese in OVZ Control Panel zu integrieren",
     
+    // Customers
+    "customers_customers" => "Kunden",    
+    "customers_at_least_lastname_or_company_must_be_set" => "Firmenname oder Nachname muss gesetzt sein.",
+    
     // Colocations
     
     // IP Objects
