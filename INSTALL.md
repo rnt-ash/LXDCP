@@ -1,8 +1,6 @@
 # OVZ Control Panel installation
+*serial 2017022401*
 
-*serial 2017021601*
-
----
 ## System requirements
 OVZ Control Panel builds up on following components:
 - OpenVZ 7 Linux
@@ -12,25 +10,25 @@ OVZ Control Panel builds up on following components:
 ## Preparation
 So that you can install the Panel, you need to have the LEMP system ready. Generaly its going to be possible to install the panel with other configurations, buts its not implemented at the moment.
                                                                                                         
-
 Because we are working with the virtualization software OpenVZ7, it is very welcoming to create a vitual Debian Stretch system for the Panel. An installation manual for OpenVZ 7 with an virtual Debian Stretch system is explained in this File [INSTALL-OVZ7LEMP.md](INSTALL-OVZ7LEMP.md)
 
 The further documentation requires a running LEMP system including Phalcon.
 
-## Get OVZCP
-You can get the OVZCP via GitHub
+## Install OVZCP via composer
+(you can only install the developer version at the moment)
 ```
-apt-get install git
-cd /var/www/html/
-git clone https://github.com/RNT-Forest/OVZCP.git
+composer create-project rnt-forest/ovzcp /var/www/html/ --no-dev
 ```
 
-## Installing dependency via Composer
-You can install all the dependent components via Composer
+You can install the newest developer version with this command.  
+**Be aware:** The developer version is not completly functional or tested, so you should not use the developer version for productiv purpose! 
+
 ```
-apt-get install composer
-cd /var/www/html/OVZCP
-composer install --no-dev
+composer create-project rnt-forest/ovzcp:dev-develop /var/www/html/ --no-dev
+  ```
+  
+After the installation you need to pay attention that all the files have the correct owner-rights. In that way you guarantee that the webserver has acces to those files.
+```
 chown -R www-data:www-data /var/www/html/OVZCP 
 ```
 
