@@ -273,6 +273,7 @@ $di->setShared('db', function () {
     
     //Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($logger) {
+        /*
        if ($event->getType() == 'beforeQuery') {
             $sqlVariables = $connection->getSQLVariables();
             if (count($sqlVariables)) {
@@ -281,6 +282,7 @@ $di->setShared('db', function () {
                 $logger->log($connection->getSQLStatement(), Logger::INFO);
             }
         }
+        */
     });
 
     //Assign the eventsManager to the db adapter instance

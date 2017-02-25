@@ -28,6 +28,7 @@ $messages = [
     // Colocations
     
     // IP Objects
+    "dcoipobjects_address_is_now_main" => "IP Address %address% is now main.",
        
     // Physical Servers
     "physicalserver_does_not_exist" => "Physical Server does not exist: ",

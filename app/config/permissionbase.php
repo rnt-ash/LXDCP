@@ -45,7 +45,7 @@ return new \Phalcon\Config([
                 'actions' => [
                     'colocations' => [
                         'index', 'search', 'create', 'new', 'edit', 'form',
-                        'addIpObject', 'editIpObject', 'deleteIpObject',
+                        'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject',
                         'save', 'delete', 'tabledata', 'slidedata', 'slideSlide'                
                     ]
                 ],
@@ -75,7 +75,7 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'dcoipobjects' => [
-                        'index', 'new', 'edit', 'form', 'save', 'delete', 'tabledata'
+                        'index', 'new', 'edit', 'form', 'save', 'delete', 'cancel', 'tabledata', 'makeMain'
                     ]
                 ],
             ],
@@ -138,7 +138,7 @@ return new \Phalcon\Config([
                 'actions' => [
                     'physical_servers' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 
-                        'addIpObject', 'editIpObject', 'deleteIpObject',
+                        'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
                         'slidedata', 'slideSlide', 'ovzHostInfo', 'connectForm', 'connect'                
                     ]
                 ],
