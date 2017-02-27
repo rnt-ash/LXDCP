@@ -388,6 +388,10 @@ $loader->registerNamespaces(array(
     "RNTForest\\ovz\\forms" => BASE_PATH . "/vendor/rnt-forest/ovz/forms/",
     "RNTForest\\ovz\\services" => BASE_PATH . "/vendor/rnt-forest/ovz/services/",
     "RNTForest\\ovz\\libraries" => BASE_PATH . "/vendor/rnt-forest/ovz/libraries/",
+    
+    // ovzhost
+    "RNTFOREST\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
+    "RNTFOREST\\OVZJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/general/jobs/",
 ));
 
 $loader->register();
