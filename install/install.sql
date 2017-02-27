@@ -145,10 +145,9 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
-(1, 'employees', 'index:general:*,\ncolocations:general:*,\ncustomers:general:*,\ndcoipobjects:general:*,\njobs:general:*,\nlogins:general:*,\nphysical_servers:general:*,\nvirtual_servers:general:*,\n'),
-(5, 'partners', 'index:general:*,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nvirtual_servers:general:partners,\r\n'),
-(10, 'customers', 'index:general:*,\r\ncolocations:general:customers,\r\nphysical_servers:general:customers,\r\nvirtual_servers:general:customers,\r\n');
-
+(1, 'employes', 'index:general:*,\r\ncolocations:general:*,\r\ncustomers:general:*,\r\ndcoipobjects:general:*,\r\njobs:general:*,\r\nlogins:general:*,\r\nlogins:profile:*,\r\nphysical_servers:general:*,\r\nvirtual_servers:general:*,\r\nvirtual_servers:new:*,\r\nvirtual_servers:delete:*,\r\nvirtual_servers:edit:*,\r\nvirtual_servers:configure:*,\r\nvirtual_servers:save:*,\r\nvirtual_servers:changestate:*,\r\n'),
+(5, 'partners', 'index:general:*,\r\nlogins:profile:own,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nvirtual_servers:general:customers,\r\nvirtual_servers:new:partners,\r\nvirtual_servers:delete:partners,\r\nvirtual_servers:edit:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:save:partners,\r\nvirtual_servers:changestate:partners,'),
+(10, 'customers', 'index:general:*,\r\nlogins:profile:own,\r\ncolocations:general:customers,\r\nphysical_servers:general:customers,\r\nvirtual_servers:general:customers,\r\nvirtual_servers:new:customers,\r\nvirtual_servers:delete:customers,\r\nvirtual_servers:edit:customers,\r\nvirtual_servers:configure:customers,\r\nvirtual_servers:save:customers,\r\nvirtual_servers:changestate:customers,');
 
 /* this commands must be executed but are normally done in the installer (install.php) */
 /*

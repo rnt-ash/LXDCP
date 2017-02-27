@@ -227,6 +227,12 @@ class IndexController extends \RNTForest\core\controllers\IndexControllerBase
 
 
     public function genOVZJobsPDFAction(){
+        // for all jobs
+        $jobs = $this->genJobsUsages();
+        
+        // or this style for only ovz jobs
+        //$jobs = $this->genJobsUsages(['ovz']);
+
         // create PDF Object, set date variable,
         $this->PDF = new \TCPDF();
         $this->PDF->setPrintHeader(false);
@@ -245,8 +251,60 @@ class IndexController extends \RNTForest\core\controllers\IndexControllerBase
         $this->PDF->Cell(0,0, $date, 0, 1, '', 0, '', 0);
         $this->PDF->Ln(4);
 
+        foreach($jobs as $key=>$val){
+            // just some output to list jobs, rest todo
+            $this->PDF->Cell(0,0, $key, 0, 1, '', 0, '', 0);
+        }
+        
         // dispaly the PDF on the monitor
-        $this->PDF->Output('OVZJobsPDF.pdf', 'I');
+        $this->PDF->Output('OVZJobsPDF.pdf', 'I'); 
         die();
+    }
+    
+    /**
+    * Gen an array of the usages of Jobs in ovzhost/...../jobs/......Job.php Files.
+    * Returns an associative array with key ClassName and val the representative array of the Jobs usage() method.
+    * The relevant Jobs can be filtered.
+    * e.g. ['general'] if only general or ['ovz'] if only ovz or ['ovz','something'] if ovz or something
+    * Abstract...Jobs are ignored.
+    * 
+    * @param array $filter optional
+    */
+    private function genJobsUsages($filters = array()){
+        $jobUsages = array();
+        
+        $directory = new \RecursiveDirectoryIterator($_SERVER['DOCUMENT_ROOT'].'/../vendor/rnt-forest/ovz/ovzhost/ovzjob',\FilesystemIterator::SKIP_DOTS);
+        $iterator = new \RecursiveIteratorIterator($directory);
+        foreach ($iterator as $info) {
+            $localFilepath = $info->getPathname();
+            // only Files ending with Job.php and which are in subdir jobs are relevant
+            if(preg_match('`\/\w*\/jobs\/.*Job.php$`',$localFilepath,$matches)){
+                // in the first match element there should be the subpath to gen the fully qualified classpath
+                $parts = explode('/',$matches[0]);
+                if($parts[2]=='jobs'){
+                    // filter only relevant jobs if $filters is set
+                    if(!empty($filters)){
+                        $ignore = true;
+                        foreach($filters as $filter){
+                            if($parts[1] == $filter) $ignore = false;
+                        }
+                        if($ignore) continue;
+                    }
+                    // build the classpath with namespace
+                    $topNamespace = "\\RNTFOREST\\OVZJOB";
+                    $midNamespace = "\\".$parts[1]."\\jobs\\";
+                    $className = explode('.',$parts[3])[0];
+                    $fullClassPath = $topNamespace.$midNamespace.$className;
+                    
+                    // ignore Abstract...Job classes
+                    if(!preg_match('`Abstract.*Job$`',$className)){
+                        // call static method so that no instantiation is needed (no context ...)
+                        $jobUsages[$className] = $fullClassPath::usage();   
+                    }
+                }
+            }
+        }
+        
+        return $jobUsages;
     }
 }
