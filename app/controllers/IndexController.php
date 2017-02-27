@@ -307,4 +307,91 @@ class IndexController extends \RNTForest\core\controllers\IndexControllerBase
         
         return $jobUsages;
     }
+
+    public function genActionsPDFAction(){
+        // for all jobs
+        $controllerActions = $this->genActions();
+        
+        // or this style for only ovz jobs
+        //$jobs = $this->genJobsUsages(['ovz']);
+
+        // create PDF Object, set date variable,
+        $this->PDF = new \TCPDF();
+        $this->PDF->setPrintHeader(false);
+        $date = date("F j, Y");
+
+        //Author and title        
+        $this->PDF->SetAuthor('ARONET GmbH');
+        $this->PDF->SetTitle('OVZ Jobs');
+        $this->PDF->SetTopMargin(11);
+
+        $this->PDF->AddPage();
+        $this->PDF->SetFont('', 'B', 16);
+        $this->PDF->Cell(0, 0, 'OVZ Jobs', 0, 1, '', 0, '', 0);
+
+        $this->PDF->SetFont('', '', 10);
+        $this->PDF->Cell(0,0, $date, 0, 1, '', 0, '', 0);
+        $this->PDF->Ln(4);
+
+        foreach($controllerActions as $controller=>$actions){
+            // just some output to list actions, rest todo
+            $this->PDF->Cell(0,0, $controller, 0, 1, '', 0, '', 0);
+            foreach($actions as $action){
+                $this->PDF->SetAbsX(20);
+                $this->PDF->Cell(0,0, $action, 0, 1, '', 0, '', 0);    
+            }
+            $this->PDF->Ln(4);
+        }
+        
+        // dispaly the PDF on the monitor
+        $this->PDF->Output('OVZJobsPDF.pdf', 'I'); 
+        die();
+    }
+    
+    private function genActions(){
+        $action = new \ReflectionClass('\RNTFOREST\OVZCP\controllers\IndexController');
+        
+        $actions = array();
+        
+        $directory = new \RecursiveDirectoryIterator($_SERVER['DOCUMENT_ROOT'].'/../',\FilesystemIterator::SKIP_DOTS);
+        $iterator = new \RecursiveIteratorIterator($directory);
+        foreach ($iterator as $info) {
+            $localFilepath = $info->getPathname();
+            // only Files ending with Controller.php and which are in subdir controllers are relevant
+            if(preg_match('`\/\w*\/controllers\/.*Controller.php$`',$localFilepath,$matches)){
+                // in the first match element there should be the subpath to gen the fully qualified classpath
+                $parts = explode('/',$matches[0]);
+                switch($parts[1]){
+                    case 'app':
+                        $midNamespace = "\\OVZCP\\controllers\\";
+                        break;
+                    case 'ovz':
+                        $midNamespace = "\\ovz\\controllers\\";
+                        break;
+                    case 'core':
+                        $midNamespace = "\\core\\controllers\\";
+                        break;
+                    default:
+                        // if no match, then continue with next element
+                        continue;
+                        break;
+                }
+                $topNamespace = "\\RNTForest";
+                
+                $className = explode('.',$parts[3])[0];
+                $fullClassPath = $topNamespace.$midNamespace.$className;
+                
+                $controller = new \ReflectionClass($fullClassPath);
+                $controllerActions = $controller->getMethods();
+                foreach($controllerActions as $val){
+                    if(preg_match('`.*Action$`',$val->name)){
+                        $actions[$fullClassPath][] = $val->name;
+                    }
+                }
+            }
+        }
+        
+        return $actions;   
+    }
+
 }

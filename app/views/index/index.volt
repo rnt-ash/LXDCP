@@ -22,3 +22,8 @@
     <h2>OVZ Jobs</h2>
     {{ link_to("index/genOVZJobsPDF/",'generate OVZ-Jobs PDF','class': 'btn btn-primary', 'target': '_blank') }}
 </div>
+
+<div class="well well">
+    <h2>Actions</h2>
+    {{ link_to("index/genActionsPDF/",'generate Actions PDF','class': 'btn btn-primary', 'target': '_blank') }}
+</div>

@@ -17,9 +17,9 @@
 *
 */
 
-namespace RNTForest\core\controllers;
+namespace RNTForest\OVZCP\controllers;
 
-class PeriodicController extends ControllerBase{   
+class PeriodicController extends \RNTForest\core\controllers\ControllerBase{   
     public function pushAction(){
         $push = $this->getPushService();
         $push->pushJobs();
