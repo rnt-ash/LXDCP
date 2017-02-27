@@ -10,6 +10,7 @@ securitySalt = extremlySecure
 [mail]
 relayhost = mail.server.org
 rootalias = root@domain.org
+from = ovzcp@domain.org
 
 [push]
 jwtsigningkey = ALPH4NUM3RiCSTRINGMIN128BIT

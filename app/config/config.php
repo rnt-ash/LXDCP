@@ -53,5 +53,8 @@ return new \Phalcon\Config([
     'pdf' => [
         'logo' => "/public/img/OpenVZ.png",
         'footer' => "My PDF Footer",
+    ],
+    'mail' => [
+        'from' => "ovzcp@domain.org"
     ]
 ]);
