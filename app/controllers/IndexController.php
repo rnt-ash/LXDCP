@@ -299,7 +299,7 @@ class IndexController extends \RNTForest\core\controllers\IndexControllerBase
                     // ignore Abstract...Job classes
                     if(!preg_match('`Abstract.*Job$`',$className)){
                         // call static method so that no instantiation is needed (no context ...)
-                        $jobUsages[$className] = $fullClassPath::usage();   
+                        $jobUsages[$fullClassPath] = $fullClassPath::usage();   
                     }
                 }
             }
