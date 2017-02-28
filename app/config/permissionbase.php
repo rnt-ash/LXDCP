@@ -28,7 +28,21 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'index' => [
-                        'index', 'toggleSidebar', 'scanAllVS'
+                        'index', 'toggleSidebar',
+                    ]
+                ],
+            ],
+        ],
+        'administration' => [
+            'general' => [
+                'description' => 'Administration access', 
+                'scopes' => [
+                    '1' => "Show all",
+                    '0' => "Show nothing",
+                ],
+                'actions' => [
+                    'administration' => [
+                        'index', 'scanAllVS', 'genPermissionsPDF', 'genOVZJobsPDF',
                     ]
                 ],
             ],

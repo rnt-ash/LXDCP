@@ -3,6 +3,9 @@
         {% if permissions.checkPermission('index','general') %}
             <li id="index">{{ link_to('index/index', '<i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>&nbsp; <span class="sideBarText">Dashboard</span>', 'title':'Dashboard', 'class':'list-group-item') }}</li>
         {% endif %}
+        {% if permissions.checkPermission('administration','general') %}
+            <li id="administration">{{ link_to('administration/index', '<i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; <span class="sideBarText">Administration</span>', 'title':'Administration', 'class':'list-group-item') }}</li>
+        {% endif %}
         {% if permissions.checkPermission('customers','general') %}
             <li id="customers">{{ link_to('customers/tabledata', '<i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; <span class="sideBarText">Customers</span>', 'title':'Customers', 'class':'list-group-item') }}</li>
         {% endif %}

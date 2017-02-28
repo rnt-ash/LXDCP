@@ -15,6 +15,9 @@
                 {% if permissions.checkPermission('index','general') %}
                     <li class="headerNavText">{{ link_to('index/index', '<i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>&nbsp; Dashboard') }}</li>
                 {% endif %}
+                {% if permissions.checkPermission('administration','general') %}
+                    <li class="headerNavText">{{ link_to('administration/index', '<i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Administration') }}</li>
+                {% endif %}
                 {% if permissions.checkPermission('customers','general') %}
                     <li class="headerNavText">{{ link_to('customers/tabledata', '<i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Customers') }}</li>
                 {% endif %}
