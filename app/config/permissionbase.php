@@ -42,7 +42,7 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'administration' => [
-                        'index', 'scanAllVS', 'genPermissionsPDF', 'genOVZJobsPDF',
+                        'index', 'scanAllVS', 'genPermissionsPDF', 'genOVZJobsPDF', 'genActionsPDF',
                     ]
                 ],
             ],

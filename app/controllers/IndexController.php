@@ -21,5 +21,5 @@ namespace RNTForest\OVZCP\controllers;
 
 class IndexController extends \RNTForest\core\controllers\IndexControllerBase
 {
-    
+
 }
