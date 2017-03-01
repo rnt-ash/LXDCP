@@ -211,5 +211,20 @@ $messages = [
     "virtualserver_description_valid" => "Beschreibung darf nicht länder als 250 Zeichen sein",
 
     // Push
-    "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter 'Pending' ist kein String oder Array.", 
+    "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter 'Pending' ist kein String oder Array.",
+    "push_entity_is_pending" => "Das betreffende Element ist gesperrt. Es können aktuell keine Jobs direkt ausgeführt werden.",
+    "push_execute_job_failed" => "Ausführen des Jobs fehlgeschlagen: ",
+    "push_insert_job_failed" => "Einfügen des Jobs fehlgeschlagen: ",
+    "push_update_job_failed" => "Updaten des Jobs fehlgeschlagen: ",
+    "push_problems_while_job_execution" => "Es sind Probleme bei der Ausführung von Jobs aufgetreten: ",
+    "push_dependency_not_set" => "Parameter 'Dependency' muss gesetzt, ganzzahlig und grösser als 0 sein.", 
+    "push_dependency_parent_failed" => "Job kann nicht ausgeführt werden und schlug fehl, weil sein vorausgehender Job fehlgeschlagen ist.",
+    "push_dependency_parent_running" => "Job kann nicht noch nicht ausgeführt werden, da der vorausgehende Job noch nicht erfolgreich abgeschlossen hat.",
+    "push_pending_entity_not_implements_interface" => "Die erstellte Pending-Entität implementiert das benötigte PendingInterface nicht.",
+    "push_key_id_not_in_response" => "Key id existiert nicht in Job-Response.",
+    "push_key_executed_not_in_response" => "Key executed existiert nicht in Job-Response.",
+    "push_key_done_not_in_response" => "Key done existiert nicht in Job-Response.",
+    "push_key_error_not_in_response" => "Key error existiert nicht in Job-Response.",
+    "push_key_warning_not_in_response" => "Key warning existiert nicht in Job-Response.",
+    "push_key_retval_not_in_response" => "Key retval existiert nicht in Job-Response.",
 ];

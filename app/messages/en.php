@@ -212,4 +212,19 @@ $messages = [
 
     // Push
     "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter pending is not a string or an array.",
+    "push_entity_is_pending" => "The representative entity is pending. Cannot execute job directly now.",
+    "push_execute_job_failed" => "Execute Job failed: ",
+    "push_insert_job_failed" => "Job insert failed: ",
+    "push_update_job_failed" => "Job update failed: ",
+    "push_problems_while_job_execution" => "Problems occured while executing jobs: ",
+    "push_dependency_not_set" => "Dependency has to be set and must be bigger than 0", 
+    "push_dependency_parent_failed" => "Job cannot be executed and has failed because the parent Job failed.",
+    "push_dependency_parent_running" => "Job cannot be executed because parent Job hasn't finished successfully yet.",
+    "push_pending_entity_not_implements_interface" => "The created pending entity does not implement the needed interface.",
+    "push_key_id_not_in_response" => "Key id does not exist in job response.",
+    "push_key_executed_not_in_response" => "Key executed does not exist in job response.",
+    "push_key_done_not_in_response" => "Key done does not exist in job response.",
+    "push_key_error_not_in_response" => "Key error does not exist in job response.",
+    "push_key_warning_not_in_response" => "Key warning does not exist in job response.",
+    "push_key_retval_not_in_response" => "Key retval does not exist in job response.",
 ];
