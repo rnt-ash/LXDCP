@@ -1,6 +1,6 @@
 # Installation OpenVZ 7 inkl. Debian Stretch Gastsystem
 
-*serial 2017021601*
+*serial 2017030101*
 
 In dieser Anleitung werden folgende Themen behandelt:
  - Grundinstallation OpenVZ 7 PhysicalServer
@@ -167,12 +167,12 @@ service php7.0-fpm restart
 service nginx restart
 ```
 
-Nun sollte die Funktionalität via phpinfo() überprüft werden. Dazu erstellt man WWW-Root eine PHP-Datei:
+Anschliessend sollte die Funktionalität von Phalcon via phpinfo() überprüft werden. Dazu erstellt man im WWW-Root eine PHP-Datei:
 ```
 touch /var/www/html/info.php
 echo "<?php phpinfo() ?>" > /var/www/html/info.php
 ```
-Unter dem Titel phalcon sollte nun die Phalcon-Konfiguration aufgelistet sein.
+Wenn man die erstellte Datei nun über den Browser aufruft, wird unter dem Titel Phalcon nun dessen Konfiguration dargestellt.
 
 OVZCP verwendet noch weitere Bibliotheken welche auch installiert werden müssen.
 ```
