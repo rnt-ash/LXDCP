@@ -126,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
   `ovz_uuid` varchar(50),
   `ovz_vstype` varchar(2),
   `ovz_settings` text,
+  `ovz_statistics` text,
   `ovz_state` varchar(10),
   `ovz_snapshots` text,
   `ovz_replica` tinyint(4) unsigned DEFAULT '0' COMMENT '0:off, 1:master, 2:slave',
