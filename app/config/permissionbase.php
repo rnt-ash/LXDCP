@@ -176,9 +176,7 @@ return new \Phalcon\Config([
                     'virtual_servers' => [
                         'index', 
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
-                        'save', 'slidedata', 'slideSlide', 'ovzListInfo', 
-                        'ovzListSnapshots', 'ovzCreateSnapshot', 'ovzDeleteSnapshot', 
-                        'ovzSwitchSnapshot', 'snapshotForm'                
+                        'save', 'slidedata', 'slideSlide', 'ovzListInfo'
                     ]
                 ],
             ],
@@ -293,6 +291,26 @@ return new \Phalcon\Config([
                 'actions' => [
                     'virtual_servers' => [
                         'startVS', 'stopVS', 'restartVS', 
+                    ]
+                ],
+            ],
+            // snapshot permissions
+            'snapshots' => [
+                'description' => 'Create, switch an delete (manage) snapshots', 
+                'scopes' => [
+                    '1' => "Manage snapshots for all virtual servers", 
+                    'partners' => "Manage snapshots for virtual servers from partners and own only", 
+                    'customers' => "Manage snapshots for own virtual servers only", 
+                    '0' => "Manage snapshots for no virtual servers", 
+                ],
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
+                'actions' => [
+                    'virtual_servers' => [
+                        'ovzListSnapshots', 'ovzCreateSnapshot', 'ovzDeleteSnapshot', 
+                        'ovzSwitchSnapshot', 'snapshotForm'                
                     ]
                 ],
             ],
