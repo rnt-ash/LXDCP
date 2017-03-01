@@ -127,7 +127,6 @@ $messages = [
     "physicalserver_job_create_failed" => "Creating Physical Server failed: ",
        
     // Virtual Server
-
     "virtualserver_does_not_exist" => "Virtual server does not exist: ",
     "virtualserver_not_ovz_integrated" => "Virtual server is not OVZ integrated",
     "virtualserver_job_failed" => "Job (ovz_modify_vs) executions failed! Error: ",
@@ -209,6 +208,8 @@ $messages = [
     "virtualserver_snapshotname_replica" => "Name must not contain replica.",
     "virtualserver_snapshotname_required" => "Name must be alphanumeric and may contain the characters -_().!? and space.",
     "virtualserver_description_valid" => "Description mus not longer be than 250 characters",
+    "virtualserver_filter_all_customers" => "All Customers Kunden",
+    "virtualserver_filter_all_physical_servers" => "All Physical Servers",
 
     // Push
     "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter pending is not a string or an array.",

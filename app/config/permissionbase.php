@@ -180,6 +180,29 @@ return new \Phalcon\Config([
                     ]
                 ],
             ],
+            // filter by customers
+            'filter_customers' => [
+                'description' => 'Filter Virtual Servers by customers', 
+                'scopes' => [
+                    '1' => "Filter for by customers", 
+                    'partners' => "Filter by all customers where this login is partner", 
+                    '0' => "Filter not allowed", 
+                ],
+                'functions' => [],
+                'actions' => [],
+            ],
+            // filter by physical Servers
+            'filter_physical_servers' => [
+                'description' => 'Filter Virtual Servers by Physical Servers', 
+                'scopes' => [
+                    '1' => "Filter by all Physical Servers", 
+                    'partners' => "Filter by all Physical Servers where this login is partner", 
+                    'customers' => "Filter by all my Physical Servers", 
+                    '0' => "Filter not allowed", 
+                ],
+                'functions' => [],
+                'actions' => [],
+            ],
             // new permission
             'new' => [
                 'description' => 'create a virtual servers', 

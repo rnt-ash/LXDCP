@@ -206,9 +206,11 @@ $messages = [
     "virtualserver_startonboot" => "Start on boot",
     "virtualserver_startonboot_info" => "Start on boot kann 0 or 1 sein",
     "virtualserver_snapshotname" => "Snapshotname",
-    "virtualserver_snapshotname_replica" => "Der Name dar replica nicht enthalten.",
-    "virtualserver_snapshotname_required" => "Name muss numerisch sein und dar folgende Zechen enthalten -_().!? and space.",
+    "virtualserver_snapshotname_replica" => "Der Name darf replica nicht enthalten.",
+    "virtualserver_snapshotname_required" => "Name muss numerisch sein und darf folgende Zechen enthalten -_().!? and space.",
     "virtualserver_description_valid" => "Beschreibung darf nicht länder als 250 Zeichen sein",
+    "virtualserver_filter_all_customers" => "Alle Kunden",
+    "virtualserver_filter_all_physical_servers" => "Alle Physical Server",
 
     // Push
     "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter 'Pending' ist kein String oder Array.",
