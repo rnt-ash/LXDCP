@@ -45,4 +45,7 @@ $messages = [
     
         
     // Virtual Server
+    
+    // Push
+    "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter pending is not a string or an array.",
 ];
