@@ -176,7 +176,7 @@ return new \Phalcon\Config([
                     'virtual_servers' => [
                         'index', 
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
-                        'save', 'slidedata', 'slideSlide', 'ovzListInfo'
+                        'save', 'slidedata', 'slideSlide', 'ovzListInfo', 'ovzStatisticsInfo'
                     ]
                 ],
             ],
