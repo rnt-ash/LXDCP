@@ -132,7 +132,6 @@ $messages = [
     "virtualserver_not_ovz_integrated" => "der virtuelle Server ist nicht im OVZ integriert",
     "virtualserver_job_failed" => "Ausführen des Jobs (ovz_modify_vs) fehlgeschlagen! Fehler: ",
     "virtualserver_update_failed" => "Aktualisieren des virtuellen Servers fehlgeschlagen: .",
-    
     "virtualserver_invalid_level" => "Ungültiger Level!",
     "virtualserver_not_ovz_enabled" => "Virtueller Server ist nicht im OVZ aktiviert",
     "virtualserver_job_infolist_failed" => "Ausführen des Jobs (ovz_list_info) fehlgeschlagen: ",
@@ -212,6 +211,5 @@ $messages = [
     "virtualserver_description_valid" => "Beschreibung darf nicht länder als 250 Zeichen sein",
 
     // Push
-    "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter 'Pending' ist kein String oder Array.",
-    
+    "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter 'Pending' ist kein String oder Array.", 
 ];
