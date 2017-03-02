@@ -1,6 +1,6 @@
 # Installation OpenVZ 7 inkl. Debian Stretch Gastsystem
 
-*serial 2017030101*
+*serial 2017030201*
 
 In dieser Anleitung werden folgende Themen behandelt:
  - Grundinstallation OpenVZ 7 PhysicalServer
@@ -60,7 +60,7 @@ prlctl start OVZCP
 Nun kann man sich mit der neuen virtuellen Maschine über SSH verbinden.
 
 Als erstes wird ein Update von Debian Jessie auf Debian Stretch durchgeführt. Dazu passt man die Sources List von Debian an.
-Um etwas zügiger mit dem System arbeiten zu können empfehlen wir die Installatione des Midnight Commanders (mc), welcher sehr hilfreich bei Dateioperationen ist. Sowie den Nano-Editor mit welchem Copy/Paste aus Windows über Putty möglich ist.
+Um etwas zügiger mit dem System arbeiten zu können empfehlen wir die Installation des Midnight Commanders (mc), welcher sehr hilfreich bei Dateioperationen ist. Sowie den Nano-Editor mit welchem Copy/Paste aus Windows über Putty möglich ist.
 ```
 apt-get update
 apt-get install mc nano cron
@@ -86,7 +86,7 @@ apt-get upgrade
 apt-get dist-upgrade
 ```
 
-Das Upgrade sollte sehr shnell durgeführt sein, da es sich ja nur um eine Minimal-Installation handelt. Die Version kann jetzt mit folgendenm Befehl überprüft werden:
+Das Upgrade sollte sehr schnell durgeführt sein, da es sich ja nur um eine Minimal-Installation handelt. Die Version kann jetzt mit folgendem Befehl überprüft werden:
 ```
 cat /etc/debian_version
 ```
@@ -117,7 +117,7 @@ mysql_secure_installation
 
 ### Optional: phpmyadmin
 Damit mit phpmyadmin auf die DB zugegriffen werden kann, muss noch ein weiterer User erstellt werden.
-Standardmässig hat bei MariaDB der User root "Unix Sockt Authentifizierung". Für den Zugriff mit phpmyadmin wird aber "Native MySQL-Authentifizierung" benötigt.
+Standardmässig hat bei MariaDB der User root "Unix Socket Authentifizierung". Für den Zugriff mit phpmyadmin wird aber "Native MySQL-Authentifizierung" benötigt.
 ```
 mysql
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
@@ -130,14 +130,14 @@ apt-get install postfix
 ```
 
 ## Installation Phalcon
-Für Phalcon steht ein eigenes Repository bereit. Dies kann mit folgerndem Befehl genützt werden:
+Für Phalcon steht ein eigenes Repository bereit. Dies kann mit folgendem Befehl genützt werden:
 ```
 apt-get install curl
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | os=debian dist=stretch bash
 ```
 
 ### Nginx für PHP7 und Phalcon vorbereiten
-Unter /etc/nginx/sites-available/default findet man die Konfiguration des Virtuellen Webservers. Diese muss folgendermassen angepasst werden:
+Unter /etc/nginx/sites-available/default findet man die Konfiguration des virtuellen Webservers. Diese muss folgendermassen angepasst werden:
 
 **Wichtig:** Das Webroot muss später in den Public Ordner des Phalcon Projektes zeigen! 
 Auch muss die ``baseUri`` im Projekt an den entsprechenden Pfad angepasst werden. Diese findet man meist im config.php-File und sollte in diesem Fall auf ``baseUri="\"`` angepasst sein
