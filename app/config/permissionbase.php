@@ -141,6 +141,7 @@ return new \Phalcon\Config([
             ],
         ],
         'physical_servers' => [
+            // general permission
             'general' => [
                 'description' => 'General access', 
                 'scopes' => [
@@ -156,6 +157,29 @@ return new \Phalcon\Config([
                         'slidedata', 'slideSlide', 'ovzHostInfo', 'connectForm', 'connect'                
                     ]
                 ],
+            ],
+            // filter by customers
+            'filter_customers' => [
+                'description' => 'Filter Physical Servers by customers', 
+                'scopes' => [
+                    '1' => "Filter for Physical Servers by all customers", 
+                    'partners' => "Filter for Physical Servers by all customers where this login is partner", 
+                    '0' => "Filter not allowed", 
+                ],
+                'functions' => [],
+                'actions' => [],
+            ],
+            // filter by colocations
+            'filter_colocations' => [
+                'description' => 'Filter Physical Servers by Colocations', 
+                'scopes' => [
+                    '1' => "Filter by all Colocations", 
+                    'partners' => "Filter by all Colocations where this login is partner", 
+                    'customers' => "Filter by all my Colocations", 
+                    '0' => "Filter not allowed", 
+                ],
+                'functions' => [],
+                'actions' => [],
             ],
         ],
         'virtual_servers' => [
@@ -182,10 +206,10 @@ return new \Phalcon\Config([
             ],
             // filter by customers
             'filter_customers' => [
-                'description' => 'Filter Virtual Servers by customers', 
+                'description' => 'Filter Virtual Servers by all customers', 
                 'scopes' => [
-                    '1' => "Filter for by customers", 
-                    'partners' => "Filter by all customers where this login is partner", 
+                    '1' => "Filter for Virtual Servers by customers", 
+                    'partners' => "Filter for Virtual Servers by all customers where this login is partner", 
                     '0' => "Filter not allowed", 
                 ],
                 'functions' => [],

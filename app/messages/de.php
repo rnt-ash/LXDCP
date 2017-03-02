@@ -147,7 +147,10 @@ $messages = [
     "physicalserver_password_required" => "Benötige Passwort",
     "physicalserver_permission" => "Nicht erlaubt für diesen Physical Server",
     "physicalserver_not_ovz_integrated" => "Der Physical Server ist nicht im OVZ integriert",
-    "physicalserver_job_create_failed" => "Erstellen der Physica Servers fehlgeschlagen: ",
+    "physicalserver_job_create_failed" => "Erstellen der Physical Servers fehlgeschlagen: ",
+    "physicalserver_filter_all_customers" => "Alle Kunden",
+    "physicalserver_filter_all_colocations" => "Alle Colocations",
+    
     // View 
     "physicalserver_connect_title" => "Physical Servers OVZ Connector",
     "physicalserver_connect_connectbutton" => "Verbinden",
@@ -159,8 +162,8 @@ $messages = [
     "physicalserver_general_editsettings" => "Bearbeite Einstellungen",
     "physicalserver_general_updatesettings" => "Aktualisiere OVZ Einstellungen",
     "physicalserver_general_connectovz" => "Verbinde OVZ",
-    "physicalserver_general_deletconf" => "Sind Sie sicher, dass sie das Item löschen wollen ?",
-    "physicalserver_general_removeserver" => "Diesen Server entfernen",
+    "physicalserver_confirm_removeserver" => "Sind Sie sicher, dass Sie diesen Physical Server Ilöschen wollen?",
+    "physicalserver_tooltip_removeserver" => "Diesen Server entfernen",
     "physicalserver_general_customer" => "Kunde:",
     "physicalserver_general_hosttype" => "Hosttyp:",
     "physicalserver_general_colocation" => "Colocation:",
