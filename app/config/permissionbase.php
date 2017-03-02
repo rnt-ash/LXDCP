@@ -95,12 +95,15 @@ return new \Phalcon\Config([
             ],
         ],
         'jobs' => [
+            // general permission
             'general' => [
                 'description' => 'General access', 
                 'scopes' => [
                     '1' => "Show all jobs", 
+                    'customers' => "Show Jobs from my customer logins only", 
                     '0' => "Show no jobs", 
                 ],
+                'functions' => [],
                 'actions' => [
                     'jobs' => [
                         'index', 'delete', 'updateJobs'
@@ -109,12 +112,14 @@ return new \Phalcon\Config([
             ],
         ],
         'logins' => [
+            // general permission
             'general' => [
                 'description' => 'General access', 
                 'scopes' => [
                     '1' => "Show all logins", 
                     '0' => "Show no logins", 
                 ],
+                'functions' => [],
                 'actions' => [
                     'logins' => [
                         'index', 'new', 'delete', 'tabledata', 'tableDetail' ,
@@ -129,9 +134,9 @@ return new \Phalcon\Config([
                     'own' => "Access to owners profile", 
                     '0' => "Access to no profiles", 
                 ],
-                'functions' => array(
+                'functions' => [
                     'own' => '\RNTForest\OVZCP\libraries\PermissionFunctions::own',
-                ),
+                ],
                 'actions' => [
                     'logins' => [
                         'profile', 'edit', 'save', 'form',
@@ -150,6 +155,7 @@ return new \Phalcon\Config([
                     'customers' => "Show own physical servers only", 
                     '0' => "Show no physical servers", 
                 ],
+                'functions' => [],
                 'actions' => [
                     'physical_servers' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 
@@ -192,10 +198,7 @@ return new \Phalcon\Config([
                     'customers' => "Show own virtual servers only", 
                     '0' => "Show no virtual servers", 
                 ],
-                'functions' => array(
-                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
-                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
-                ),
+                'functions' => [],
                 'actions' => [
                     'virtual_servers' => [
                         'index', 
