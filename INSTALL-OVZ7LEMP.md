@@ -1,6 +1,6 @@
 # Installation of OpenVZ 7 including Debian Stretch virtual system
 
-*serial 2017021601*
+*serial 20170030201*
 
 In this manuel the following topics are explained:
  - Main installaton of OpenVZ 7 PhysicalServer
@@ -167,12 +167,12 @@ service php7.0-fpm restart
 service nginx restart
 ```
 
-At this point you need to check the functionality via phpinfo(). Therefor you can create a PHP-File in the www-root::
+At this point you need to check the functionality of phalcon via phpinfo(). Therefor you can create a PHP-File in the www-root::
 ```
 touch /var/www/html/info.php
 echo "<?php phpinfo() ?>" > /var/www/html/info.php
 ```
-Under the titel Phalcon, there should be a list with your Phalcon configuration.
+If you open the created file in a browser, you will see all the configuration information under the Phalcon title.
 
 OVZCP needs some additional libraries which you have to install now:
 ```
