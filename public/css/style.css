@@ -1,3 +1,4 @@
+/* Snapshots */
 td#snapshots ul {
     list-style: none;
 }
@@ -12,6 +13,8 @@ td#snapshots ul:first-child {
     }
 }
 
+
+/* Theme selection */
 .selectTheme {
     margin-top: 15px;
 }
@@ -35,6 +38,7 @@ td#snapshots ul:first-child {
     margin-bottom: 5px;
 }
 
+/* Checkbox */
 .form-group input[type="checkbox"] {
     display: none;
 }
@@ -59,4 +63,51 @@ td#snapshots ul:first-child {
 
 .form-group .form-control-feedback {
     right: 15px;
+}
+
+/* Server filter */
+.serverFilter label {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.serverFilter .physicalServersFilterLabel, .serverFilter .colocationsFilterLabel {
+    padding-right: 10px;
+}
+
+.serverFilter > label > select {
+    height: 36px;
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+@media (max-width: 767px) {
+    .serverFilter .physicalServersFilterLabel, .serverFilter .colocationsFilterLabel {
+        padding-right: 0px;
+    }
+    
+    .serverFilter .customersFilterLabel {
+        margin-top: 5px;
+    }
+}
+
+#slidedatatoolbar #selectRows {
+    vertical-align: top;
+}
+
+.serverFilter > label > select  {
+    font-size: 15px;
+    height: 37px;
+    padding: 3px 16px;
+    margin: 0px;
+}
+
+.serverFilter > #searchFilter, .serverFilter > #searchFilter > span, .serverFilter > #searchFilter > input {
+    font-size: 15px;
+    height: 37px !important;
+}
+
+#slidedatatoolbar .buttons .createButton, #slidedatatoolbar .buttons .orderButton {
+    margin-bottom: 5px;
 }
