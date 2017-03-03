@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `groups` (
 
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `physical_servers_id` int(11) unsigned,
-  `virtual_servers_id` int(11) unsigned,
+  `server_class` varchar(100) NOT NULL,
+  `server_id` int(11) unsigned NOT NULL,
   `logins_id` int(11) unsigned NOT NULL,
   `type` varchar(30) NOT NULL,
   `params` text,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `dependency` int(11) unsigned COMMENT 'FK jobs',
   `pending` text,
   `sent` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `done` tinyint(1) NOT NULL DEFAULT '0' COMMENT '-1: wird ausgeführt, 0: erstellt, 1: erfolgreich, 2: error',
+  `done` tinyint(1) NOT NULL DEFAULT '0' COMMENT '-1: running, 0: created, 1: success, 2: error',
   `executed` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `error` text,
   `warning` text,
