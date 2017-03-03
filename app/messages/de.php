@@ -346,6 +346,7 @@ $messages = [
     "loginscontroller_themenotexist" => "Ausgewähltes Theme existiert nicht.",
     "loginscontroller_login_not_exist" => "Login existiert nicht",
     "loginscontroller_login_not_found" => "Login wurde nicht gefunden",
+    "loginscontroller_login_updated_successfull" => "Login wurde erfolgreich gespeichert",
     "loginscontroller_pwd_update" => "Passwort wurde erfolgreich aktualisiert",
     "loginscontroller_loginobject_error" => "PDF konnte nicht erstellt werden. Login mit dieser ID existiert nicht.",
     "loginscontroller_pdf_not_exist" => "Angefordertes PDF existiert nicht.",
