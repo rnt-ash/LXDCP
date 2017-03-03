@@ -19,7 +19,7 @@ $messages = [
     "index_dashboard" => "Dashboard",
     "index_welcome" => "Welcome to the World of OVZ Control Panel.",
     "index_inventory" => "Inventory",
-    "index_inventory_teaser" =>"Looking for VirtualServers on connected PhysicalServers and collect those VirtualServers and save them in OVZ Control Panel.",
+    "index_inventory_teaser" =>"Looking for VirtualServers on connected PhysicalServers to collect those and save them in OVZ Control Panel.",
     
     // Customers
     "customers_customers" => "customers",
@@ -328,4 +328,29 @@ $messages = [
     "push_key_error_not_in_response" => "Key error does not exist in job response.",
     "push_key_warning_not_in_response" => "Key warning does not exist in job response.",
     "push_key_retval_not_in_response" => "Key retval does not exist in job response.",
+    
+    // LoginControllerBase
+    "datasheet_title" => "Datasheet Hostingadministration",
+    "datasheet_contactperson" => "Contact Person",
+    "datasheet_confidentialdata" => "Confidential data will only be passed to this contact person.",
+    "datasheet_logindata" => "Logindata",
+    "datasheet_checkdata" => "Please check your logindata and change your password.",
+    "datasheet_name" => "Name: ",
+    "datasheet_email" => "Email: ",
+    "datasheet_url" => "URL: ",
+    "datasheet_loginname" => "Loginname: ",
+    "datasheet_pwd" => "Password: ",
+    "datasheet_misc" => "Miscellaneous",
+    "datasheet_ending" => "With this Logindata you can change your Hostingconfigurtaion by your own. \nIf you detect any inconsistencies, please contact us!",
+    "loginscontroller_themenotexist" => "Selected theme does not exist.",
+    "loginscontroller_login_not_exist" => "Login does not exist",
+    "loginscontroller_login_not_found" => "Login was not found",
+    "loginscontroller_pwd_update" => "Password was updated successfully",
+    "loginscontroller_loginobject_error" => "PDF could not be created. Login with this ID does not exist.",
+    "loginscontroller_pdf_not_exist" => "Requested PDF does not exist.",
+    "loginscontroller_mail_not_send" => "Email cannot be sent, login doesn't exist",
+    "loginscontroller_mail_send" => "Mail has been sent",
+    "loginscontroller_mr_dear" => "Dear Mr. ",
+    "loginscontroller_mrs_dear" => "Dear Mrs. ",
+    "loginscontroller_oldpwd_incorrect" => "Old password is incorrect",
 ];
