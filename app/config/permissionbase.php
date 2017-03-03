@@ -29,6 +29,9 @@ return new \Phalcon\Config([
                 'actions' => [
                     'index' => [
                         'index', 'toggleSidebar',
+                    ],
+                    'logins' => [
+                        'editProfile', 'formProfile', 'updateProfile', 'profile', 'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword',
                     ]
                 ],
             ],
@@ -122,25 +125,8 @@ return new \Phalcon\Config([
                 'functions' => [],
                 'actions' => [
                     'logins' => [
-                        'index', 'new', 'delete', 'tabledata', 'tableDetail' ,
+                        'index', 'new', 'delete', 'edit', 'form', 'save', 'tabledata', 'tableDetail',
                         'getPDF', 'sendPDF'
-                    ]
-                ],
-            ],
-            'profile' => [
-                'description' => 'Profile access', 
-                'scopes' => [
-                    '1' => "Access to all profiles", 
-                    'own' => "Access to owners profile", 
-                    '0' => "Access to no profiles", 
-                ],
-                'functions' => [
-                    'own' => '\RNTForest\OVZCP\libraries\PermissionFunctions::own',
-                ],
-                'actions' => [
-                    'logins' => [
-                        'profile', 'edit', 'save', 'form',
-                        'saveBootswatchTheme', 'resetPasswordForm', 'resetPassword',
                     ]
                 ],
             ],
