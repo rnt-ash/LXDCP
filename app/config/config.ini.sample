@@ -5,6 +5,7 @@ password = dbpasswd
 dbname   = dbovzcp
 
 [application]
+baseUrl = http://www.server.org
 securitySalt = extremlySecure
 
 [mail]
