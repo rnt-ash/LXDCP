@@ -154,8 +154,9 @@ function install(){
     exec("mkdir -p ".$webRoot."cache/volt 2>&1",$output2,$exitstatus2);
     exec("mkdir -p ".$webRoot."cache/security 2>&1",$output3,$exitstatus3);
     exec("mkdir -p ".$webRoot."logs 2>&1",$output4,$exitstatus4);
-    if($exitstatus1 != 0 || $exitstatus2 != 0 || $exitstatus3 != 0 || $exitstatus4 != 0) {
-        $errors = array_merge($output1,$output2,$output3,$output4);
+    exec("mkdir -p ".$webRoot."app/config/keys 2>&1",$output5,$exitstatus5);
+    if($exitstatus1 != 0 || $exitstatus2 != 0 || $exitstatus3 != 0 || $exitstatus4 != 0 || $exitstatus5 != 0) {
+        $errors = array_merge($output1,$output2,$output3,$output4,$output5);
         return;
     }
     
@@ -188,7 +189,7 @@ function install(){
     
     // create customer in db
     $sql = "INSERT INTO `customers` (`id`, `lastname`, `firstname`, `company`, `company_add`, `street`, `po_box`, `zip`, `city`, `phone`, `email`, `website`, `comment`, `active`) ".
-    " VALUES(1, 'Istrator', 'Admin', 'MyCompany', '', '', '', '', '', '', '', '', 'Just a placeholder', 1)";
+    " VALUES(10, 'Istrator', 'Admin', 'MyCompany', '', '', '', '', '', '', '', '', 'Just a placeholder', 1)";
     
     if(!$mysqli->query($sql)){
         $errors = "Not able to insert the initial customer: ".$mysqli->error;    
