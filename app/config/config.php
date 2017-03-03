@@ -51,6 +51,7 @@ return new \Phalcon\Config([
         'adminprivatekeyfile'   => APP_PATH."/config/keys/private.key",
     ],
     'pdf' => [
+        'author' => "RNT Forest",
         'logo' => "/public/img/OpenVZ.png",
         'footer' => "My PDF Footer",
     ],
