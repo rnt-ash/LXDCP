@@ -39,6 +39,7 @@ return new \Phalcon\Config([
         'mailTemplateDir'       => APP_PATH . '/mail/',
         'logsDir'               => BASE_PATH . '/logs/',
         'vendorDir'             => BASE_PATH . '/vendor/',
+        'baseUrl'               => 'http://'.$_SERVER['HTTP_HOST'],  
         'baseUri'               => '/',
         'appBaseNamespaceName'  => "\\RNTForest\\OVZCP\\",
         'appTitle'              => 'OVZ Control Panel',
