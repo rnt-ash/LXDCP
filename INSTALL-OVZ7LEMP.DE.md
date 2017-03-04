@@ -29,6 +29,8 @@ So wird ein korrektes Private/Public Schlüsselpaar benötigt:
 ```
 # OpenSSH Key erzeugen
 ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
+```
+```
 # Zusätzlich benötigte Tools installieren
 yum -y install mc ntp wget mailx nano php-cli php-pdo
 ```
