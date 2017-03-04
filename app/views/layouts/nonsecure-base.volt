@@ -25,7 +25,34 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         
-        <style>body { padding-top: 70px;}</style>
+        <style>
+            body { padding-top: 70px;}
+
+            /* Background Image */
+            html{
+              height: 100%;
+            }
+            body {
+                position: relative;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                min-height: 100%;
+            }
+            body::after {
+              content: "";
+              background: url('/img/background.jpg') no-repeat center center;
+              background-size:cover;
+              opacity: 0.4;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              right: 0;
+              position: absolute;
+              z-index: -1;  
+              -webkit-filter: grayscale(0.5);
+              filter: grayscale(0.5);
+            }
+        </style>
         
         <!-- FAVICONS -->
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
