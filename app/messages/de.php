@@ -23,9 +23,11 @@ $messages = [
     
     // Customers
     "customers_customers" => "Kunden",    
+    "customers_all_customers" => "Alle Kunden",
     "customers_at_least_lastname_or_company_must_be_set" => "Firmenname oder Nachname muss gesetzt sein.",
     
     // Colocations
+    "colocation_all_colocations" => "Alle Colocations",
     "colocations_invalid_level" => "ungültiger Level!",
     "colocations_choose_customer" => " wählen Sie einen Kunden aus.",
     "colocations_customer" => "Kunde",
@@ -104,6 +106,7 @@ $messages = [
     "ipobjects_edit_save" => "Speichern",
       
     // Physical Servers
+    "physicalserver_all_physicalservers" => "Alle Physical Server",
     "physicalserver_does_not_exist" => "Der Physical Server existiert nicht: ",
     "physicalserver_not_ovz_enabled" => "Server ist nicht OVZ aktiviert!",
     "physicalserver_job_failed" => "Ausführen des Jobs nicht erfolgreich: ",
@@ -183,6 +186,7 @@ $messages = [
     "physicalserver_slide_title" => "Physical Servers",
             
     // Virtual Server
+    "virtualserver_all_virtualservers" => "Alle Virtual Servers",
     "virtualserver_does_not_exist" => "Der virtuelle Server existiert nicht: ",
     "virtualserver_not_ovz_integrated" => "der virtuelle Server ist nicht im OVZ integriert",
     "virtualserver_job_failed" => "Ausführen des Jobs (ovz_modify_vs) fehlgeschlagen! Fehler: ",
@@ -264,8 +268,6 @@ $messages = [
     "virtualserver_snapshotname_replica" => "Der Name darf replica nicht enthalten.",
     "virtualserver_snapshotname_required" => "Name muss numerisch sein und darf folgende Zechen enthalten -_().!? and space.",
     "virtualserver_description_valid" => "Beschreibung darf nicht länder als 250 Zeichen sein",
-    "virtualserver_filter_all_customers" => "Alle Kunden",
-    "virtualserver_filter_all_physical_servers" => "Alle Physical Server",
     //View
     "virtualserver_title" => " Virtuelle Server",
     "virtualserver_view_new" => "Neu",
