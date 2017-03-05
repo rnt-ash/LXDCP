@@ -350,6 +350,26 @@ return new \Phalcon\Config([
                     ]
                 ],
             ],
+            // replica permissions
+            'replicas' => [
+                'description' => 'activate, run an delete (manage) replicas', 
+                'scopes' => [
+                    '1' => "Manage replicas for all virtual servers", 
+                    'partners' => "Manage replicas for virtual servers from partners and own only", 
+                    'customers' => "Manage replicas for own virtual servers only", 
+                    '0' => "Manage replicas for no virtual servers", 
+                ],
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
+                'actions' => [
+                    'virtual_servers' => [
+                        'ovzReplicaActivate', 'ovzReplicaActivateExecute',
+                        'ovzReplicaRun', 'ovzReplicaFailover', 'ovzReplicaDelete'
+                    ]
+                ],
+            ],
         ],
     ]
 ]);
