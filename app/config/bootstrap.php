@@ -97,6 +97,10 @@ $di->setShared('config', function () {
         $config->merge($override);
     }
 
+    if(substr($config->application->baseUrl,-1,1)!='/'){
+        $config->application->baseUrl = $config->application->baseUrl.'/';
+    }
+    
     return $config;
 });
 
