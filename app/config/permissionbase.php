@@ -146,7 +146,7 @@ return new \Phalcon\Config([
                     'physical_servers' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
-                        'slidedata', 'slideSlide', 'ovzHostInfo', 'connectForm', 'connect'                
+                        'slidedata', 'slideSlide', 'ovzHostInfo', 'ovzHostStatisticsInfo', 'connectForm', 'connect'                
                     ]
                 ],
             ],
