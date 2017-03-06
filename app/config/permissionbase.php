@@ -141,12 +141,15 @@ return new \Phalcon\Config([
                     'customers' => "Show own physical servers only", 
                     '0' => "Show no physical servers", 
                 ],
-                'functions' => [],
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
                 'actions' => [
                     'physical_servers' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
-                        'slidedata', 'slideSlide', 'ovzHostInfo', 'connectForm', 'connect'                
+                        'slidedata', 'slideSlide', 'ovzHostInfo', 'ovzConnector', 'ovzConnectorExecute'
                     ]
                 ],
             ],
