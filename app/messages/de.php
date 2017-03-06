@@ -357,4 +357,10 @@ $messages = [
     "loginscontroller_mr_dear" => "Sehr geehrter ",
     "loginscontroller_mrs_dear" => "Sehr geehrte ",
     "loginscontroller_oldpwd_incorrect" => "Altes Passwort ist falsch !",
+    
+    // AccessControllerBase
+    "accesscontroller_mr_dear" => "Sehr geehrter ",
+    "accesscontroller_mrs_dear" => "Sehr geehrte ",
+    "accesscontroller_reset_mail_send" => "Bitte überprüfen Sie Ihr E-Mail Postfach für Anweisungen um Ihr Password zurückzusetzen.",
+    "accesscontroller_confirm_mail_send" => "Ihr Passwort wurde geändert. Sie können sich nun mit dem neuen Passwort anmelden.",
 ];
