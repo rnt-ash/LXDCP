@@ -358,4 +358,10 @@ $messages = [
     "loginscontroller_mr_dear" => "Dear Mr. ",
     "loginscontroller_mrs_dear" => "Dear Mrs. ",
     "loginscontroller_oldpwd_incorrect" => "Old password is incorrect",
+    
+    // AccessControllerBase
+    "accesscontroller_mr_dear" => "Dear Mr. ",
+    "accesscontroller_mrs_dear" => "Dear Mrs. ",
+    "accesscontroller_reset_mail_send" => "Please check your email for instructions on resetting your password.",
+    "accesscontroller_confirm_mail_send" => "Your password has been changed. You can now log in with your new password.",
 ];
