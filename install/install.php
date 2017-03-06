@@ -189,15 +189,15 @@ function install(){
     
     // create customer in db
     $sql = "INSERT INTO `customers` (`id`, `lastname`, `firstname`, `company`, `company_add`, `street`, `po_box`, `zip`, `city`, `phone`, `email`, `website`, `comment`, `active`) ".
-    " VALUES(10, 'Istrator', 'Admin', 'MyCompany', '', '', '', '', '', '', '', '', 'Just a placeholder', 1)";
+    " VALUES(1, 'Istrator', 'Admin', 'MyCompany', '', '', '', '', '', '', '', '', 'Just a placeholder', 1)";
     
     if(!$mysqli->query($sql)){
         $errors = "Not able to insert the initial customer: ".$mysqli->error;    
     }
 
     // create adminuser in db
-    $sql = "INSERT INTO `logins` (`id`, `loginname`, `password`, `hashtoken`, `hashtoken_reset`, `hashtoken_expire`, `customers_id`, `admin`, `title`, `lastname`, `firstname`, `phone`, `comment`, `email`, `active`) ".
-    " VALUES(1, 'admin', '".hash('sha256', $securitySalt.$adminPassword)."', NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, 'admin@mycompany.com', 1)";
+    $sql = "INSERT INTO `logins` (`id`, `loginname`, `password`, `hashtoken`, `hashtoken_reset`, `hashtoken_expire`, `customers_id`, `admin`, `main`, `groups`, `title`, `lastname`, `firstname`, `phone`, `comment`, `email`, `active`, `locale`, `permissions`, `settings`, `newsletter`) ".
+    " VALUES(1, 'admin', '".hash('sha256', $securitySalt.$adminPassword)."', NULL, NULL, NULL, 1, 1, 0, 'NULL', 'Mr', 'Istrator', 'Admin', NULL, NULL, 'admin@mycompany.com', 1, 'en_US.utf8', 'NULL', 'NULL', 0)";
     
     if(!$mysqli->query($sql)){
         $errors = "Not able to insert the initial adminuser: ".$mysqli->error;    
