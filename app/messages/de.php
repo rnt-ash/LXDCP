@@ -166,6 +166,7 @@ $messages = [
     "physicalserver_general_title" => "Allgemeine Informationen",
     "physicalserver_general_editsettings" => "Bearbeite Einstellungen",
     "physicalserver_general_updatesettings" => "Aktualisiere OVZ Einstellungen",
+    "physicalserver_general_updatestatistics" => "Aktualisiere Host Statistiken (Auslastung)",
     "physicalserver_general_connectovz" => "Verbinde OVZ",
     "physicalserver_confirm_removeserver" => "Sind Sie sicher, dass Sie diesen Physical Server Ilöschen wollen?",
     "physicalserver_tooltip_removeserver" => "Diesen Server entfernen",
