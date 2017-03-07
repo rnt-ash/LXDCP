@@ -8,6 +8,10 @@ $messages = [
     "hi-name" => "Hallo %name%",
     "song"    => "Dieser Song ist %song%",
     
+    // base
+    "base_object_not_found" => "Objekt nicht gefunden!",
+    "base_no_permission_to_this_object" => "Zugriff nicht erlaubt auf dieses Objekt!",
+    
     // access
     "access_login_panelheader" => "Anmelden",
     "access_loginname" => "Benutzername",
@@ -195,9 +199,10 @@ $messages = [
     "virtualserver_job_failed" => "Ausführen des Jobs (ovz_modify_vs) fehlgeschlagen! Fehler: ",
     "virtualserver_update_failed" => "Aktualisieren des virtuellen Servers fehlgeschlagen: .",
     "virtualserver_invalid_level" => "Ungültiger Level!",
-    "virtualserver_not_ovz_enabled" => "Virtueller Server ist nicht im OVZ aktiviert",
+    "virtualserver_server_not_ovz_enabled" => "Server ist nicht im OVZ aktiviert",
     "virtualserver_job_infolist_failed" => "Ausführen des Jobs (ovz_list_info) fehlgeschlagen: ",
     "virtualserver_settings_success" => "Einstellungen erfolgreich aktualisiert",
+    "virtualserver_job_create_failed" => "Rstellen des virtuellen Servers fehgeschlagen.",
     "virtualserver_job_start_failed" => "Ausführen des Jobs (ovz_start_vs) fehlgeschlagen: ",
     "virtualserver_job_start" => "Virtueller Server wurde erfolgreich gestartet",
     "virtualserver_job_stop_failed" => "Ausführen des Jobs (ovz_stop_vs) fehlgeschlagen: ",
@@ -231,7 +236,7 @@ $messages = [
     "virtualserver_myserver" => "Mein Server",
     "virtualserver_choose_customer" => "Bitte wählen Sie einen Kunden aus",
     "virtualserver_customer" => "Kunde",
-    "virtualserver_choose_physicalserver" => "Bitte wähöen Sie einen physischen Server aus",
+    "virtualserver_choose_physicalserver" => "Bitte wählen Sie einen physischen Server aus",
     "virtualserver_physicalserver" => "Physical Server",
     "virtualserver_cores" => "Kerne",
     "virtualserver_cores_example" => "Verfügbare Kerne  (z.B. 4)",

@@ -7,6 +7,10 @@ $messages = [
     "bye"     => "Good Bye",
     "hi-name" => "Hello %name%",
     "song"    => "This song is %song%",
+
+    // base
+    "base_object_not_found" => "Object not found!",
+    "base_no_permission_to_this_object" => "No permissions to this object!",
     
     // access
     "access_login_panelheader" => "Login",
@@ -165,8 +169,8 @@ $messages = [
     "physicalserver_general_title" => "General Information",
     "physicalserver_general_editsettings" => "Edit settings",
     "physicalserver_general_updatesettings" => "Update OVZ settings",
-   "physicalserver_general_updatestatistics" => "Update statistics of the host (hardware usage)",
-     "physicalserver_general_connectovz" => "Connect OVZ",
+    "physicalserver_general_updatestatistics" => "Update statistics of the host (hardware usage)",
+    "physicalserver_general_connectovz" => "Connect OVZ",
     "physicalserver_confirm_removeserver" => "Are you sure you want to delete this Item",
     "physicalserver_tooltip_removeserver" => "Remove this server",
     "physicalserver_general_customer" => "Customer:",
@@ -194,9 +198,10 @@ $messages = [
     "virtualserver_job_failed" => "Job (ovz_modify_vs) executions failed! Error: ",
     "virtualserver_update_failed" => "Updating the virual server failed: .",
     "virtualserver_invalid_level" => "invalid level!",
-    "virtualserver_not_ovz_enabled" => "Virtual Server ist not OVZ enabled!",
+    "virtualserver_server_not_ovz_enabled" => "Server is not OVZ enabled!",
     "virtualserver_job_infolist_failed" => "Job (ovz_list_info) executions failed: ",
     "virtualserver_settings_success" => "Settings successfully updated",
+    "virtualserver_job_create_failed" => "Create virtual server failed.",
     "virtualserver_job_start_failed" => "Job (ovz_start_vs) executions failed: ",
     "virtualserver_job_start" => "Started virtual server successfully",
     "virtualserver_job_stop_failed" => "Job (ovz_stop_vs) executions failed: ",
