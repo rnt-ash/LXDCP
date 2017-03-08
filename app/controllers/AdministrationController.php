@@ -127,4 +127,47 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
 
         return $this->redirectTo("administration/index");
     }
+    
+    public function deployRootKeysAction(){
+        $physicalServers = \RNTForest\ovz\models\PhysicalServers::find(["ovz=1"]);
+        $push = $this->getPushService();
+        
+        $jobFailures = array();
+        $keys = array();
+        
+        foreach($physicalServers as $physicalServer){
+            $job = $push->executeJob($physicalServer,'ovz_get_rootpublickey',null);
+            if($job->getDone()==1){
+                $physicalServer->setRootPublicKey(json_decode($job->getRetval()));
+                $physicalServer->save();
+                $keys[] = $physicalServer->getRootPublicKey();
+            }else{
+                $jobFailures[] = "Job Id: ".$job->getId()." with error: ".$job->getError();
+            }
+        }
+        
+        foreach($physicalServers as $physicalServer){
+            $job = $push->executeJob($physicalServer,'ovz_update_authorizedkeys',["ROOTKEYS"=>$keys]);
+            if($job->getDone()==2){
+                $jobFailures[] = "Job Id: ".$job->getId()." with error: ".$job->getError();
+            }
+        }
+        
+        if(!empty($jobFailures)){
+            $this->flashSession->error(json_encode($jobFailures));
+        }else{
+            $this->flashSession->success("Successfully deployed all Root Keys to all PhysicalServers.");
+        }
+          
+        $this->redirectTo("administration/index");
+    }
+    
+    /**
+    * helper method only for IDE auto completion purpose
+    * 
+    * @return \RNTForest\core\services\Push
+    */
+    protected function getPushService(){
+        return $this->di['push'];
+    }
 }
