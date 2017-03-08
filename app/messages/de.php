@@ -371,4 +371,7 @@ $messages = [
     "accesscontroller_mrs_dear" => "Sehr geehrte ",
     "accesscontroller_reset_mail_send" => "Bitte überprüfen Sie Ihr E-Mail Postfach für Anweisungen um Ihr Password zurückzusetzen.",
     "accesscontroller_confirm_mail_send" => "Ihr Passwort wurde geändert. Sie können sich nun mit dem neuen Passwort anmelden.",
+    
+    // AdministrationControllerBase
+    "admincontroller_ovz_notdescribed" => "Job ist noch nicht beschrieben!",
 ];

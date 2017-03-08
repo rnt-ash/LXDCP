@@ -340,18 +340,18 @@ $messages = [
     "push_key_retval_not_in_response" => "Key retval does not exist in job response.",
     
     // LoginControllerBase
-    "datasheet_title" => "Datasheet Hostingadministration",
-    "datasheet_contactperson" => "Contact Person",
-    "datasheet_confidentialdata" => "Confidential data will only be passed to this contact person.",
-    "datasheet_logindata" => "Logindata",
-    "datasheet_checkdata" => "Please check your logindata and change your password.",
-    "datasheet_name" => "Name: ",
-    "datasheet_email" => "Email: ",
-    "datasheet_url" => "URL: ",
-    "datasheet_loginname" => "Loginname: ",
-    "datasheet_pwd" => "Password: ",
-    "datasheet_misc" => "Miscellaneous",
-    "datasheet_ending" => "With this Logindata you can change your Hostingconfigurtaion by your own. \nIf you detect any inconsistencies, please contact us!",
+    "loginscontroller_genpdf_title" => "Datasheet Hostingadministration",
+    "loginscontroller_genpdf_contactperson" => "Contact Person",
+    "loginscontroller_genpdf_confidentialdata" => "Confidential data will only be passed to this contact person.",
+    "loginscontroller_genpdf_logindata" => "Logindata",
+    "loginscontroller_genpdf_checkdata" => "Please check your logindata and change your password.",
+    "loginscontroller_genpdf_name" => "Name: ",
+    "loginscontroller_genpdf_email" => "Email: ",
+    "loginscontroller_genpdf_url" => "URL: ",
+    "loginscontroller_genpdf_loginname" => "Loginname: ",
+    "loginscontroller_genpdf_pwd" => "Password: ",
+    "loginscontroller_genpdf_misc" => "Miscellaneous",
+    "loginscontroller_genpdf_ending" => "With this Logindata you can change your Hostingconfigurtaion by your own. \nIf you detect any inconsistencies, please contact us!",
     "loginscontroller_themenotexist" => "Selected theme does not exist.",
     "loginscontroller_login_not_exist" => "Login does not exist",
     "loginscontroller_login_not_found" => "Login was not found",
@@ -370,4 +370,7 @@ $messages = [
     "accesscontroller_mrs_dear" => "Dear Mrs. ",
     "accesscontroller_reset_mail_send" => "Please check your email for instructions on resetting your password.",
     "accesscontroller_confirm_mail_send" => "Your password has been changed. You can now log in with your new password.",
+    
+    // AdministrationControllerBase
+    "admincontroller_ovz_notdescribed" => "This job is not described yet!",
 ];
