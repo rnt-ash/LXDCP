@@ -373,6 +373,25 @@ return new \Phalcon\Config([
                     ]
                 ],
             ],
+            // modify permission
+            'modify' => [
+                'description' => 'modify a virtual servers', 
+                'scopes' => [
+                    '1' => "modify all virtual servers", 
+                    'partners' => "modify virtual servers from partners and own only", 
+                    'customers' => "modify own virtual servers only", 
+                    '0' => "modify no virtual servers", 
+                ],
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
+                'actions' => [
+                    'virtual_servers' => [
+                        'modifyVirtualServerExecute', 'modifyVirtualServer',
+                    ]
+                ],
+            ],
         ],
     ]
 ]);
