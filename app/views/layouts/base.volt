@@ -59,6 +59,7 @@
             {{ javascript_include("/js/navbar.js") }}
             {{ javascript_include("/js/tableslidedata.js") }}
             {{ javascript_include("/js/bootbox.js") }}
+            {{ javascript_include("/js/loadingScreen.js") }}
             {% block jsfooter %}{% endblock %}
         </div>
     </body>

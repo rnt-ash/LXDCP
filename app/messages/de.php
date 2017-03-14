@@ -276,6 +276,7 @@ $messages = [
     "virtualserver_snapshotname_replica" => "Der Name darf replica nicht enthalten.",
     "virtualserver_snapshotname_required" => "Name muss numerisch sein und darf folgende Zechen enthalten -_().!? and space.",
     "virtualserver_description_valid" => "Beschreibung darf nicht länder als 250 Zeichen sein",
+    "virtualserver_modify_job_failed" => "Modifizieren des Virtuellen Servers fehlgeschlagen: ",
     //View
     "virtualserver_title" => " Virtuelle Server",
     "virtualserver_view_new" => "Neu",
