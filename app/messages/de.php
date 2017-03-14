@@ -374,4 +374,13 @@ $messages = [
     
     // AdministrationControllerBase
     "admincontroller_ovz_notdescribed" => "Job ist noch nicht beschrieben!",
+    
+    // Monitoring
+    "monitoring_mon_behavior_not_implements_interface" => "MonBehavior implementiert nicht das MonBehaviorInterface.",
+    "monitoring_mon_server_not_implements_interface" => "MonServer implementiert nicht das MonServerInterface.",
+    "monitoring_parent_cannot_execute_jobs" => "Auf dem Parent-Object ist es nicht möglich Jobs auszuführen.",
+    "monitoring_healjob_failed" => "Ausführung des Healjobs fehlgeschlagen.",
+    "monitoring_healjob_not_executed_error" => "Automatischer Healjob konnte nicht unverzüglich gesendet werden. Kann passieren, wenn der Host nicht erreichbar ist. Wird vom HealingSystem deaktiviert, damit er nicht später versehentlich unnötig ausgeführt wird.",
+    "monitoring_healing_executed" => "Heilungsmassnahmen wurden ausgeführt.",
+    
 ];

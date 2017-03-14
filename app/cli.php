@@ -93,7 +93,7 @@ $di->setShared('translate', function() use($di) {
 // Logger
 $di->setShared('logger', function() {
     $config = $this->getConfig();
-    return new LoggerFileAdapter($config->application->logsDir."app.log");
+    return new LoggerFileAdapter($config->application->logsDir."cli.log");
 });
 
 // Push
@@ -108,6 +108,21 @@ $di->setShared('permissions', function() {
     return $permissions;
 });
 
+// Models Manager (used for PHQL)
+$di->set('modelsManager', function() {
+    return new \Phalcon\Mvc\Model\Manager();
+});
+
+// Services for Monitoring
+$di->set('monAlarm', function() {
+    return new \RNTForest\ovz\services\MonAlarm();
+});
+$di->set('monSystem', function() {
+    return new \RNTForest\ovz\services\MonSystem();
+});
+$di->set('monHealing', function() {
+    return new \RNTForest\ovz\services\MonHealing();
+});
 
 /**
 * Register the autoloader
@@ -142,6 +157,7 @@ $loader->registerNamespaces([
     "RNTForest\\ovz\\services" => BASE_PATH . "/vendor/rnt-forest/ovz/services/",
     "RNTForest\\ovz\\libraries" => BASE_PATH . "/vendor/rnt-forest/ovz/libraries/",
     "RNTForest\\ovz\\interfaces" => BASE_PATH . "/vendor/rnt-forest/ovz/interfaces/",
+    "RNTForest\\ovz\\utilities" => BASE_PATH . "/vendor/rnt-forest/ovz/utilities/",
     
     // ovzhost
     "RNTFOREST\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
