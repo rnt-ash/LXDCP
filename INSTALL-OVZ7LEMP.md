@@ -60,10 +60,10 @@ prlctl start OVZCP
 Now you are able to connect to your virtual system with an SSH-Client (Putty).
 
 First of all you need to update from Debian Jessie to Debian Stretch. Therefore you can edit Debians source-list.
-We recommend the installation of the Midnight Commander, which allowes faster and easier interactions with files/ folders on the server. As well as the nano-editor where you can copy/paste from Windows while connected with Putty.
+We recommend the installation of the Midnight Commander, which allowes faster and easier interactions with files/ folders on the server. As well as the nano-editor where you can copy/paste from Windows while connected with Putty. Further we install rsyslog so syslog-files will be written.
 ```
 apt-get update
-apt-get install mc nano cron
+apt-get install mc nano cron rsyslog
 ```
 
 With mcedit you can edit the source-list:

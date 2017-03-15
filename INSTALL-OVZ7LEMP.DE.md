@@ -62,10 +62,10 @@ prlctl start OVZCP
 Nun kann man sich mit der neuen virtuellen Maschine über SSH verbinden.
 
 Als erstes wird ein Update von Debian Jessie auf Debian Stretch durchgeführt. Dazu passt man die Sources List von Debian an.
-Um etwas zügiger mit dem System arbeiten zu können empfehlen wir die Installation des Midnight Commanders (mc), welcher sehr hilfreich bei Dateioperationen ist. Sowie den Nano-Editor mit welchem Copy/Paste aus Windows über Putty möglich ist.
+Um etwas zügiger mit dem System arbeiten zu können empfehlen wir die Installation des Midnight Commanders (mc), welcher sehr hilfreich bei Dateioperationen ist. Sowie den Nano-Editor mit welchem Copy/Paste aus Windows über Putty möglich ist. Weiter wird rsyslog installiert, damit die syslog-Files geschrieben werden.
 ```
 apt-get update
-apt-get install mc nano cron
+apt-get install mc nano cron rsyslog
 ```
 
 Mit mcedit kann nun die Sources bearbeitet werden:
