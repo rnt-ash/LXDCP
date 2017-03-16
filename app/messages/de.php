@@ -340,6 +340,7 @@ $messages = [
     "virtualserver_genera_activdate" => "Aktivierungsdatum: ",
     "virtualserver_genera_state" => "Status: ",
     "virtualserver_genera_description" => "Beschreibung: ",
+    "virtualserver_no_physicalserver_found" => "Keinen Physikalischen Server gefunden, CTs können nicht erstellt werden",
     
     // Push
     "push_parameter_pending_is_not_a_string_or_an_array" => "Parameter 'Pending' ist kein String oder Array.",
