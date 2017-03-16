@@ -147,3 +147,7 @@ td#snapshots ul:first-child {
     font-size: 1.3em;
     margin-top: 10px;
 }
+
+.form-group .input-group-addon #genPassword {
+    color: unset !important;
+}

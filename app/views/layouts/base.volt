@@ -60,6 +60,7 @@
             {{ javascript_include("/js/tableslidedata.js") }}
             {{ javascript_include("/js/bootbox.js") }}
             {{ javascript_include("/js/loadingScreen.js") }}
+            {{ javascript_include("/js/genPassword.js") }}
             {% block jsfooter %}{% endblock %}
         </div>
     </body>

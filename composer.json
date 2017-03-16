@@ -12,7 +12,8 @@
         "rnt-forest/core": "dev-develop",
         "rnt-forest/ovz": "dev-develop",
         "tecnickcom/tcpdf": "6.2.*",
-        "phpmailer/phpmailer": "v5.2.*"
+        "phpmailer/phpmailer": "v5.2.*",
+        "roderik/pwgen-php": "0.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "1.6.*"
