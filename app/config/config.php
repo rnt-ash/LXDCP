@@ -57,6 +57,10 @@ return new \Phalcon\Config([
         'footer' => "My PDF Footer",
     ],
     'mail' => [
-        'from' => "ovzcp@domain.org"
+        'from' => "ovzcp@domain.org",
+    ],
+    'replica' =>[
+        'osTemplate' => 'debian-8.0-x86_64-minimal',
+        'defaultHost' => 0,
     ]
 ]);
