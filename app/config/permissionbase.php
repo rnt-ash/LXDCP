@@ -192,7 +192,7 @@ return new \Phalcon\Config([
                     'virtual_servers' => [
                         'index', 
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
-                        'save', 'slidedata', 'slideSlide', 'ovzListInfo', 'ovzStatisticsInfo'
+                        'save', 'slidedata', 'slideSlide', 'ovzListInfo', 'ovzStatisticsInfo', 
                     ]
                 ],
             ],
@@ -389,6 +389,25 @@ return new \Phalcon\Config([
                 'actions' => [
                     'virtual_servers' => [
                         'modifyVirtualServerExecute', 'modifyVirtualServer',
+                    ]
+                ],
+            ],
+            // change root password permission
+            'change_root_password' => [
+                'description' => 'set a new root password for a virtual server', 
+                'scopes' => [
+                    '1' => "set everywhere a new password",
+                    'partners' => "set a new password from partners and own virtual servers only", 
+                    'customers' => "set a new password for own virtual servers only", 
+                    '0' => "set nowhere a new password", 
+                ],
+                'functions' => array(
+                    'partners' => '\RNTForest\OVZCP\libraries\PermissionFunctions::partners',
+                    'customers' =>'\RNTForest\OVZCP\libraries\PermissionFunctions::customers',
+                ),
+                'actions' => [
+                    'virtual_servers' => [
+                        'changeRootPassword', 'changeRootPasswordExecute',
                     ]
                 ],
             ],
