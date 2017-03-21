@@ -356,8 +356,12 @@ $di->setShared('logger', function() {
 
 // Push
 $di->setShared('push', function() use ($di) {
-    $push = new \RNTForest\core\services\Push($di);
-    return $push;
+    return new \RNTForest\core\services\Push($di);
+});
+
+// Replica
+$di->setShared('replica', function() use ($di) {
+    return new \RNTForest\ovz\services\Replica($di);
 });
 
 // Permissions
@@ -394,6 +398,7 @@ $loader->registerNamespaces(array(
     "RNTForest\\ovz\\libraries" => BASE_PATH . "/vendor/rnt-forest/ovz/libraries/",
     "RNTForest\\ovz\\interfaces" => BASE_PATH . "/vendor/rnt-forest/ovz/interfaces/",
     "RNTForest\\ovz\\utilities" => BASE_PATH . "/vendor/rnt-forest/ovz/utilities/",
+    "RNTForest\\ovz\\functions" => BASE_PATH . "/vendor/rnt-forest/ovz/functions/",
     
     // ovzhost
     "RNTFOREST\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
