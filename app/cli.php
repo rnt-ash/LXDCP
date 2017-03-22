@@ -152,6 +152,7 @@ $loader->registerNamespaces([
 
     // ovz
     "RNTForest\\ovz\\controllers" => BASE_PATH . "/vendor/rnt-forest/ovz/controllers/",
+    "RNTForest\\ovz\\datastructures" => BASE_PATH . "/vendor/rnt-forest/ovz/datastructures/",
     "RNTForest\\ovz\\models" => BASE_PATH . "/vendor/rnt-forest/ovz/models/",
     "RNTForest\\ovz\\forms" => BASE_PATH . "/vendor/rnt-forest/ovz/forms/",
     "RNTForest\\ovz\\services" => BASE_PATH . "/vendor/rnt-forest/ovz/services/",

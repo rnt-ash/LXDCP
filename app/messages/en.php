@@ -485,6 +485,9 @@ $messages = [
     "monitoring_healjob_failed" => "The execution of the healjob failed.",
     "monitoring_healjob_not_executed_error" => "Automatic healjob could not be sent. Maybe the host is not available. MonHealing set the job to failed so that it wont be executed later.",
     "monitoring_healing_executed" => "Healing was executed.",
+    "monitoring_monuptimesgenerator_computefailed" => "Compute uptime failed: ",
+    "monitoring_monlocaldailylogsgenerator_computefailed" => "Compute average failed: ",
+    "monitoring_monlocaldailylogsgenerator_delete_old_daily_log" => "Had to delete MonLocalDailyLog because it will be new generated: ",
     
     // JobsControllerBase und Jobs (model)
     "jobs_search_not_found" => "The search did not find any jobs",

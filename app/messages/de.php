@@ -486,6 +486,9 @@ $messages = [
     "monitoring_healjob_failed" => "Ausführung des Healjobs fehlgeschlagen.",
     "monitoring_healjob_not_executed_error" => "Automatischer Healjob konnte nicht unverzüglich gesendet werden. Kann passieren, wenn der Host nicht erreichbar ist. Wird vom HealingSystem deaktiviert, damit er nicht später versehentlich unnötig ausgeführt wird.",
     "monitoring_healing_executed" => "Heilungsmassnahmen wurden ausgeführt.",
+    "monitoring_monuptimesgenerator_computefailed" => "Berechnen der Uptime fehlgeschlagen: ",
+    "monitoring_monlocaldailylogsgenerator_computefailed" => "Berechnen des Durchschnitts fehlgeschlagen: ",
+    "monitoring_monlocaldailylogsgenerator_delete_old_daily_log" => "Das alte Daily Log wurde gelöscht: ",
     
     // JobsControllerBase und Jobs (model)
     "jobs_search_not_found" => "Die Suche hat keinen Job gefunden",
