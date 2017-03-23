@@ -236,10 +236,12 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                 return $this->redirectTo("administration/index");
             }
             // IP Net
+            $colocations = Colocations::find();
+            $netId = count($colocations)+1;
+            
             $dcoipobject = new Dcoipobjects();
             $dcoipobject->setVersion(4);
             $dcoipobject->setType(2);
-            $netId = 10;
             $dcoipobject->setValue1("192.168.".$netId.".0");
             $dcoipobject->setValue2("24");
             $dcoipobject->setAllocated(1);
