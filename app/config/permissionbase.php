@@ -348,8 +348,8 @@ return new \Phalcon\Config([
                 ),
                 'actions' => [
                     'virtual_servers' => [
-                        'ovzListSnapshots', 'ovzCreateSnapshot', 'ovzDeleteSnapshot', 
-                        'ovzSwitchSnapshot', 'snapshotForm'                
+                        'ovzSnapshotList', 'ovzSnapshotSwitch', 'ovzSnapshotCreate', 'ovzSnapshotCreateExecute',
+                        'ovzSnapshotDelete',
                     ]
                 ],
             ],
