@@ -231,7 +231,7 @@ $messages = [
     "virtualserver_job_destroy" => "Virtual server deleted/ destroyed sucessfully.",
     "virtualserver_job_ostemplates_failed" => "Job (ovz_get_ostemplates) executions failed!",
     "virtualserver_job_listsnapshots_failed" => "Job (ovz_list_snapshots) executions failed!",
-    "virtualserver_snapshot_update" => "Snapshots successfully updated",
+    "virtualserver_snapshot_update" => "Snapshotlist successfully updated",
     "virtualserver_job_switchsnapshotexec_failed" => "Job (ovz_switch_snapshot) executions failed!",
     "virtualserver_job_switchsnapshot_failed" => "Switching snapshot on server failed: ",
     "virtualserver_job_createsnapshotexec_failed" => "Job (ovz_create_snapshot) executions failed!",
@@ -314,11 +314,14 @@ $messages = [
     "virtualserver_cancel" => "Cancel",
     "virtualserver_snapshot_refresh" => "Refresh Snapshots",
     "virtualserver_snapshot_create" => "Create a new Snapshot",
+    "virtualserver_snapshot_created" => "Snapshot successfully created",
     "virtualserver_snapshot_run" => "Current run",
     "virtualserver_snapshot_switchinfo" => "Are you sure you want to switch to this Snapshot ?",
     "virtualserver_snapshot_switch" => "Switch to this Snapshot",
+    "virtualserver_snapshot_switched" => "Successfully switched to Snapshot",
     "virtualserver_snapshot_deleteinfo" => "Are you sure you want to delete this snapshot?",
     "virtualserver_snapshot_delete" => "Delete Snapshot",
+    "virtualserver_snapshot_deleted" => "Snapshot successfully deleted",
     "virtualserver_snapshot_new" => "Create new Snapshot",
     "virtualserver_ipobject" => "IP Objects",
     "virtualserver_ip_newobject" => "Add new IP object",
@@ -501,5 +504,11 @@ $messages = [
     "tableslide_generating_failed" => "Generating of slides failed: ",
     "tableslide_item_not_exist" => "Item does not exist",
     "tableslide_item_update_success" => "Item was updated successfully",
-    "tableslide_item_delete_success" => "Item was deleted successfully",    
+    "tableslide_item_delete_success" => "Item was deleted successfully", 
+    
+    // ModelBase
+    "modelbase_object_not_found" => "Object was not found",   
+    
+    // ControllerBase
+    "controllerbase_no_permission_to_this_object" => "No permsission on this object",
 ];

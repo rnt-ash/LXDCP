@@ -232,7 +232,7 @@ $messages = [
     "virtualserver_job_destroy" => "Virtueller Server wurde erfolgreich gelöscht/ zerstört",
     "virtualserver_job_ostemplates_failed" => "Ausführen des Jobs (ovz_get_ostemplates) fehlgeschlagen!",
     "virtualserver_job_listsnapshots_failed" => "Ausführen des Jobs (ovz_list_snapshots) fehlgeschlagen!",
-    "virtualserver_snapshot_update" => "Snapshot wurde erfolgreich aktualisiert",
+    "virtualserver_snapshot_update" => "Snapshot Liste wurde erfolgreich aktualisiert",
     "virtualserver_job_switchsnapshotexec_failed" => "Ausführen des Jobs (ovz_switch_snapshot) fehlgeschlagen!",
     "virtualserver_job_switchsnapshot_failed" => "Wechseln des Snapshots auf den Server fehlgeschlagen: ",
     "virtualserver_job_createsnapshotexec_failed" => "Ausführen des Jobs (ovz_create_snapshot) fehlgeschlagen!",
@@ -294,7 +294,7 @@ $messages = [
     "virtualserver_startonboot_info" => "Start on boot kann 0 or 1 sein",
     "virtualserver_snapshotname" => "Snapshotname",
     "virtualserver_snapshotname_replica" => "Der Name darf replica nicht enthalten.",
-    "virtualserver_snapshotname_required" => "Name muss numerisch sein und darf folgende Zechen enthalten -_().!? and space.",
+    "virtualserver_snapshotname_required" => "Name muss numerisch sein und darf folgende Zechen enthalten -_().!? inklusive Leerschlag",
     "virtualserver_description_valid" => "Beschreibung darf nicht länder als 250 Zeichen sein",
     "virtualserver_modify_job_failed" => "Modifizieren des Virtuellen Servers fehlgeschlagen: ",
     "virtualserver_change_root_password" => "Root Passwort ändern",
@@ -315,11 +315,14 @@ $messages = [
     "virtualserver_cancel" => "Abbrechen",
     "virtualserver_snapshot_refresh" => "Refresh Snapshots",
     "virtualserver_snapshot_create" => "Neuen Snapshot erstellen",
-    "virtualserver_snapshot_run" => "jetziger Lauf",
+    "virtualserver_snapshot_created" => "Snapshot wurde erfolgreich erstellt",
+    "virtualserver_snapshot_run" => "jetziger Stand",
     "virtualserver_snapshot_switchinfo" => "Sind Sie sicher, dass Sie zu diesem Snapshot wechseln wollen ?",
     "virtualserver_snapshot_switch" => "Zu diesem Snapshot wechseln",
+    "virtualserver_snapshot_switched" => "Erfolgreich zu Snapshot gewechselt",
     "virtualserver_snapshot_deleteinfo" => "Sind Sie sicher, dass Sie diesen Snapshot löschen wollen?",
     "virtualserver_snapshot_delete" => "Snapshot löschen",
+    "virtualserver_snapshot_deleted" => "Snapshot wurde erfolgreich gelöscht",
     "virtualserver_snapshot_new" => "Neuen Snapshot erstellen",
     "virtualserver_ipobject" => "IP-Objekte",
     "virtualserver_ip_newobject" => "Neues IP-Objekt hinzufügen",
@@ -503,4 +506,10 @@ $messages = [
     "tableslide_item_not_exist" => "Item existiert nicht",
     "tableslide_item_update_success" => "Item wurde erfolgreich aktualisiert",
     "tableslide_item_delete_success" => "Item wurde erfolgreich gelöscht",
+    
+    // ModelBase
+    "modelbase_object_not_found" => "Objekt wurde nicht gefunden",
+    
+    // ControllerBase
+    "controllerbase_no_permission_to_this_object" => "Keine Berechtigungen für dieses Objekt",
 ];
