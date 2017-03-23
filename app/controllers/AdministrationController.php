@@ -19,6 +19,10 @@
 
 namespace RNTForest\OVZCP\controllers;
 
+use \RNTForest\core\models\Customers;
+use \RNTForest\core\models\Logins;
+use \RNTForest\core\models\Groups;
+use \RNTForest\ovz\models\Colocations;
 use \RNTForest\ovz\models\PhysicalServers;
 use \RNTForest\ovz\models\VirtualServers;
 use \RNTForest\ovz\models\Dcoipobjects;
@@ -169,5 +173,413 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
     */
     protected function getPushService(){
         return $this->di['push'];
+    }
+    
+    public function fakerAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        $count = 10;
+
+        if(!Customers::findFirstByid(2)){
+            // customer
+            $customer = new Customers();
+            $customer->setId(2);
+            $customer->setLastname("Forest");
+            $customer->setFirstname("RNT");
+            $customer->setCompany("RNT-Forest");
+            $customer->setStreet("Foreststreet");
+            $customer->setZip(1234);
+            $customer->setCity("Forestcity");
+            $customer->setPhone("+41 61 984 56 78");
+            $customer->setEmail("rnt@forest.ch");
+            $customer->setWebsite("www.rnt-forest.ch");
+            $customer->setActive(1);
+            if (!$customer->save()) {
+                foreach ($customer->getMessages() as $message) {
+                    $this->flashSession->error("Customers: ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+
+            // login
+            $login = new Logins();
+            $login->setLoginname("rntforest");
+            $login->setPassword(hash('sha256', $this->config->application['securitySalt']."1234.abcd"));
+            $login->setCustomersId(2);
+            $login->setAdmin(0);
+            $login->setMain(1);
+            $login->setTitle("Mr");
+            $login->setFirstname("Rnt");
+            $login->setLastname("Forest");
+            $login->setEmail("rnt@forest.ch");
+            $login->setGroups(1);
+            $login->setLocale("en_US.utf8");
+            $login->setActive(1);
+            $login->setNewsletter(0);
+            if (!$login->save()) {
+                foreach ($login->getMessages() as $message) {
+                    $this->flashSession->error("Logins: ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+
+            // colocation + IP
+            $colocation = new Colocations();
+            $colocation->setName("RNT Colo");
+            $colocation->setCustomersId(2);
+            $colocation->setDescription("Colocation of RNT-Forest");
+            $colocation->setLocation("Switzerland");
+            $colocation->setActivationDate(date("Y-m-d"));
+            if (!$colocation->save()) {
+                foreach ($colocation->getMessages() as $message) {
+                    $this->flashSession->error("Colocations: ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+            // IP Net
+            $dcoipobject = new Dcoipobjects();
+            $dcoipobject->setVersion(4);
+            $dcoipobject->setType(2);
+            $netId = 10;
+            $dcoipobject->setValue1("192.168.".$netId.".0");
+            $dcoipobject->setValue2("24");
+            $dcoipobject->setAllocated(1);
+            $dcoipobject->setMain(0);
+            $dcoipobject->setColocationsId($colocation->getId());
+            if (!$dcoipobject->save()) {
+                foreach ($dcoipobject->getMessages() as $message) {
+                    $this->flashSession->error("Colo: ".$colocation->getId().", ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+            // Assigned IP
+            $dcoipobject = new Dcoipobjects();
+            $dcoipobject->setVersion(4);
+            $dcoipobject->setType(1);
+            $dcoipobject->setValue1("192.168.".$netId.".".rand(1,10));
+            $dcoipobject->setValue2("255.255.255.0");
+            $dcoipobject->setAllocated(3);
+            $dcoipobject->setMain(1);
+            $dcoipobject->setColocationsId($colocation->getId());
+            $dcoipobject->setComment("Firewall");
+            if (!$dcoipobject->save()) {
+                foreach ($dcoipobject->getMessages() as $message) {
+                    $this->flashSession->error("Colo: ".$colocation->getId().", ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+
+            for($i=1;$i<=($count/2);$i++){
+                // physical server + IP
+                $physicalServer = new PhysicalServers();
+                $physicalServer->setName("Phys ".key($faker->canton)." ".$faker->buildingNumber);
+                $physicalServer->setFqdn($faker->username.".".$faker->domainName);
+                $physicalServer->setCustomersId(2);
+                $physicalServer->setColocationsId($colocation->getId());
+                $physicalServer->setJobPublicKey($faker->sha256);
+                $physicalServer->setOvz(0);
+                $physicalServer->setCore(rand(1,16));
+                $physicalServer->setMemory(rand(1,1024*1024));
+                $physicalServer->setSpace(rand(1,1024*1024));
+                $physicalServer->setActivationDate(date("Y-m-d"));
+                $physicalServer->setDescription($faker->sentence);
+                if (!$physicalServer->save()) {
+                    foreach ($physicalServer->getMessages() as $message) {
+                        $this->flashSession->error("Physical server: ".$message);
+                    }
+                    return $this->redirectTo("administration/index");
+                }
+                // IP range
+                $dcoipobject = new Dcoipobjects();
+                $dcoipobject->setVersion(4);
+                $dcoipobject->setType(2);
+                $dcoipobject->setValue1("192.168.".$netId.".".$i."1");
+                $dcoipobject->setValue2("192.168.".$netId.".".($i+1)."0");
+                $dcoipobject->setAllocated(1);
+                $dcoipobject->setMain(0);
+                $dcoipobject->setPhysicalServersId($physicalServer->getId());
+                if (!$dcoipobject->save()) {
+                    foreach ($dcoipobject->getMessages() as $message) {
+                        $this->flashSession->error("Physical server: ".$physicalServer->getId().", ".$message);
+                    }
+                    return $this->redirectTo("administration/index");
+                }
+                // Assigned IP
+                $dcoipobject = new Dcoipobjects();
+                $dcoipobject->setVersion(4);
+                $dcoipobject->setType(1);
+                $dcoipobject->setValue1("192.168.".$netId.".".$i."1");
+                $dcoipobject->setValue2("255.255.255.0");
+                $dcoipobject->setAllocated(3);
+                $dcoipobject->setMain(1);
+                $dcoipobject->setPhysicalServersId($physicalServer->getId());
+                if (!$dcoipobject->save()) {
+                    foreach ($dcoipobject->getMessages() as $message) {
+                        $this->flashSession->error("Physical server: ".$physicalServer->getId().", ".$message);
+                    }
+                    return $this->redirectTo("administration/index");
+                }
+
+                // virtual server + IP
+                $virtualServer = new VirtualServers();
+                $virtualServer->setName("Virt ".key($faker->canton)." ".$faker->buildingNumber);
+                $virtualServer->setCustomersId(2);
+                $virtualServer->setPhysicalServersId($physicalServer->getId());
+                $virtualServer->setJobPublicKey($faker->sha256);
+                $virtualServer->setOvz(0);
+                $virtualServer->setCore(rand(1,16));
+                $virtualServer->setMemory(rand(1,1024*1024));
+                $virtualServer->setSpace(rand(1,1024*1024));
+                $virtualServer->setActivationDate(date("Y-m-d"));
+                $virtualServer->setDescription($faker->sentence);
+                if (!$virtualServer->save()) {
+                    foreach ($virtualServer->getMessages() as $message) {
+                        $this->flashSession->error("Virtual server: ".$message);
+                    }
+                    return $this->redirectTo("administration/index");
+                }
+                // Assigned IP
+                $dcoipobject = new Dcoipobjects();
+                $dcoipobject->setVersion(4);
+                $dcoipobject->setType(1);
+                $dcoipobject->setValue1("192.168.".$netId.".".$i."2");
+                $dcoipobject->setValue2("255.255.255.0");
+                $dcoipobject->setAllocated(3);
+                $dcoipobject->setMain(1);
+                $dcoipobject->setVirtualServersId($virtualServer->getId());
+                if (!$dcoipobject->save()) {
+                    foreach ($dcoipobject->getMessages() as $message) {
+                        $this->flashSession->error("Virtual server: ".$virtualServer->getId().", ".$message);
+                    }
+                    return $this->redirectTo("administration/index");
+                }
+            }
+            $this->flashSession->success("Successfully created fake entries for RNT-Forest");
+        } else {
+            $this->flashSession->warning("Customer with ID=2 already exists.");
+        }
+        
+        
+
+        /* random entries */
+        // random customers
+        for($i=1;$i<=($count);$i++){
+            $customer = new Customers;
+            $customer->setLastname($faker->lastName);
+            $customer->setFirstname($faker->firstName);
+            $customer->setCompany($faker->company);
+            $customer->setCompanyAdd($faker->companySuffix);
+            $customer->setStreet($faker->streetName);
+            $customer->setZip($faker->postcode);
+            $customer->setCity($faker->city);
+            $customer->setPhone($faker->phoneNumber);
+            $customer->setEmail($faker->email);
+            $customer->setWebsite("www.".$faker->domainName);
+            $customer->setActive(1);
+            if (!$customer->save()) {
+                foreach ($customer->getMessages() as $message) {
+                    $this->flashSession->error("Customers: ".$message);
+                }
+                return $this->redirectTo("administration/index");;
+            }
+        }
+        $this->flashSession->success("Customers created successfully");
+        
+
+        // random logins
+        for($i=1;$i<=($count);$i++){
+            $login = new Logins();
+            $login->setLoginname($faker->username(10));
+            $login->setPassword(hash('sha256', $this->config->application['securitySalt']."1234.abcd"));
+
+            $rand = rand(3,Customers::count()-1);
+            $customer = Customers::findFirst(array('offset'=>$rand));
+            $login->setCustomersId($customer->getId());
+
+            $login->setAdmin(0);
+            $login->setMain(1);
+            $login->setTitle($faker->title);
+            $login->setFirstname($faker->firstName);
+            $login->setLastname($faker->lastName);
+            $login->setEmail($faker->email);
+
+            $rand = rand(1,Groups::count()-1);
+            $group = Groups::findFirst(array('offset'=>$rand));
+            $login->setGroups($group->getId());
+
+            $login->setLocale("en_US.utf8");
+            $login->setActive(1);
+            $login->setNewsletter(rand(0,1));
+            if (!$login->save()) {
+                foreach ($login->getMessages() as $message) {
+                    $this->flashSession->error("Logins: ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+        }
+        $this->flashSession->success("Logins created successfully");
+
+        // random colocations
+        for($i=0;$i<=($count/5);$i++){
+            $colocation = new Colocations();
+            $city = $faker->city;
+            $colocation->setName("Colo ".$city." ".$faker->postcode);
+
+            $rand = rand(3,Customers::count()-1);
+            $customer = Customers::findFirst(array('offset'=>$rand));
+            $colocation->setCustomersId($customer->getId());
+
+            $colocation->setDescription($faker->sentence);
+            $colocation->setLocation($city);
+            $colocation->setActivationDate($faker->date($format = 'Y-m-d', $max = 'now'));
+
+            if (!$colocation->save()) {
+                foreach ($colocation->getMessages() as $message) {
+                    $this->flashSession->error("Colocations: ".$message);
+                }
+                return;
+            }
+
+            // IP Net
+            $colocations = Colocations::find();
+            $dcoipobject = new Dcoipobjects();
+            $dcoipobject->setVersion(Dcoipobjects::VERSION_IPV4);
+            $dcoipobject->setType(Dcoipobjects::TYPE_IPNET);
+            $dcoipobject->setValue1("192.168.".(count($colocations)+1).".0");
+            $dcoipobject->setValue2("24");
+            $dcoipobject->setAllocated(Dcoipobjects::ALLOC_RESERVED);
+            $dcoipobject->setMain(0);
+            $dcoipobject->setColocationsId($colocation->getId());
+            if (!$dcoipobject->save()) {
+                foreach ($dcoipobject->getMessages() as $message) {
+                    $this->flashSession->error("Colo: ".$colocation->getId().", ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+            // Assigned IP
+            $dcoipobject = new Dcoipobjects();
+            $dcoipobject->setVersion(Dcoipobjects::VERSION_IPV4);
+            $dcoipobject->setType(Dcoipobjects::TYPE_IPNET);
+            $dcoipobject->setValue1("192.168.".(count($colocations)+1).".".rand(1,10));
+            $dcoipobject->setValue2("255.255.255.0");
+            $dcoipobject->setAllocated(Dcoipobjects::ALLOC_ASSIGNED);
+            $dcoipobject->setMain(1);
+            $dcoipobject->setColocationsId($colocation->getId());
+            $dcoipobject->setComment("Firewall");
+            if (!$dcoipobject->save()) {
+                foreach ($dcoipobject->getMessages() as $message) {
+                    $this->flashSession->error("Colo: ".$colocation->getId().", ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+        }
+        $this->flashSession->success("Colocations created successfully");
+
+        // random Physical Servers
+        for($i=0;$i<=($count);$i++){
+            $physicalServer = new PhysicalServers();
+            $physicalServer->setName("Phys ".key($faker->canton)." ".$faker->buildingNumber);
+            $physicalServer->setDescription($faker->sentence);
+
+            $rand = rand(3,Customers::count()-1);
+            $customer = Customers::findFirst(array('offset'=>$rand));
+            $physicalServer->setCustomersId($customer->getId());
+
+            $rand = rand(1,Colocations::count()-1);
+            $colocation = Colocations::findFirst(array('offset'=>$rand));
+            $physicalServer->setColocationsId($colocation->getId());
+
+            $physicalServer->setJobPublicKey($faker->sha256);
+            $physicalServer->setOvz(0);
+            $physicalServer->setFqdn($faker->username.".".$faker->domainName);
+            $physicalServer->setCore(rand(1,16));
+            $physicalServer->setMemory(rand(1,1024*1024));
+            $physicalServer->setSpace(rand(1,1024*1024));
+            $physicalServer->setActivationDate($faker->date($format = 'Y-m-d', $max = 'now'));
+
+            if (!$physicalServer->save()) {
+                foreach ($physicalServer->getMessages() as $message) {
+                    $this->flashSession->error("Physical server: ".$message);
+                }
+                return;
+            }
+            // Assigned IP
+            $coloId = $colocation->getId();
+            $coloIpRange = Dcoipobjects::findFirst("colocations_id = ".$coloId);
+            $value1 = $coloIpRange->getValue1();
+            $ip = explode(".",$value1);
+            $physicalServers = PhysicalServers::find("colocations_id = ".$coloId);
+
+            $dcoipobject = new Dcoipobjects();
+            $dcoipobject->setVersion(4);
+            $dcoipobject->setType(1);
+            $dcoipobject->setValue1("192.168.".$ip[2].".".($ip[3]+count($physicalServers))."1");
+            $dcoipobject->setValue2("255.255.255.0");
+            $dcoipobject->setAllocated(3);
+            $dcoipobject->setMain(1);
+            $dcoipobject->setPhysicalServersId($physicalServer->getId());
+            if (!$dcoipobject->save()) {
+                foreach ($dcoipobject->getMessages() as $message) {
+                    $this->flashSession->error("Physical server: ".$physicalServer->getId().", ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+        }
+        
+        $this->flashSession->success("Physical Servers created successfully");
+
+        // random Virtual Servers
+        for($i=0;$i<=($count);$i++){
+            $virtualServer = new VirtualServers();
+            $virtualServer->setName("Virt ".key($faker->canton)." ".$faker->buildingNumber);
+            $virtualServer->setDescription($faker->sentence);
+
+            $rand = rand(3,Customers::count()-1);
+            $customer = Customers::findFirst(array('offset'=>$rand));
+            $virtualServer->setCustomersId($customer->getId());
+
+            $rand = rand(1,PhysicalServers::count()-1);
+            $physicalServer = PhysicalServers::findFirst(array('offset'=>$rand));
+            $virtualServer->setPhysicalServersId($physicalServer->getId());
+
+            $virtualServer->setJobPublicKey($faker->sha256);
+            $virtualServer->setOvz(0);
+            $virtualServer->setFqdn($faker->username.".".$faker->domainName);
+            $virtualServer->setCore(rand(1,16));
+            $virtualServer->setMemory(rand(1,1024*1024));
+            $virtualServer->setSpace(rand(1,1024*1024));
+            $virtualServer->setActivationDate($faker->date($format = 'Y-m-d', $max = 'now'));
+
+            if (!$virtualServer->save()) {
+                foreach ($virtualServer->getMessages() as $message) {
+                    $this->flashSession->error("Virtual server: ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+            // Assigned IP
+            $physicalIp = Dcoipobjects::findFirst("physical_servers_id = ".$physicalServer->getId()." AND type = 1");
+            $value1 = $physicalIp->getValue1();
+            $ip = explode(".",$value1);
+            $virtualServers = VirtualServers::find("physical_servers_id = ".$physicalServer->getId());
+            
+            $dcoipobject = new Dcoipobjects();
+            $dcoipobject->setVersion(4);
+            $dcoipobject->setType(1);
+            $dcoipobject->setValue1($ip[0].".".$ip[1].".".$ip[2].".".($ip[3]+count($virtualServers)));
+            $dcoipobject->setValue2("255.255.255.0");
+            $dcoipobject->setAllocated(3);
+            $dcoipobject->setMain(1);
+            $dcoipobject->setVirtualServersId($virtualServer->getId());
+            if (!$dcoipobject->save()) {
+                foreach ($dcoipobject->getMessages() as $message) {
+                    $this->flashSession->error("Virtual server: ".$virtualServer->getId().", ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+        }
+
+        $this->flashSession->success("Virtual Servers created successfully");
+        
+        
+        return $this->redirectTo("administration/index");
     }
 }
