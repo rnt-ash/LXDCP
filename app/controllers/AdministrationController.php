@@ -359,12 +359,16 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
         } else {
             $this->flashSession->warning("Customer with ID=2 already exists.");
         }
-        
+        return $this->redirectTo("administration/index");
+    }
         
 
-        /* random entries */
-        // random customers
-        for($i=1;$i<=($count);$i++){
+    /* random entries */
+    // random customers
+    public function fakeCustomersAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        
+        for($i=1;$i<=10;$i++){
             $customer = new Customers;
             $customer->setLastname($faker->lastName);
             $customer->setFirstname($faker->firstName);
@@ -385,10 +389,14 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             }
         }
         $this->flashSession->success("Customers created successfully");
+        return $this->redirectTo("administration/index");
+    }
         
-
+    public function fakeLoginsAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        
         // random logins
-        for($i=1;$i<=($count);$i++){
+        for($i=1;$i<=10;$i++){
             $login = new Logins();
             $login->setLoginname($faker->username(10));
             $login->setPassword(hash('sha256', $this->config->application['securitySalt']."1234.abcd"));
@@ -419,9 +427,14 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             }
         }
         $this->flashSession->success("Logins created successfully");
-
+        return $this->redirectTo("administration/index");
+    }
+    
+    public function fakeColocationsAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        
         // random colocations
-        for($i=0;$i<=($count/5);$i++){
+        for($i=0;$i<=5;$i++){
             $colocation = new Colocations();
             $city = $faker->city;
             $colocation->setName("Colo ".$city." ".$faker->postcode);
@@ -475,9 +488,14 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             }
         }
         $this->flashSession->success("Colocations created successfully");
-
+        return $this->redirectTo("administration/index");
+    }
+    
+    public function fakePhysicalServersAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        
         // random Physical Servers
-        for($i=0;$i<=($count);$i++){
+        for($i=0;$i<=5;$i++){
             $physicalServer = new PhysicalServers();
             $physicalServer->setName("Phys ".key($faker->canton)." ".$faker->buildingNumber);
             $physicalServer->setDescription($faker->sentence);
@@ -528,9 +546,14 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
         }
         
         $this->flashSession->success("Physical Servers created successfully");
+        return $this->redirectTo("administration/index");
+    }
 
+    public function fakeVirtualServersAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        
         // random Virtual Servers
-        for($i=0;$i<=($count);$i++){
+        for($i=0;$i<=10;$i++){
             $virtualServer = new VirtualServers();
             $virtualServer->setName("Virt ".key($faker->canton)." ".$faker->buildingNumber);
             $virtualServer->setDescription($faker->sentence);
@@ -580,8 +603,6 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
         }
 
         $this->flashSession->success("Virtual Servers created successfully");
-        
-        
         return $this->redirectTo("administration/index");
     }
 }
