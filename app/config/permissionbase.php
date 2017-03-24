@@ -84,6 +84,22 @@ return new \Phalcon\Config([
                 ],
             ],
         ],
+        'partners' => [
+            'general' => [
+                'description' => 'General access', 
+                'scopes' => [
+                    '1' => "Show all partners", 
+                    'customers' => "Show only own partners and customers where customer is partner", 
+                    'partners' => "Show only own partners and customers where customer is partner", 
+                    '0' => "Show no customers", 
+                ],
+                'actions' => [
+                    'partners' => [
+                        'index', 'new', 'edit', 'form', 'save', 'delete', 'tabledata', 'tableDetail' 
+                    ]
+                ],
+            ],
+        ],
         'dcoipobjects' => [
             'general' => [
                 'description' => 'General access', 
