@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `colocations` (
 
 CREATE TABLE IF NOT EXISTS `customers` (
   `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `uuid` varchar(50) NOT NULL UNIQUE KEY,
   `lastname` varchar(50) DEFAULT NULL,
   `firstname` varchar(20) DEFAULT NULL,
   `company` varchar(50) DEFAULT NULL,
