@@ -64,7 +64,7 @@ return new \Phalcon\Config([
                     'colocations' => [
                         'index', 'search', 'create', 'new', 'edit', 'form',
                         'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject',
-                        'save', 'delete', 'tabledata', 'slidedata', 'slideSlide'                
+                        'save', 'delete', 'tabledata', 'slidedata', 'slideSlide', 'generateIpPdf'                
                     ]
                 ],
             ],
