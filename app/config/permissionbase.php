@@ -46,7 +46,8 @@ return new \Phalcon\Config([
                 'actions' => [
                     'administration' => [
                         'index', 'scanAllVS', 'genPermissionsPDF', 'genOVZJobsPDF', 'genActionsPDF', 'deployRootKeys',
-                        'faker', 'fakeCustomers', 'fakeLogins', 'fakeColocations', 'fakePhysicalServers', 'fakeVirtualServers',
+                        'faker', 'fakeCustomers', 'fakeLogins', 'fakeColocations', 'fakePhysicalServers', 
+                        'fakeVirtualServers', 'fakePartners',
                     ]
                 ],
             ],
