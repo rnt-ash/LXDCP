@@ -14,6 +14,7 @@
     <h2>Faker</h2>
     {{ link_to("administration/faker/",'Fake rnt-forest user','class': 'btn btn-primary') }}
     {{ link_to("administration/fakeCustomers/",'Fake Customers','class': 'btn btn-primary') }}
+    {{ link_to("administration/fakePartners/",'Fake Partners','class': 'btn btn-primary') }}
     {{ link_to("administration/fakeLogins/",'Fake Logins','class': 'btn btn-primary') }}
     {{ link_to("administration/fakeColocations/",'Fake Colocations','class': 'btn btn-primary') }}
     {{ link_to("administration/fakePhysicalServers/",'Fake Physical Servers','class': 'btn btn-primary') }}
