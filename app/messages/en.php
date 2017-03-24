@@ -86,7 +86,9 @@ $messages = [
     "colocations_view_description" => "Description",
     "colocations_title" => " Colocations",
     "colocations_save" => "Save",
-    "colocations_cancel" => "Cancel", 
+    "colocations_cancel" => "Cancel",
+    "colocations_genpdf" => "Generate IP objects PDF",
+    "colocations_ipobjects" => "IP objects", 
      
     // IP Objects
     "ipobjects_address_is_now_main" => "IP Address %address% is now main.",
@@ -504,7 +506,10 @@ $messages = [
     "tableslide_generating_failed" => "Generating of slides failed: ",
     "tableslide_item_not_exist" => "Item does not exist",
     "tableslide_item_update_success" => "Item was updated successfully",
-    "tableslide_item_delete_success" => "Item was deleted successfully", 
+    "tableslide_item_delete_success" => "Item was deleted successfully",
+    
+    // Libraries - Permissions
+    "libraries_permissions_unknown" => "unknown permission found: ", 
     
     // ModelBase
     "modelbase_object_not_found" => "Object was not found",   

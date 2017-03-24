@@ -86,7 +86,9 @@ $messages = [
     "colocations_view_description" => "Beschreibnung: ",
     "colocations_title" => " Colocations",
     "colocations_save" => "Speichern",
-    "colocations_cancel" => "Abbrechen",    
+    "colocations_cancel" => "Abbrechen",
+    "colocations_genpdf" => "Generiere PDF zu IP Objekten",
+    "colocations_ipobjects" => "IP Objekte",     
     
     // IP Objects
     "ipobjects_address_is_now_main" => "IP Adresse %address% ist nun die Hauptadresse.",
@@ -507,6 +509,9 @@ $messages = [
     "tableslide_item_update_success" => "Item wurde erfolgreich aktualisiert",
     "tableslide_item_delete_success" => "Item wurde erfolgreich gelöscht",
     
+    // Libraries - Permissions
+    "libraries_permissions_unknown" => "Unbekannte Permission gefunden: ",
+
     // ModelBase
     "modelbase_object_not_found" => "Objekt wurde nicht gefunden",
     
