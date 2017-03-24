@@ -276,18 +276,18 @@ $di->setShared('db', function () {
     $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir."db.log");
     
     //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($logger) {
-        /*
-       if ($event->getType() == 'beforeQuery') {
-            $sqlVariables = $connection->getSQLVariables();
-            if (count($sqlVariables)) {
-                $logger->log($connection->getSQLStatement() . ' ' . join(', ', $sqlVariables), Logger::INFO);
-            } else {
-                $logger->log($connection->getSQLStatement(), Logger::INFO);
+    if($config->application->mode == 'debug'){
+        $eventsManager->attach('db', function($event, $connection) use ($logger) {
+            if ($event->getType() == 'beforeQuery') {
+                $sqlVariables = $connection->getSQLVariables();
+                if (count($sqlVariables)) {
+                    $logger->log($connection->getSQLStatement() . ' ' . join(', ', $sqlVariables), Logger::INFO);
+                } else {
+                    $logger->log($connection->getSQLStatement(), Logger::INFO);
+                }
             }
-        }
-        */
-    });
+        });
+    }
 
     //Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);    
