@@ -4,7 +4,8 @@ $( document ).ready(
 
 function activateGadgets() {
     activateConfirmButton(),
-    activateToolTips()
+    activateToolTips(),
+    activatePending()
 }
 
 function activateConfirmButton() {
@@ -52,4 +53,8 @@ function loadingScreen() {
         "</div>"
     );
     $('body').css("overflow","hidden");
+}
+
+function activatePending() {
+    $(".pending").find(".btn").addClass("disabled");
 }
