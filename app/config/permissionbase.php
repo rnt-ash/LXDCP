@@ -96,7 +96,32 @@ return new \Phalcon\Config([
                 ],
                 'actions' => [
                     'partners' => [
-                        'index', 'new', 'edit', 'form', 'save', 'delete', 'tabledata', 'tableDetail' 
+                        'index', 'form', 'save', 'delete', 'tabledata', 'getCustomersAsJson',
+                        'partnerAdd', 'partnerAddExecute',
+                    ]
+                ],
+            ],
+            'new' => [
+                'description' => 'New partner allocation', 
+                'scopes' => [
+                    '1' => "Create all partners", 
+                    '0' => "Create no partners", 
+                ],
+                'actions' => [
+                    'partners' => [
+                        'new',
+                    ]
+                ],
+            ],
+            'edit' => [
+                'description' => 'Edit partner allocation', 
+                'scopes' => [
+                    '1' => "Edit all partners", 
+                    '0' => "Edit no partners", 
+                ],
+                'actions' => [
+                    'partners' => [
+                        'edit',
                     ]
                 ],
             ],

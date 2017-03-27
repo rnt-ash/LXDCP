@@ -48,6 +48,28 @@ $messages = [
     "customers_form_comment" => "Kommentar",
     "customers_form_active" => "Aktiv",
     
+    // Partners
+    "partners_customer" => "Kunde",
+    "partners_customer_required" => "Kunde ist erforderlich",
+    "partners_customer_digit" => "Kunden ID muss eine Zahl sein",
+    "partners_partner_required" => "Partner ist erforderlich",
+    "partners_partner_digit" => "Partner ID muss eine Zahl sein",
+    "partners_partner_same_customer" => "Partner kann nicht identisch zum Kunden sein",
+    "partners_partner_already_exists" => "Partner wurde diesem Kunden bereits zugewiesen",
+    "partners_customer_empty" => "Bitte wählen Sie einen gültigen Kunden aus",
+    "partners_partner_empty" => "Bitte wählen Sie einen gültigen Partner aus",
+    "partners_uuid_required" => "Die UUID des Partner ist erforderlich",
+    "partners_uuid_not_exists" => "Die angegebene UUID existiert nicht",
+    "partners_added_successfully" => "Partner wurde erfolgreich hinzugefügt",
+    // PartnersForm
+    "partners_form_customer" => "Kunde",
+    "partners_form_choose_customer" => "Bitte wählen Sie einen Kunden aus...",
+    "partners_form_partner" => "Partner",
+    "partners_form_choose_partner" => "Bitte wählen Sie einen Partner aus...",
+    // View
+    "partners_save" => "Speichern",
+    "partners_cancel" => "Abbrechen",
+    
     // Colocations
     "colocation_all_colocations" => "Alle Colocations",
     "colocations_invalid_level" => "ungültiger Level!",

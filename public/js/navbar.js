@@ -20,7 +20,7 @@ $( document ).ready(function() {
     var start_pos = path.indexOf('/') + 1;
     var navpoint = path.substring(start_pos,path.indexOf('/',start_pos));
     if(navpoint != '/'){
-        $("#sidebarWrapper .sidebar-nav li#" + navpoint + " a").addClass("active");
-        $("#navbar .navbar-nav li#" + navpoint + " a").addClass("active");
+        $("#sidebarWrapper .sidebar-nav li#" + navpoint + "Nav a").addClass("active");
+        $("#navbar .navbar-nav li#" + navpoint + "Nav a").addClass("active");
     }
 });
