@@ -23,7 +23,10 @@ function activateConfirmButton() {
                 },
             },
             callback: function (result) {
-                if(result) window.location = link;
+                if(result){
+                    window.location = link;
+                    loadingScreen();
+                }
             } 
         });
     });
@@ -35,4 +38,18 @@ function activateToolTips() {
 
 function toggleIcon(icon) {
     $(icon).toggleClass('fa fa-chevron-down fa fa-chevron-right');
+}
+
+function loadingScreen() {
+    $('body').append(
+        "<div class='loaderBackground'>"+
+            "<div class='spinnerWrapper'>"+
+                "<div class='spinner'>"+
+                    "<i class='fa fa-spinner fa-pulse fa-5x fa-fw'></i>"+
+                    "<div class='loaderText'>Loading ...</div><br /><br />"+
+                "</div>"+
+            "</div>"+
+        "</div>"
+    );
+    $('body').css("overflow","hidden");
 }
