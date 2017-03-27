@@ -86,7 +86,9 @@ $messages = [
     "colocations_view_description" => "Description",
     "colocations_title" => " Colocations",
     "colocations_save" => "Save",
-    "colocations_cancel" => "Cancel", 
+    "colocations_cancel" => "Cancel",
+    "colocations_genpdf" => "Generate IP objects PDF",
+    "colocations_ipobjects" => "IP objects", 
      
     // IP Objects
     "ipobjects_address_is_now_main" => "IP Address %address% is now main.",
@@ -218,7 +220,7 @@ $messages = [
     "virtualserver_invalid_level" => "invalid level!",
     "virtualserver_server_not_ovz_enabled" => "Server is not OVZ enabled!",
     "virtualserver_job_infolist_failed" => "Job (ovz_list_info) executions failed: ",
-    "virtualserver_settings_success" => "Settings successfully updated",
+    "virtualserver_info_success" => "Informations successfully updated",
     "virtualserver_job_create_failed" => "Create virtual server failed.",
     "virtualserver_job_start_failed" => "Job (ovz_start_vs) executions failed: ",
     "virtualserver_job_start" => "Started virtual server successfully",
@@ -339,7 +341,7 @@ $messages = [
     "virtualserver_general_stop" => "Stop",
     "virtualserver_general_restart" => "Restart",
     "virtualserver_general_editovz" => "Edit OVZ settings",
-    "virtualserver_general_updateovz" => "Update OVZ settings",
+    "virtualserver_general_updateovz" => "Update OVZ informations",
     "virtualserver_general_updatestats" => "Update OVZ statistics",
     "virtualserver_general_setpwd" => "Set new password",
     "virtualserver_general_deleteinfo" => "Are you sure you want to delete this item",
@@ -504,7 +506,10 @@ $messages = [
     "tableslide_generating_failed" => "Generating of slides failed: ",
     "tableslide_item_not_exist" => "Item does not exist",
     "tableslide_item_update_success" => "Item was updated successfully",
-    "tableslide_item_delete_success" => "Item was deleted successfully", 
+    "tableslide_item_delete_success" => "Item was deleted successfully",
+    
+    // Libraries - Permissions
+    "libraries_permissions_unknown" => "unknown permission found: ", 
     
     // ModelBase
     "modelbase_object_not_found" => "Object was not found",   

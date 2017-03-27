@@ -86,7 +86,9 @@ $messages = [
     "colocations_view_description" => "Beschreibnung: ",
     "colocations_title" => " Colocations",
     "colocations_save" => "Speichern",
-    "colocations_cancel" => "Abbrechen",    
+    "colocations_cancel" => "Abbrechen",
+    "colocations_genpdf" => "Generiere PDF zu IP Objekten",
+    "colocations_ipobjects" => "IP Objekte",     
     
     // IP Objects
     "ipobjects_address_is_now_main" => "IP Adresse %address% ist nun die Hauptadresse.",
@@ -219,7 +221,7 @@ $messages = [
     "virtualserver_invalid_level" => "Ungültiger Level!",
     "virtualserver_server_not_ovz_enabled" => "Server ist nicht im OVZ aktiviert",
     "virtualserver_job_infolist_failed" => "Ausführen des Jobs (ovz_list_info) fehlgeschlagen: ",
-    "virtualserver_settings_success" => "Einstellungen erfolgreich aktualisiert",
+    "virtualserver_info_success" => "Informationen erfolgreich aktualisiert",
     "virtualserver_job_create_failed" => "Rstellen des virtuellen Servers fehgeschlagen.",
     "virtualserver_job_start_failed" => "Ausführen des Jobs (ovz_start_vs) fehlgeschlagen: ",
     "virtualserver_job_start" => "Virtueller Server wurde erfolgreich gestartet",
@@ -340,7 +342,7 @@ $messages = [
     "virtualserver_general_stop" => "Stop",
     "virtualserver_general_restart" => "Neustart",
     "virtualserver_general_editovz" => "OVZ Einstellungen bearbeiten",
-    "virtualserver_general_updateovz" => "OVZ Einstellungen aktualisieren",
+    "virtualserver_general_updateovz" => "OVZ Informationen aktualisieren",
     "virtualserver_general_updatestats" => "OVZ Statistik aktialisieren",
     "virtualserver_general_setpwd" => "Neues Passwort setzen",
     "virtualserver_general_deleteinfo" => "Sind Sie sicher, dass Sie das Item löschen wollen ?",
@@ -507,6 +509,9 @@ $messages = [
     "tableslide_item_update_success" => "Item wurde erfolgreich aktualisiert",
     "tableslide_item_delete_success" => "Item wurde erfolgreich gelöscht",
     
+    // Libraries - Permissions
+    "libraries_permissions_unknown" => "Unbekannte Permission gefunden: ",
+
     // ModelBase
     "modelbase_object_not_found" => "Objekt wurde nicht gefunden",
     

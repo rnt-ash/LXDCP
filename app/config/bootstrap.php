@@ -276,18 +276,18 @@ $di->setShared('db', function () {
     $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir."db.log");
     
     //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($logger) {
-        /*
-       if ($event->getType() == 'beforeQuery') {
-            $sqlVariables = $connection->getSQLVariables();
-            if (count($sqlVariables)) {
-                $logger->log($connection->getSQLStatement() . ' ' . join(', ', $sqlVariables), Logger::INFO);
-            } else {
-                $logger->log($connection->getSQLStatement(), Logger::INFO);
+    if($config->application->mode == 'debug'){
+        $eventsManager->attach('db', function($event, $connection) use ($logger) {
+            if ($event->getType() == 'beforeQuery') {
+                $sqlVariables = $connection->getSQLVariables();
+                if (count($sqlVariables)) {
+                    $logger->log($connection->getSQLStatement() . ' ' . join(', ', $sqlVariables), Logger::INFO);
+                } else {
+                    $logger->log($connection->getSQLStatement(), Logger::INFO);
+                }
             }
-        }
-        */
-    });
+        });
+    }
 
     //Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);    
@@ -401,8 +401,8 @@ $loader->registerNamespaces(array(
     "RNTForest\\ovz\\functions" => BASE_PATH . "/vendor/rnt-forest/ovz/functions/",
     
     // ovzhost
-    "RNTFOREST\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
-    "RNTFOREST\\OVZJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/general/jobs/",
+    "RNTForest\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
+    "RNTForest\\OVZJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/general/jobs/",
 ));
 
 $loader->register();

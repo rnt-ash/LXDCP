@@ -64,8 +64,8 @@ return new \Phalcon\Config([
                 'actions' => [
                     'colocations' => [
                         'index', 'search', 'create', 'new', 'edit', 'form',
-                        'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject',
-                        'save', 'delete', 'tabledata', 'slidedata', 'slideSlide'                
+                        'ipObjectAdd', 'ipObjectEdit', 'ipObjectDelete', 'ipObjectMakeMain',
+                        'save', 'delete', 'tabledata', 'slidedata', 'slideSlide', 'generateIpPdf'                
                     ]
                 ],
             ],
@@ -166,7 +166,7 @@ return new \Phalcon\Config([
                 'actions' => [
                     'physical_servers' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 
-                        'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
+                        'ipObjectAdd', 'ipObjectEdit', 'ipObjectDelete', 'ipObjectMakeMain',
                         'slidedata', 'slideSlide', 'ovzHostInfo', 'ovzHostStatisticsInfo', 'ovzConnector', 'ovzConnectorExecute'                
                     ]
                 ],
@@ -209,8 +209,8 @@ return new \Phalcon\Config([
                 'actions' => [
                     'virtual_servers' => [
                         'index', 
-                        'addIpObject', 'editIpObject', 'deleteIpObject', 'makeMainIpObject', 
-                        'save', 'slidedata', 'slideSlide', 'ovzListInfo', 'ovzStatisticsInfo', 
+                        'ipObjectAdd', 'ipObjectEdit', 'ipObjectDelete', 'ipObjectMakeMain',
+                        'save', 'slidedata', 'slideSlide', 'ovzUpdateInfo', 
                     ]
                 ],
             ],
@@ -309,7 +309,7 @@ return new \Phalcon\Config([
                 ),
                 'actions' => [
                     'virtual_servers' => [
-                        'configureVirtualServers', 'configureVirtualServersForm', 'sendConfigureVirtualServers'
+                        'virtualServersConfigure', 'virtualServersConfigureForm', 'virtualServersConfigureSend'
                     ]
                 ],
             ],
@@ -406,7 +406,7 @@ return new \Phalcon\Config([
                 ),
                 'actions' => [
                     'virtual_servers' => [
-                        'modifyVirtualServerExecute', 'modifyVirtualServer',
+                        'virtualServerModifyExecute', 'virtualServerModify',
                     ]
                 ],
             ],
@@ -425,7 +425,7 @@ return new \Phalcon\Config([
                 ),
                 'actions' => [
                     'virtual_servers' => [
-                        'changeRootPassword', 'changeRootPasswordExecute',
+                        'rootPasswordChange', 'rootPasswordChangeExecute',
                     ]
                 ],
             ],
