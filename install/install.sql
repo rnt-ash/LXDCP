@@ -147,6 +147,91 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `mon_local_jobs` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `servers_id` int(11) NOT NULL,
+  `servers_class` varchar(100) NOT NULL,
+  `mon_behavior_class` varchar(100) NOT NULL,
+  `period` int(11) NOT NULL DEFAULT 5,
+  `status` varchar(16) DEFAULT 'normal',
+  `last_status_change` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `warning_value` varchar(32) NOT NULL,
+  `maximal_value` varchar(32) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `alarm` tinyint(1) NOT NULL DEFAULT 1,
+  `alarmed` tinyint(1) NOT NULL DEFAULT 0,
+  `muted` tinyint(1) NOT NULL DEFAULT 0,
+  `last_alarm` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `alarm_period` int(11) NOT NULL DEFAULT 15,
+  `mon_contacts_message` text NOT NULL COMMENT 'FK logins, comma separated value',
+  `mon_contacts_alarm` text NOT NULL COMMENT 'FK logins, comma separated value',
+  `last_run` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_rrd_run` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `mon_remote_jobs` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `servers_id` int(11) NOT NULL,
+  `servers_class` varchar(100) NOT NULL,
+  `main_ip` varchar(39),
+  `mon_behavior_class` varchar(100) NOT NULL,
+  `period` int(11) NOT NULL DEFAULT 5,
+  `status` varchar(16) DEFAULT 'normal',
+  `last_status_change` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `uptime` text,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `healing` tinyint(1) NOT NULL DEFAULT 0,
+  `alarm` tinyint(1) NOT NULL DEFAULT 1,
+  `alarmed` tinyint(1) NOT NULL DEFAULT 0,
+  `muted` tinyint(1) NOT NULL DEFAULT 0,
+  `last_alarm` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `alarm_period` int(11) NOT NULL DEFAULT 15,
+  `mon_contacts_message` text NOT NULL COMMENT 'FK logins, comma separated value',
+  `mon_contacts_alarm` text NOT NULL COMMENT 'FK logins, comma separated value',
+  `last_run` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `mon_local_logs` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `mon_local_jobs_id` int(11) NOT NULL COMMENT 'FK mon_local_jobs',
+  `value` text NOT NULL,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `mon_local_jobs_id` (`mon_local_jobs_id`),
+  KEY `modified` (`modified`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `mon_remote_logs` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `mon_remote_jobs_id` int(11) NOT NULL COMMENT 'FK mon_remote_jobs',
+  `value` text NOT NULL,
+  `heal_job` int(11) DEFAULT NULL COMMENT 'FK jobs',
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `mon_remote_jobs_id` (`mon_remote_jobs_id`),
+  KEY `modified` (`modified`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `mon_uptimes` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `mon_remote_jobs_id` int(11) NOT NULL COMMENT 'FK mon_remote_jobs_id',
+  `year_month` char(6) NOT NULL COMMENT 'YYYYMM',
+  `max_seconds` int(11) NOT NULL,
+  `up_seconds` int(11) NOT NULL,
+  `up_percentage` decimal(9,8) NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  KEY `mon_remote_jobs_id` (`mon_remote_jobs_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `mon_local_daily_logs` (
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `mon_local_jobs_id` int(11) NOT NULL COMMENT 'FK mon_local_jobs_id',
+  `day` date NOT NULL,
+  `value` text NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  KEY `mon_local_jobs_id` (`mon_local_jobs_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
 (1, 'employees', 'index:general:*,\r\nadministration:general:*,\r\ncolocations:general:*,\r\ncustomers:general:*,\r\npartners:general:*,\r\npartners:new:*,\r\npartners:edit:*,\r\ndcoipobjects:general:*,\r\njobs:general:*,\r\nlogins:general:*,\r\nphysical_servers:general:*,\r\nphysical_servers:filter_customers:*,\r\nphysical_servers:filter_colocations:*,\r\nvirtual_servers:general:*,\r\nvirtual_servers:filter_customers:*,\r\nvirtual_servers:filter_physical_servers:*,\r\nvirtual_servers:new:*,\r\nvirtual_servers:delete:*,\r\nvirtual_servers:edit:*,\r\nvirtual_servers:configure:*,\r\nvirtual_servers:modify:*,\r\nvirtual_servers:save:*,\r\nvirtual_servers:changestate:*,\r\nvirtual_servers:snapshots:*,\r\nvirtual_servers:change_root_password:*,\r\nvirtual_servers:replicas:*,\r\n'),
 (5, 'partners', 'index:general:*,\r\npartners:general:partners,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nphysical_servers:filter_customers:partners,\r\nphysical_servers:filter_colocations:partners,\r\nvirtual_servers:general:partners,\r\nvirtual_servers:filter_customers:partners,\r\nvirtual_servers:filter_physical_servers:partners,\r\nvirtual_servers:new:partners,\r\nvirtual_servers:delete:partners,\r\nvirtual_servers:edit:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:save:partners,\r\nvirtual_servers:changestate:partners,\r\nvirtual_servers:snapshots:partners,\r\nvirtual_servers:change_root_password:partners,\r\nvirtual_servers:replicas:partners,\r\njobs:general:partners,'),
