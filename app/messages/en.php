@@ -515,6 +515,8 @@ $messages = [
     "monitoring_monuptimesgenerator_computefailed" => "Compute uptime failed: ",
     "monitoring_monlocaldailylogsgenerator_computefailed" => "Compute average failed: ",
     "monitoring_monlocaldailylogsgenerator_delete_old_daily_log" => "Had to delete MonLocalDailyLog because it will be new generated: ",
+    "monitoring_monlocaljobs_no_valid_unit" => "The passed unit argument is no valid unit.",
+    "monitoring_monlocaljobs_end_before_start" => "End date cannot be before start date.",
     
     // JobsControllerBase und Jobs (model)
     "jobs_search_not_found" => "The search did not find any jobs",
