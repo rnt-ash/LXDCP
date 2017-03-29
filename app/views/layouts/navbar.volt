@@ -21,6 +21,9 @@
                 {% if permissions.checkPermission('customers','general') %}
                     <li class="headerNavText">{{ link_to('customers/tabledata', '<i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Customers') }}</li>
                 {% endif %}
+                {% if permissions.checkPermission('partners','general') %}
+                    <li class="headerNavText">{{ link_to('partners/tabledata', '<i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp; Partners') }}</li>
+                {% endif %}
                 {% if permissions.checkPermission('logins','general') %}
                     <li class="headerNavText">{{ link_to('logins/tabledata', '<i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; Logins') }}</li>
                 {% endif %}

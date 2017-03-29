@@ -20,6 +20,7 @@
 namespace RNTForest\OVZCP\controllers;
 
 use \RNTForest\core\models\Customers;
+use \RNTForest\core\models\CustomersPartners;
 use \RNTForest\core\models\Logins;
 use \RNTForest\core\models\Groups;
 use \RNTForest\ovz\models\Colocations;
@@ -391,6 +392,32 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
         $this->flashSession->success("Customers created successfully");
         return $this->redirectTo("administration/index");
     }
+    
+    public function fakePartnersAction(){
+        $faker = \Faker\Factory::create("de_CH");
+        
+        // random partners
+        for($i=1;$i<=10;$i++){
+            $customerPartners = new CustomersPartners();
+            
+            // random customer
+            $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
+            $customerPartners->setCustomersId($customer->getId());
+            
+            // random partner
+            $partner = $this->getRandomEntry('\RNTForest\core\models\Customers',3,$customer->getId());
+            $customerPartners->setPartnersId($partner->getId());
+            
+            if (!$customerPartners->save()) {
+                foreach ($customerPartners->getMessages() as $message) {
+                    $this->flashSession->error("Partners: ".$message);
+                }
+                return $this->redirectTo("administration/index");
+            }
+        }
+        $this->flashSession->success("Partners created successfully");
+        return $this->redirectTo("administration/index");
+    }
         
     public function fakeLoginsAction(){
         $faker = \Faker\Factory::create("de_CH");
@@ -401,8 +428,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $login->setLoginname($faker->username(10));
             $login->setPassword(hash('sha256', $this->config->application['securitySalt']."1234.abcd"));
 
-            $rand = rand(3,Customers::count()-1);
-            $customer = Customers::findFirst(array('offset'=>$rand));
+            $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
             $login->setCustomersId($customer->getId());
 
             $login->setAdmin(0);
@@ -412,8 +438,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $login->setLastname($faker->lastName);
             $login->setEmail($faker->email);
 
-            $rand = rand(1,Groups::count()-1);
-            $group = Groups::findFirst(array('offset'=>$rand));
+            $group = $this->getRandomEntry('\RNTForest\core\models\Groups',1);
             $login->setGroups($group->getId());
 
             $login->setLocale("en_US.utf8");
@@ -439,8 +464,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $city = $faker->city;
             $colocation->setName("Colo ".$city." ".$faker->postcode);
 
-            $rand = rand(3,Customers::count()-1);
-            $customer = Customers::findFirst(array('offset'=>$rand));
+            $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
             $colocation->setCustomersId($customer->getId());
 
             $colocation->setDescription($faker->sentence);
@@ -500,12 +524,10 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $physicalServer->setName("Phys ".key($faker->canton)." ".$faker->buildingNumber);
             $physicalServer->setDescription($faker->sentence);
 
-            $rand = rand(3,Customers::count()-1);
-            $customer = Customers::findFirst(array('offset'=>$rand));
+            $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
             $physicalServer->setCustomersId($customer->getId());
 
-            $rand = rand(1,Colocations::count()-1);
-            $colocation = Colocations::findFirst(array('offset'=>$rand));
+            $colocation = $this->getRandomEntry('\RNTForest\ovz\models\Colocations',1);
             $physicalServer->setColocationsId($colocation->getId());
 
             $physicalServer->setJobPublicKey($faker->sha256);
@@ -558,12 +580,10 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $virtualServer->setName("Virt ".key($faker->canton)." ".$faker->buildingNumber);
             $virtualServer->setDescription($faker->sentence);
 
-            $rand = rand(3,Customers::count()-1);
-            $customer = Customers::findFirst(array('offset'=>$rand));
+            $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
             $virtualServer->setCustomersId($customer->getId());
 
-            $rand = rand(1,PhysicalServers::count()-1);
-            $physicalServer = PhysicalServers::findFirst(array('offset'=>$rand));
+            $physicalServer = $this->getRandomEntry('\RNTForest\ovz\models\PhysicalServers',1);
             $virtualServer->setPhysicalServersId($physicalServer->getId());
 
             $virtualServer->setJobPublicKey($faker->sha256);
@@ -604,5 +624,28 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
 
         $this->flashSession->success("Virtual Servers created successfully");
         return $this->redirectTo("administration/index");
+    }
+    
+    /**
+    * returns an random entry of any model
+    * 
+    * @param mixed $model
+    * @param mixed $min
+    * @param mixed $exceptId
+    */
+    private function getRandomEntry($model,$min=1,$exceptId=0){
+        $rand = rand($min,$model::count()-1);
+        
+        $entry = $model::findFirst(
+            array(
+                'offset'=>$rand,
+                "conditions" => "id != ".$exceptId,
+            )
+        );
+        if(!$entry){
+            return $this->getRandomEntry($model,$min,$exceptId);
+        }
+            
+        return $entry;
     }
 }

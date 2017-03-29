@@ -20,10 +20,12 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="{% if sessionBootwatchTheme is defined %}https://bootswatch.com/{{ sessionBootwatchTheme }}/bootstrap.css{% endif %}" rel="stylesheet" name="bootswatch">
+        
         {% block head %}
             {# css includes #}
             {{ stylesheet_link("/css/navbar.css") }}
             {{ stylesheet_link("/css/style.css") }}
+            {{ stylesheet_link("/css/bootcomplete.css") }}
         {% endblock %}
         
         <!-- Latest compiled and minified JavaScript -->
@@ -58,9 +60,9 @@
             {# javascript includes #}
             {{ javascript_include("/js/navbar.js") }}
             {{ javascript_include("/js/tableslidedata.js") }}
-            {{ javascript_include("/js/bootbox.js") }}
             {{ javascript_include("/js/loadingScreen.js") }}
             {{ javascript_include("/js/genPassword.js") }}
+            {{ javascript_include("/js/jquery.bootcomplete.js") }}
             {% block jsfooter %}{% endblock %}
         </div>
     </body>

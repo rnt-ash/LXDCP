@@ -48,6 +48,28 @@ $messages = [
     "customers_form_comment" => "Comment",
     "customers_form_active" => "Active",
     
+    // Partners
+    "partners_customer" => "Customer",
+    "partners_customer_required" => "Customer is required",
+    "partners_customer_digit" => "Customer id must be a digit",
+    "partners_partner_required" => "Partner is required",
+    "partners_partner_digit" => "Partner id muste be a digit",
+    "partners_partner_same_customer" => "Partner can't be identical to customer",
+    "partners_partner_already_exists" => "Partner has already been assigned to this customer",
+    "partners_customer_empty" => "Please select a valid customer",
+    "partners_partner_empty" => "Please select a valid partner",
+    "partners_uuid_required" => "UUID of the partner is required",
+    "partners_uuid_not_exists" => "UUID does not exist",
+    "partners_added_successfully" => "Partner was added successfully",
+    // PartnersForm
+    "partners_form_customer" => "Customer",
+    "partners_form_choose_customer" => "Please choose a customer...",
+    "partners_form_partner" => "Partner",
+    "partners_form_choose_partner" => "Please choose a partner...",
+    // View
+    "partners_save" => "Save",
+    "partners_cancel" => "Cancel",
+    
     // Colocations
     "colocation_all_colocations" => "All Colocations",
     "colocations_invalid_level" => "invalid level!",
@@ -493,6 +515,8 @@ $messages = [
     "monitoring_monuptimesgenerator_computefailed" => "Compute uptime failed: ",
     "monitoring_monlocaldailylogsgenerator_computefailed" => "Compute average failed: ",
     "monitoring_monlocaldailylogsgenerator_delete_old_daily_log" => "Had to delete MonLocalDailyLog because it will be new generated: ",
+    "monitoring_monlocaljobs_no_valid_unit" => "The passed unit argument is no valid unit.",
+    "monitoring_monlocaljobs_end_before_start" => "End date cannot be before start date.",
     
     // JobsControllerBase und Jobs (model)
     "jobs_search_not_found" => "The search did not find any jobs",

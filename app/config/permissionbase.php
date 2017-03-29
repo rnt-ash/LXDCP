@@ -46,7 +46,8 @@ return new \Phalcon\Config([
                 'actions' => [
                     'administration' => [
                         'index', 'scanAllVS', 'genPermissionsPDF', 'genOVZJobsPDF', 'genActionsPDF', 'deployRootKeys',
-                        'faker', 'fakeCustomers', 'fakeLogins', 'fakeColocations', 'fakePhysicalServers', 'fakeVirtualServers',
+                        'faker', 'fakeCustomers', 'fakeLogins', 'fakeColocations', 'fakePhysicalServers', 
+                        'fakeVirtualServers', 'fakePartners',
                     ]
                 ],
             ],
@@ -80,6 +81,47 @@ return new \Phalcon\Config([
                 'actions' => [
                     'customers' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 'tabledata', 'tableDetail' 
+                    ]
+                ],
+            ],
+        ],
+        'partners' => [
+            'general' => [
+                'description' => 'General access', 
+                'scopes' => [
+                    '1' => "Show all partners", 
+                    'customers' => "Show only own partners and customers where customer is partner", 
+                    'partners' => "Show only own partners and customers where customer is partner", 
+                    '0' => "Show no customers", 
+                ],
+                'actions' => [
+                    'partners' => [
+                        'index', 'form', 'save', 'delete', 'tabledata', 'getCustomersAsJson',
+                        'partnerAdd', 'partnerAddExecute',
+                    ]
+                ],
+            ],
+            'new' => [
+                'description' => 'New partner allocation', 
+                'scopes' => [
+                    '1' => "Create all partners", 
+                    '0' => "Create no partners", 
+                ],
+                'actions' => [
+                    'partners' => [
+                        'new',
+                    ]
+                ],
+            ],
+            'edit' => [
+                'description' => 'Edit partner allocation', 
+                'scopes' => [
+                    '1' => "Edit all partners", 
+                    '0' => "Edit no partners", 
+                ],
+                'actions' => [
+                    'partners' => [
+                        'edit',
                     ]
                 ],
             ],
