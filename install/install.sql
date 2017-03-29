@@ -148,8 +148,8 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
 
 CREATE TABLE IF NOT EXISTS `mon_local_jobs` (
   `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `servers_id` int(11) NOT NULL,
-  `servers_class` varchar(100) NOT NULL,
+  `server_id` int(11) NOT NULL,
+  `server_class` varchar(100) NOT NULL,
   `mon_behavior_class` varchar(100) NOT NULL,
   `period` int(11) NOT NULL DEFAULT 5,
   `status` varchar(16) DEFAULT 'normal',
@@ -170,8 +170,8 @@ CREATE TABLE IF NOT EXISTS `mon_local_jobs` (
 
 CREATE TABLE IF NOT EXISTS `mon_remote_jobs` (
   `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `servers_id` int(11) NOT NULL,
-  `servers_class` varchar(100) NOT NULL,
+  `server_id` int(11) NOT NULL,
+  `server_class` varchar(100) NOT NULL,
   `main_ip` varchar(39),
   `mon_behavior_class` varchar(100) NOT NULL,
   `period` int(11) NOT NULL DEFAULT 5,
