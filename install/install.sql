@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `customers_partners` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `ip_objects` (
-  `id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `server_class` varchar(100) NOT NULL,
   `server_id` int(11) unsigned NOT NULL,
   `version` tinyint(1) unsigned NOT NULL DEFAULT '4' COMMENT 'IP version 4 or 6',
