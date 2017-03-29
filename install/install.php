@@ -222,7 +222,14 @@ function install(){
     file_put_contents($webRoot."app/config/config.ini",str_replace(' ','',$configContent));
     
     // create cronjob
-    $cron = "* * * * * curl http://".$_SERVER['HTTP_HOST']."/push > /dev/null 2>&1\n";
+    $cron = "* * * * * curl http://".$_SERVER['HTTP_HOST']."/push > /dev/null 2>&1\n".
+    "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring runJobs 2>&1\n".
+    "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring runCriticalJobs 2>&1\n".
+    "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring runLocalJobs 2>&1\n".
+    "0 * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring recomputeMonUptimes 2>&1\n".
+    "0 0 1 * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring genMonUptimes 2>&1\n".
+    "30 0 1 * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring genMonLocalDailyLogs 2>&1\n".
+    "";
     file_put_contents($webRoot."install/cron",$cron);
     
     $user = exec('whoami');
