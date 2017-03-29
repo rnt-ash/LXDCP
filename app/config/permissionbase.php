@@ -84,15 +84,15 @@ return new \Phalcon\Config([
                 ],
             ],
         ],
-        'dcoipobjects' => [
+        'ip_objects' => [
             'general' => [
                 'description' => 'General access', 
                 'scopes' => [
-                    '1' => "Show all dcoipobjects", 
-                    '0' => "Show no dcoipobjects", 
+                    '1' => "Show all ipobjects", 
+                    '0' => "Show no ipobjects", 
                 ],
                 'actions' => [
-                    'dcoipobjects' => [
+                    'ip_objects' => [
                         'index', 'new', 'edit', 'form', 'save', 'delete', 'cancel', 'tabledata', 'makeMain'
                     ]
                 ],

@@ -36,18 +36,17 @@ CREATE TABLE IF NOT EXISTS `customers_partners` (
   KEY `partners_id` (`partners_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `dcoipobjects` (
-  `id` int(11) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `ip_objects` (
+  `id` int(11) unsigned NOT NULL,
+  `server_class` varchar(100) NOT NULL,
+  `server_id` int(11) unsigned NOT NULL,
   `version` tinyint(1) unsigned NOT NULL DEFAULT '4' COMMENT 'IP version 4 or 6',
   `type` tinyint(1) unsigned NOT NULL COMMENT '1:IpAddress, 2:IpRange, 3:IpNet',
   `value1` varchar(39) NOT NULL COMMENT 'IpAddress or start-IpAddress if IpRange',
-  `value2` varchar(39) COMMENT 'netmask(IpAddress), end-IpAddress(IpRange) oder IpNet prefix(IpNet)',
-  `allocated` tinyint(1) NOT NULL COMMENT '1:reservierte IP, 2:zugeteilte IP, 3:zugeteilte IP automatisch',
-  `main` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Gebundene Haupt-IP (für Monitoring)',
-  `colocations_id` int(11) unsigned,
-  `physical_servers_id` int(11) unsigned,
-  `virtual_servers_id` int(11) unsigned,
-  `comment` varchar(50)
+  `value2` varchar(39) DEFAULT NULL COMMENT 'netmask(IpAddress), end-IpAddress(IpRange) or IpNet prefix(IpNet)',
+  `allocated` tinyint(1) NOT NULL COMMENT '1:reserved IP, 2:allocated IP, 3:allocated IP automatic',
+  `main` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Main IP (for monitoring)',
+  `comment` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `groups` (
@@ -148,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
-(1, 'employees', 'index:general:*,\r\nadministration:general:*,\r\ncolocations:general:*,\r\ncustomers:general:*,\r\ndcoipobjects:general:*,\r\njobs:general:*,\r\nlogins:general:*,\r\nphysical_servers:general:*,\r\nphysical_servers:filter_customers:*,\r\nphysical_servers:filter_colocations:*,\r\nvirtual_servers:general:*,\r\nvirtual_servers:filter_customers:*,\r\nvirtual_servers:filter_physical_servers:*,\r\nvirtual_servers:new:*,\r\nvirtual_servers:delete:*,\r\nvirtual_servers:edit:*,\r\nvirtual_servers:configure:*,\r\nvirtual_servers:modify:*,\r\nvirtual_servers:save:*,\r\nvirtual_servers:changestate:*,\r\nvirtual_servers:snapshots:*,\r\nvirtual_servers:change_root_password:*,\r\nvirtual_servers:replicas:*,\r\n'),
+(1, 'employees', 'index:general:*,\r\nadministration:general:*,\r\ncolocations:general:*,\r\ncustomers:general:*,\r\nip_objects:general:*,\r\njobs:general:*,\r\nlogins:general:*,\r\nphysical_servers:general:*,\r\nphysical_servers:filter_customers:*,\r\nphysical_servers:filter_colocations:*,\r\nvirtual_servers:general:*,\r\nvirtual_servers:filter_customers:*,\r\nvirtual_servers:filter_physical_servers:*,\r\nvirtual_servers:new:*,\r\nvirtual_servers:delete:*,\r\nvirtual_servers:edit:*,\r\nvirtual_servers:configure:*,\r\nvirtual_servers:modify:*,\r\nvirtual_servers:save:*,\r\nvirtual_servers:changestate:*,\r\nvirtual_servers:snapshots:*,\r\nvirtual_servers:change_root_password:*,\r\nvirtual_servers:replicas:*,\r\n'),
 (5, 'partners', 'index:general:*,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nphysical_servers:filter_customers:partners,\r\nphysical_servers:filter_colocations:partners,\r\nvirtual_servers:general:partners,\r\nvirtual_servers:filter_customers:partners,\r\nvirtual_servers:filter_physical_servers:partners,\r\nvirtual_servers:new:partners,\r\nvirtual_servers:delete:partners,\r\nvirtual_servers:edit:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:save:partners,\r\nvirtual_servers:changestate:partners,\r\nvirtual_servers:snapshots:partners,\r\nvirtual_servers:change_root_password:partners,\r\nvirtual_servers:replicas:partners,\r\njobs:general:partners,'),
 (10, 'customers', 'index:general:*,\r\ncolocations:general:customers,\r\nphysical_servers:general:customers,\r\nphysical_servers:filter_colocations:customers,\r\nvirtual_servers:general:customers,\r\nvirtual_servers:filter_physical_servers:customers,\r\nvirtual_servers:new:customers,\r\nvirtual_servers:delete:customers,\r\nvirtual_servers:edit:customers,\r\nvirtual_servers:configure:customers,\r\nvirtual_servers:modify:customers,\r\nvirtual_servers:save:customers,\r\nvirtual_servers:changestate:customers,\r\nvirtual_servers:snapshots:customers,\r\nvirtual_servers:change_root_password:customers,\r\nvirtual_servers:replicas:customers,\r\njobs:general:customers,\r\n');
 

@@ -110,7 +110,7 @@ $messages = [
     "ipobjects_ip_main" => "Haupt IP Adresse",
     "ipobjects_comment" => "Kommentar",
     "ipobjects_commentinfo" => "Zusätzliche Information zum IP Objekt",
-    "ipobjects_dco_submit" => "Kein DCO eingereicht.",
+    "ipobjects_dco_submit" => "Kein Datacenter Objekt übermittelt",
     "ipobjects_ip_not_valid" => "Keine gültige IP Adresse",
     "ipobjects_secont_value_valid" => "Kein gültiger zweiter Wert",
     "ipobjects_assigned_ip" => "Zugewiesene IPs können keine Range sein",
@@ -509,9 +509,6 @@ $messages = [
     "tableslide_item_update_success" => "Item wurde erfolgreich aktualisiert",
     "tableslide_item_delete_success" => "Item wurde erfolgreich gelöscht",
     
-    // Libraries - Permissions
-    "libraries_permissions_unknown" => "Unbekannte Permission gefunden: ",
-
     // ModelBase
     "modelbase_object_not_found" => "Objekt wurde nicht gefunden",
     

@@ -25,7 +25,7 @@ use \RNTForest\core\models\Groups;
 use \RNTForest\ovz\models\Colocations;
 use \RNTForest\ovz\models\PhysicalServers;
 use \RNTForest\ovz\models\VirtualServers;
-use \RNTForest\ovz\models\Dcoipobjects;
+use \RNTForest\ovz\models\IpObjects;
 use \RNTForest\core\libraries\Helpers;
 
 class AdministrationController extends \RNTForest\core\controllers\AdministrationControllerBase
@@ -106,15 +106,15 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                     $ips = explode(" ",$settings['Hardware']['venet0']['ips']);
                     foreach($ips as $ipAddress){
                         $parts = explode("/",$ipAddress);
-                        $ip = new Dcoipobjects();
+                        $ip = new IpObjects();
                         $ip->setValue1($parts[0]);
                         if(!empty($parts[0])) $ip->setValue2($parts[1]);
                         $ip->checkVersion();
                         if($ip->isValidIP($parts[0])){
-                            $found = Dcoipobjects::findFirst("value1 = '".$parts[0]."'");
+                            $found = IpObjects::findFirst("value1 = '".$parts[0]."'");
                             if($found) continue;
-                            $ip->setType(Dcoipobjects::TYPE_IPADDRESS);
-                            $ip->setAllocated(Dcoipobjects::ALLOC_AUTOASSIGNED);
+                            $ip->setType(IpObjects::TYPE_IPADDRESS);
+                            $ip->setAllocated(IpObjects::ALLOC_AUTOASSIGNED);
                             $ip->setVirtualServersId($virtualServer->getId());
                             if($ip->save() === false){
                                 $this->flashSession->error("IP Address (".$ipAddress.") save failed.");
@@ -239,7 +239,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $colocations = Colocations::find();
             $netId = count($colocations)+1;
             
-            $dcoipobject = new Dcoipobjects();
+            $dcoipobject = new IpObjects();
             $dcoipobject->setVersion(4);
             $dcoipobject->setType(2);
             $dcoipobject->setValue1("192.168.".$netId.".0");
@@ -254,7 +254,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                 return $this->redirectTo("administration/index");
             }
             // Assigned IP
-            $dcoipobject = new Dcoipobjects();
+            $dcoipobject = new IpObjects();
             $dcoipobject->setVersion(4);
             $dcoipobject->setType(1);
             $dcoipobject->setValue1("192.168.".$netId.".".rand(1,10));
@@ -291,7 +291,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                     return $this->redirectTo("administration/index");
                 }
                 // IP range
-                $dcoipobject = new Dcoipobjects();
+                $dcoipobject = new IpObjects();
                 $dcoipobject->setVersion(4);
                 $dcoipobject->setType(2);
                 $dcoipobject->setValue1("192.168.".$netId.".".$i."1");
@@ -306,7 +306,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                     return $this->redirectTo("administration/index");
                 }
                 // Assigned IP
-                $dcoipobject = new Dcoipobjects();
+                $dcoipobject = new IpObjects();
                 $dcoipobject->setVersion(4);
                 $dcoipobject->setType(1);
                 $dcoipobject->setValue1("192.168.".$netId.".".$i."1");
@@ -340,7 +340,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                     return $this->redirectTo("administration/index");
                 }
                 // Assigned IP
-                $dcoipobject = new Dcoipobjects();
+                $dcoipobject = new IpObjects();
                 $dcoipobject->setVersion(4);
                 $dcoipobject->setType(1);
                 $dcoipobject->setValue1("192.168.".$netId.".".$i."2");
@@ -456,12 +456,12 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
 
             // IP Net
             $colocations = Colocations::find();
-            $dcoipobject = new Dcoipobjects();
-            $dcoipobject->setVersion(Dcoipobjects::VERSION_IPV4);
-            $dcoipobject->setType(Dcoipobjects::TYPE_IPNET);
+            $dcoipobject = new IpObjects();
+            $dcoipobject->setVersion(IpObjects::VERSION_IPV4);
+            $dcoipobject->setType(IpObjects::TYPE_IPNET);
             $dcoipobject->setValue1("192.168.".(count($colocations)+1).".0");
             $dcoipobject->setValue2("24");
-            $dcoipobject->setAllocated(Dcoipobjects::ALLOC_RESERVED);
+            $dcoipobject->setAllocated(IpObjects::ALLOC_RESERVED);
             $dcoipobject->setMain(0);
             $dcoipobject->setColocationsId($colocation->getId());
             if (!$dcoipobject->save()) {
@@ -471,12 +471,12 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                 return $this->redirectTo("administration/index");
             }
             // Assigned IP
-            $dcoipobject = new Dcoipobjects();
-            $dcoipobject->setVersion(Dcoipobjects::VERSION_IPV4);
-            $dcoipobject->setType(Dcoipobjects::TYPE_IPNET);
+            $dcoipobject = new IpObjects();
+            $dcoipobject->setVersion(IpObjects::VERSION_IPV4);
+            $dcoipobject->setType(IpObjects::TYPE_IPNET);
             $dcoipobject->setValue1("192.168.".(count($colocations)+1).".".rand(1,10));
             $dcoipobject->setValue2("255.255.255.0");
-            $dcoipobject->setAllocated(Dcoipobjects::ALLOC_ASSIGNED);
+            $dcoipobject->setAllocated(IpObjects::ALLOC_ASSIGNED);
             $dcoipobject->setMain(1);
             $dcoipobject->setColocationsId($colocation->getId());
             $dcoipobject->setComment("Firewall");
@@ -524,12 +524,12 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             }
             // Assigned IP
             $coloId = $colocation->getId();
-            $coloIpRange = Dcoipobjects::findFirst("colocations_id = ".$coloId);
+            $coloIpRange = IpObjects::findFirst("colocations_id = ".$coloId);
             $value1 = $coloIpRange->getValue1();
             $ip = explode(".",$value1);
             $physicalServers = PhysicalServers::find("colocations_id = ".$coloId);
 
-            $dcoipobject = new Dcoipobjects();
+            $dcoipobject = new IpObjects();
             $dcoipobject->setVersion(4);
             $dcoipobject->setType(1);
             $dcoipobject->setValue1("192.168.".$ip[2].".".($ip[3]+count($physicalServers))."1");
@@ -581,12 +581,12 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                 return $this->redirectTo("administration/index");
             }
             // Assigned IP
-            $physicalIp = Dcoipobjects::findFirst("physical_servers_id = ".$physicalServer->getId()." AND type = 1");
+            $physicalIp = IpObjects::findFirst("physical_servers_id = ".$physicalServer->getId()." AND type = 1");
             $value1 = $physicalIp->getValue1();
             $ip = explode(".",$value1);
             $virtualServers = VirtualServers::find("physical_servers_id = ".$physicalServer->getId());
             
-            $dcoipobject = new Dcoipobjects();
+            $dcoipobject = new IpObjects();
             $dcoipobject->setVersion(4);
             $dcoipobject->setType(1);
             $dcoipobject->setValue1($ip[0].".".$ip[1].".".$ip[2].".".($ip[3]+count($virtualServers)));

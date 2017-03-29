@@ -19,7 +19,7 @@
 
 namespace RNTForest\OVZCP\controllers;
 
-class DcoipobjectsController extends \RNTForest\ovz\controllers\DcoipobjectsControllerBase
+class IpObjectsController extends \RNTForest\ovz\controllers\IpObjectsControllerBase
 {
 
 }

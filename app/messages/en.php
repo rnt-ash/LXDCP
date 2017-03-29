@@ -508,9 +508,6 @@ $messages = [
     "tableslide_item_update_success" => "Item was updated successfully",
     "tableslide_item_delete_success" => "Item was deleted successfully",
     
-    // Libraries - Permissions
-    "libraries_permissions_unknown" => "unknown permission found: ", 
-    
     // ModelBase
     "modelbase_object_not_found" => "Object was not found",   
     
