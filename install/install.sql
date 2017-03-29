@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `mon_remote_jobs` (
   `main_ip` varchar(39),
   `mon_behavior_class` varchar(100) NOT NULL,
   `period` int(11) NOT NULL DEFAULT 5,
-  `status` varchar(16) DEFAULT 'normal',
+  `status` varchar(16) DEFAULT 'nostate',
   `last_status_change` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `uptime` text,
   `active` tinyint(1) NOT NULL DEFAULT 1,
