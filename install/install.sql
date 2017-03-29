@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `physical_servers` (
   `fqdn` varchar(50) NOT NULL COMMENT 'Funktionaler FQDN',
   `core` tinyint(2) unsigned NOT NULL DEFAULT '1',
   `memory` int(11) unsigned NOT NULL DEFAULT '1024' COMMENT 'Arbeitsspeicher in MB',
-  `space` int(11) unsigned NOT NULL DEFAULT '100' COMMENT 'Speicherplatz in MB',
+  `space` int(11) unsigned NOT NULL DEFAULT '100' COMMENT 'Speicherplatz in GB',
   `activation_date` date NOT NULL,
   `pending` text,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `virtual_servers` (
   `fqdn` varchar(50),
   `core` tinyint(2) DEFAULT '1' NOT NULL,
   `memory` int(11) unsigned NOT NULL DEFAULT '1024' COMMENT 'Arbeitsspeicher in MB',
-  `space` int(11) unsigned NOT NULL DEFAULT '100' COMMENT 'Speicherplatz in MB',
+  `space` int(11) unsigned NOT NULL DEFAULT '100' COMMENT 'Speicherplatz in GB',
   `activation_date` date NOT NULL,
   `pending` text,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
