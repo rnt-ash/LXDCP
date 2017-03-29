@@ -148,6 +148,7 @@ $messages = [
     "ipobjects_unexpected_type" => "Unexpected Type!",
     //View
     "ipobjects_edit_title" => "IP Objects",
+    "ipobjects_reservations" => "Reservations",
     "ipobjects_edit_cancel" => "Cancel",
     "ipobjects_edit_save" => "Save",
       

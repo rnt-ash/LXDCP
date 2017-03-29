@@ -136,8 +136,8 @@ $messages = [
     "ipobjects_ip_not_valid" => "Keine gültige IP Adresse",
     "ipobjects_secont_value_valid" => "Kein gültiger zweiter Wert",
     "ipobjects_assigned_ip" => "Zugewiesene IPs können keine Range sein",
-    "ipobjects_no_reservation" => "Keine Reservation gefunden.",
-    "ipobjects_ip_notpart_reservation" => "Die IP ist nicht der Reservation zugewiesen",
+    "ipobjects_no_reservation" => "Keine passsende Reservation gefunden.",
+    "ipobjects_ip_notpart_reservation" => "Diese IP ist nicht Teil einer Reservation.",
     "ipobjects_ip_already_exists" => "IP existiert bereits.",
     "ipobjects_ip_required" => "Benötige IP-Adresse",
     "ipobjects_ip_valid" => "Ungültige Zeichen in der IP Address.",
@@ -148,6 +148,7 @@ $messages = [
     "ipobjects_unexpected_type" => "Unerwarteter Typ!",
     //View
     "ipobjects_edit_title" => "IP Objekte",
+    "ipobjects_reservations" => "Reservationen",
     "ipobjects_edit_cancel" => "Abbrechen",
     "ipobjects_edit_save" => "Speichern",
       

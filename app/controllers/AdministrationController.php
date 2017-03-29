@@ -101,9 +101,16 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                 } else {
                     $this->flashSession->success("Virtual (".$virtualServer->getName().") Server sucessfully saved/updated.");
                 }
-
+                
                 // save IPs
                 if(isset($settings['Hardware']['venet0']['ips'])){
+                    
+                    $this->session->set("IpObjectsForm", array(
+                        "op" => "new",
+                        "server_class" => '\RNTForest\ovz\models\VirtualServers',
+                        "server_id" => intval($virtualServer->getId()),
+                    ));
+                    
                     $ips = explode(" ",$settings['Hardware']['venet0']['ips']);
                     foreach($ips as $ipAddress){
                         $parts = explode("/",$ipAddress);
@@ -116,7 +123,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                             if($found) continue;
                             $ip->setType(IpObjects::TYPE_IPADDRESS);
                             $ip->setAllocated(IpObjects::ALLOC_AUTOASSIGNED);
-                            $ip->setVirtualServersId($virtualServer->getId());
+                            $ip->setDCObject($virtualServer);
                             if($ip->save() === false){
                                 $this->flashSession->error("IP Address (".$ipAddress.") save failed.");
                                 $messages = $ip->getMessages();
