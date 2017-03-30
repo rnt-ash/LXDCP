@@ -56,5 +56,5 @@ function loadingScreen() {
 }
 
 function activatePending() {
-    $(".pending").find(".btn").addClass("disabled");
+    $("div.pending").find(".btn.pending").addClass("disabled");
 }
