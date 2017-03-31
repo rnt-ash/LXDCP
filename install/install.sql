@@ -231,9 +231,73 @@ CREATE TABLE IF NOT EXISTS `mon_local_daily_logs` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
-(1, 'employees', 'index:general:*,\r\nadministration:general:*,\r\ncolocations:general:*,\r\ncustomers:general:*,\r\nip_objects:general:*,\r\njobs:general:*,\r\nlogins:general:*,\r\nphysical_servers:general:*,\r\nphysical_servers:filter_customers:*,\r\nphysical_servers:filter_colocations:*,\r\nvirtual_servers:general:*,\r\nvirtual_servers:filter_customers:*,\r\nvirtual_servers:filter_physical_servers:*,\r\nvirtual_servers:new:*,\r\nvirtual_servers:delete:*,\r\nvirtual_servers:edit:*,\r\nvirtual_servers:configure:*,\r\nvirtual_servers:modify:*,\r\nvirtual_servers:save:*,\r\nvirtual_servers:changestate:*,\r\nvirtual_servers:snapshots:*,\r\nvirtual_servers:change_root_password:*,\r\nvirtual_servers:replicas:*,\r\n'),
-(5, 'partners', 'index:general:*,\r\ncolocations:general:partners,\r\nphysical_servers:general:partners,\r\nphysical_servers:filter_customers:partners,\r\nphysical_servers:filter_colocations:partners,\r\nvirtual_servers:general:partners,\r\nvirtual_servers:filter_customers:partners,\r\nvirtual_servers:filter_physical_servers:partners,\r\nvirtual_servers:new:partners,\r\nvirtual_servers:delete:partners,\r\nvirtual_servers:edit:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:configure:partners,\r\nvirtual_servers:save:partners,\r\nvirtual_servers:changestate:partners,\r\nvirtual_servers:snapshots:partners,\r\nvirtual_servers:change_root_password:partners,\r\nvirtual_servers:replicas:partners,\r\njobs:general:partners,'),
-(10, 'customers', 'index:general:*,\r\ncolocations:general:customers,\r\nphysical_servers:general:customers,\r\nphysical_servers:filter_colocations:customers,\r\nvirtual_servers:general:customers,\r\nvirtual_servers:filter_physical_servers:customers,\r\nvirtual_servers:new:customers,\r\nvirtual_servers:delete:customers,\r\nvirtual_servers:edit:customers,\r\nvirtual_servers:configure:customers,\r\nvirtual_servers:modify:customers,\r\nvirtual_servers:save:customers,\r\nvirtual_servers:changestate:customers,\r\nvirtual_servers:snapshots:customers,\r\nvirtual_servers:change_root_password:customers,\r\nvirtual_servers:replicas:customers,\r\njobs:general:customers,\r\n');
+(1, 'employees',
+    'index:general:*,\r\n'
+    'administration:general:*,\r\n'
+    'colocations:general:*,\r\n'
+    'customers:general:*,\r\n'
+    'partners:general:*,\r\n'
+    'partners:new:*,\r\n'
+    'partners:edit:*,\r\n'
+    'ip_objects:general:*,\r\n'
+    'jobs:general:*,\r\n'
+    'logins:general:*,\r\n'
+    'physical_servers:general:*,\r\n'
+    'physical_servers:filter_customers:*,\r\n'
+    'physical_servers:filter_colocations:*,\r\n'
+    'virtual_servers:general:*,\r\n'
+    'virtual_servers:filter_customers:*,\r\n'
+    'virtual_servers:filter_physical_servers:*,\r\n'
+    'virtual_servers:new:*,\r\n'
+    'virtual_servers:delete:*,\r\n'
+    'virtual_servers:edit:*,\r\n'
+    'virtual_servers:configure:*,\r\n'
+    'virtual_servers:modify:*,\r\n'
+    'virtual_servers:save:*,\r\n'
+    'virtual_servers:changestate:*,\r\n'
+    'virtual_servers:snapshots:*,\r\n'
+    'virtual_servers:change_root_password:*,\r\n'
+    'virtual_servers:replicas:*,\r\n'),
+(5, 'partners',
+    'index:general:*,\r\n'
+    'partners:general:partners,\r\n'
+    'colocations:general:partners,\r\n'
+    'physical_servers:general:partners,\r\n'
+    'physical_servers:filter_customers:partners,\r\n'
+    'physical_servers:filter_colocations:partners,\r\n'
+    'virtual_servers:general:partners,\r\n'
+    'virtual_servers:filter_customers:partners,\r\n'
+    'virtual_servers:filter_physical_servers:partners,\r\n'
+    'virtual_servers:new:partners,\r\n'
+    'virtual_servers:delete:partners,\r\n'
+    'virtual_servers:edit:partners,\r\n'
+    'virtual_servers:configure:partners,\r\n'
+    'virtual_servers:configure:partners,\r\n'
+    'virtual_servers:save:partners,\r\n'
+    'virtual_servers:changestate:partners,\r\n'
+    'virtual_servers:snapshots:partners,\r\n'
+    'virtual_servers:change_root_password:partners,\r\n'
+    'virtual_servers:replicas:partners,\r\n'
+    'jobs:general:partners,'),
+(10,'customers',
+    'index:general:*,\r\n'
+    'partners:general:customers,\r\n'
+    'colocations:general:customers,\r\n'
+    'physical_servers:general:customers,\r\n'
+    'physical_servers:filter_colocations:customers,\r\n'
+    'virtual_servers:general:customers,\r\n'
+    'virtual_servers:filter_physical_servers:customers,\r\n'
+    'virtual_servers:new:customers,\r\n'
+    'virtual_servers:delete:customers,\r\n'
+    'virtual_servers:edit:customers,\r\n'
+    'virtual_servers:configure:customers,\r\n'
+    'virtual_servers:modify:customers,\r\n'
+    'virtual_servers:save:customers,\r\n'
+    'virtual_servers:changestate:customers,\r\n'
+    'virtual_servers:snapshots:customers,\r\n'
+    'virtual_servers:change_root_password:customers,\r\n'
+    'virtual_servers:replicas:customers,\r\n'
+    'jobs:general:customers,\r\n');
 
 /* this commands must be executed but are normally done in the installer (install.php) */
 /*
