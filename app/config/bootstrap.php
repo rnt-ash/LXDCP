@@ -89,8 +89,9 @@ $di->set('dispatcher', function () {
 // Shared configuration service
 $di->setShared('config', function () {
     $config = include APP_PATH . "/config/config.php";
-    $permissionbase = include APP_PATH . "/config/permissionbase.php";
-    $config->merge($permissionbase);
+    $config->merge(include APP_PATH . "/config/permissionbase.php");
+    $config->merge(include BASE_PATH . "/vendor/rnt-forest/core/config/permissionbase.php");
+    $config->merge(include BASE_PATH . "/vendor/rnt-forest/ovz/config/permissionbase.php");
     
     if (is_readable(APP_PATH . '/config/config.ini')) {
         $override = new ConfigIni(APP_PATH . '/config/config.ini');
