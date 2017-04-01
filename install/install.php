@@ -174,10 +174,20 @@ function install(){
         return;
     }
     
-    // create tables
+    // create core tables
     unset($output);
     $output = array();
-    $cmd = "mysql -u ".$dbUser." -p'".$dbPassword."' -D ".$dbName." < ".$webRoot."install/install.sql 2>&1";
+    $cmd = "mysql -u ".$dbUser." -p'".$dbPassword."' -D ".$dbName." < ".$webRoot."vendor/rnt-forest/core/config/install.sql 2>&1";
+    exec($cmd,$output,$exitstatus);
+    if($exitstatus != 0) {
+        $errors = $output;
+        return;
+    }
+    
+    // create ovz tables
+    unset($output);
+    $output = array();
+    $cmd = "mysql -u ".$dbUser." -p'".$dbPassword."' -D ".$dbName." < ".$webRoot."vendor/rnt-forest/ovz/config/install.sql 2>&1";
     exec($cmd,$output,$exitstatus);
     if($exitstatus != 0) {
         $errors = $output;
