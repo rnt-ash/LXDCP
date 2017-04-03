@@ -12,6 +12,7 @@ $messages = [
     "hi-name" => "Hallo %name%",
     "song"    => "Dieser Song ist %song%",
     
+
 ];
 
 $messages = array_merge($coremessages,$ovzmessages,$messages);
