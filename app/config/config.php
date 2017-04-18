@@ -51,6 +51,9 @@ return new \Phalcon\Config([
         'adminpublickeyfile'    => APP_PATH."/config/keys/public.pem",
         'adminprivatekeyfile'   => APP_PATH."/config/keys/private.key",
     ],
+    'jobsystem' => [
+        'prefix'                => 'rnt', // used for service name in the jobsystem
+    ],
     'pdf' => [
         'author' => "RNT Forest",
         'logo' => "/public/img/OpenVZ.png",
