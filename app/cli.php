@@ -50,26 +50,26 @@ $di->setShared('db', function () {
 
     $connection = new $class($params);
     
-    /*
     // DB logs
     $eventsManager = new Phalcon\Events\Manager();
     $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir."db.log");
     
     //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($logger) {
-       if ($event->getType() == 'beforeQuery') {
-            $sqlVariables = $connection->getSQLVariables();
-            if (count($sqlVariables)) {
-                $logger->log($connection->getSQLStatement() . ' ' . join(', ', $sqlVariables), Logger::INFO);
-            } else {
-                $logger->log($connection->getSQLStatement(), Logger::INFO);
+    if($config->application->mode == 'debug'){
+        $eventsManager->attach('db', function($event, $connection) use ($logger) {
+            if ($event->getType() == 'beforeQuery') {
+                $sqlVariables = $connection->getSQLVariables();
+                if (count($sqlVariables)) {
+                    $logger->log($connection->getSQLStatement() . ' ' . join(', ', $sqlVariables), Logger::INFO);
+                } else {
+                    $logger->log($connection->getSQLStatement(), Logger::INFO);
+                }
             }
-        }
-    });
+        });
+    }
 
     //Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);    
-    */
     
     return $connection;
 });
@@ -94,8 +94,13 @@ $di->setShared('translate', function() use($di) {
 // Logger
 $di->setShared('logger', function() {
     $config = $this->getConfig();
-    return new LoggerFileAdapter($config->application->logsDir."cli.log");
+    $logger = new LoggerFileAdapter($config->application->logsDir."cli.log");
+    $loglevel = $config->application->logLevel;
+    if($config->application->mode == 'debug') $loglevel = Logger::DEBUG;
+    $logger->setLogLevel($loglevel);
+    return $logger;
 });
+
 
 // Push
 $di->setShared('push', function() use ($di) {

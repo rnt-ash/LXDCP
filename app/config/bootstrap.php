@@ -355,7 +355,11 @@ $di->setShared('translate', function() use($di) {
 // Logger
 $di->setShared('logger', function() {
     $config = $this->getConfig();
-    return new LoggerFileAdapter($config->application->logsDir."app.log");
+    $logger = new LoggerFileAdapter($config->application->logsDir."app.log");
+    $loglevel = $config->application->logLevel;
+    if($config->application->mode == 'debug') $loglevel = Logger::DEBUG;
+    $logger->setLogLevel($loglevel);
+    return $logger;
 });
 
 // Push
