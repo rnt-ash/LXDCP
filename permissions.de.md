@@ -52,3 +52,8 @@ Abfragen ob der Angemeldete User Berechtigung zu einer Action hat.
 ```
 $permissions->checkActionPermission(%Kontroller%,%Action%);
 ```
+
+Den aktuellen Scope des angemeldete User zu einer Berechtigungn abfragen.
+```
+$this->permissions->getScope('dns','general')==‘customer’;
+```
