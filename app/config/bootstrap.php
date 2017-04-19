@@ -240,17 +240,20 @@ $di->setShared('simpleview', function () {
 function compiler($compiler){
     $compiler->addFunction('is_a', 'is_a');
     $compiler->addFunction('get_class', 'get_class');
+    $compiler->addFunction('substr','substr');
+
     $compiler->addFunction('_', function ($resolvedArgs, $exprArgs) {
         return sprintf('$this->translate->query(\'%s\')', $exprArgs[0]['expr']['value']);
     });    
     
+    $compiler->addFunction('checkPermission', function ($resolvedArgs, $exprArgs) {
+        return '$this->permissions->checkPermission('.$resolvedArgs.')';
+    });    
     
     $compiler->addFilter('formatBytesHelper', function($resolvedArgs, $exprArgs) 
     {
-            return  '\RNTForest\core\libraries\Helpers::formatBytesHelper(' . $resolvedArgs . ');';
+        return '\RNTForest\core\libraries\Helpers::formatBytesHelper(' . $resolvedArgs . ');';
     });
-
-    
 }
 
 // Database connection is created based in the parameters defined in the configuration file
