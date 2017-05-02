@@ -52,7 +52,7 @@ $di->setShared('db', function () {
     
     // DB logs
     $eventsManager = new Phalcon\Events\Manager();
-    $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir."db.log");
+    $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir."cli_db.log");
     
     //Listen all the database events
     if($config->application->mode == 'debug'){

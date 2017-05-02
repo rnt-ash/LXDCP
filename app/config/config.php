@@ -46,7 +46,7 @@ return new \Phalcon\Config([
         'appName'               => 'ovz-control-panel',
         'securitySalt'          => '',
         'hashTokenExpiryHours'  => 4,
-        'logLevel'              => \Phalcon\Logger::WARNING,
+        'logLevel'              => \Phalcon\Logger::DEBUG,
     ],
     'push' => [
         'adminpublickeyfile'    => APP_PATH."/config/keys/public.pem",
