@@ -122,6 +122,9 @@ function renderForm() {
         if(key_exists('jwtsigningkey',$oldFormValues)){
             $jwtsigningkey = $oldFormValues['jwtsigningkey'];
         }
+        if(key_exists('sharedsecret',$oldFormValues)){
+            $sharedsecret = $oldFormValues['sharedsecret'];
+        }
         if(key_exists('relayhost',$oldFormValues)){
             $relayhost = $oldFormValues['relayhost'];
         }
@@ -192,6 +195,17 @@ function renderForm() {
             <div class="form-group col-xs-12 row">
                 <label for="jwtsigningkey" class="col-lg-2 row">JWT signing key</label>
                 <input class="form-control col-lg-6" type="text" name="jwtsigningkey" value="'.(!empty($jwtsigningkey)?$jwtsigningkey:randomStr(32)).'">
+            </div>
+        </div>
+        
+        <hr />
+        
+        <div class="well clearfix">
+            <h4>Define your shared secret for encryption of sensitive values between the app and the openvz hosts</h4>
+            <p>You can use the randomly generated key or change it to something you like (alphanumeric, length from 16 to 64)</p>
+            <div class="form-group col-xs-12 row">
+                <label for="sharedsecret" class="col-lg-2 row">Shared Secret</label>
+                <input class="form-control col-lg-6" type="text" name="sharedsecret" value="'.(!empty($sharedsecret)?$sharedsecret:randomStr(32)).'">
             </div>
         </div>
         

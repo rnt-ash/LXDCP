@@ -125,6 +125,23 @@ function install(){
         $oldFormValues['jwtsigningkey'] = $jwtSigningKey;
     }
     
+    // sharedsecret
+    if(empty($_POST['sharedsecret'])){
+        $errors[] = "Empty field 'Shared Secret'";
+        $requiredMissing = true;
+    }else{
+        $sharedSecret = trim($_POST['sharedsecret']);
+        if(!ctype_alnum($sharedSecret)){
+            $errors[] = 'Shared Secret must be alphanumeric';
+            $validationFault = true;
+        }
+        if(strlen($sharedSecret) < 16 || strlen($sharedSecret) > 64){
+            $errors[] = 'Shared Secret lenght should be between 16 and 64 (inclusive)';
+            $validationFault = true;
+        }
+        $oldFormValues['sharedsecret'] = $sharedSecret;
+    }
+    
     // optional relayhost
     if(empty($_POST['relayhost'])){
         $relayHost = 'smarthost.domain.tld';
@@ -228,7 +245,8 @@ function install(){
         rootalias = '.$rootAlias.'
 
         [push]
-        jwtsigningkey = '.$jwtSigningKey;
+        jwtsigningkey = '.$jwtSigningKey.'
+        sharedsecret = '.$sharedSecret;
     file_put_contents($webRoot."app/config/config.ini",str_replace(' ','',$configContent));
     
     // create cronjob
