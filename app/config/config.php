@@ -55,6 +55,10 @@ return new \Phalcon\Config([
     'jobsystem' => [
         'prefix'                => 'rnt', // used for service name in the jobsystem
     ],
+    'jobs' => [
+        'invisible' => [  // used to set some jobtypes with certain state to invisible in view, e.g. general_test_sendmail => [1,-1]
+        ],
+    ],
     'pdf' => [
         'author' => "RNT Forest",
         'logo' => "/public/img/OpenVZ.png",
