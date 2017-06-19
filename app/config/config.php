@@ -54,6 +54,7 @@ return new \Phalcon\Config([
     ],
     'jobsystem' => [
         'prefix'                => 'rnt', // used for service name in the jobsystem
+        'poolserver'            => 'pool.domain.org',
     ],
     'jobs' => [
         'invisible' => [  // used to set some jobtypes with certain state to invisible in view, e.g. general_test_sendmail => [1,-1]
@@ -70,5 +71,8 @@ return new \Phalcon\Config([
     'replica' =>[
         'osTemplate' => 'debian-8.0-x86_64-minimal',
         'defaultHost' => 0,
-    ]
+    ],
+    'monitoring' => [
+        'contacts' => "",
+    ],
 ]);
