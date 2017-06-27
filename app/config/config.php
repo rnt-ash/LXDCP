@@ -72,6 +72,9 @@ return new \Phalcon\Config([
         'osTemplate' => 'debian-8.0-x86_64-minimal',
         'defaultHost' => 0,
     ],
+    'ovz' => [
+        'defaultNameserver' => '8.8.8.8',
+    ],
     'monitoring' => [
         'contacts' => "",
     ],
