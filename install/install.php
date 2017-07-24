@@ -250,7 +250,7 @@ function install(){
     file_put_contents($webRoot."app/config/config.ini",str_replace(' ','',$configContent));
     
     // create cronjob
-    $cron = "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php push push 2>&1\n".
+    $cron = "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php jobsystem push 2>&1\n".
     "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring runJobs 2>&1\n".
     "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring runCriticalJobs 2>&1\n".
     "* * * * * /usr/bin/php -q ".$webRoot."app/cli.php monitoring runLocalJobs 2>&1\n".
