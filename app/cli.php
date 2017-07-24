@@ -138,6 +138,7 @@ $loader = new Loader();
 $loader->registerDirs([
     __DIR__ . "/tasks",
     __DIR__ . "/../vendor/rnt-forest/ovz/tasks",
+    __DIR__ . "/../vendor/rnt-forest/core/tasks",
 ]);
 
 $loader->registerNamespaces([

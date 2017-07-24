@@ -167,15 +167,6 @@ $di->setShared('router',function (){
         )
     );
     
-    // pusher
-    $router->add(
-        '/push',
-        array(
-            "controller" => "periodic",
-            "action" => "push"
-        )    
-    ); 
-    
     return $router;
 });
 
