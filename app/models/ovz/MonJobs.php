@@ -17,11 +17,8 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers; 
+namespace RNTForest\ovz\models;
 
-class IndexController extends \RNTForest\core\controllers\IndexControllerBase
+class MonJobs extends MonJobsBase
 {
-    public function indexAction()
-    {
-    }
 }

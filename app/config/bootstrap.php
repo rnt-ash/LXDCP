@@ -369,9 +369,19 @@ $di->setShared('permissions', function() {
     return $permissions;
 });
 
+// Navigation
+$di->setShared('menu', function() {
+    return new \RNTForest\core\libraries\Menu();
+});
+
 // Autoloader
 $config = $di->getConfig();
 $loader = new \Phalcon\Loader();
+
+$loader->registerNamespaces(array(
+    "RNTForest\\core\\models" => APP_PATH . "/models/core/",
+    "RNTForest\\ovz\\models" => APP_PATH . "/models/ovz/",
+));
 
 $loader->registerNamespaces(array(
     // OVZCP
@@ -388,6 +398,7 @@ $loader->registerNamespaces(array(
     "RNTForest\\core\\libraries" => BASE_PATH . "/vendor/rnt-forest/core/libraries/",
     "RNTForest\\core\\interfaces" => BASE_PATH . "/vendor/rnt-forest/core/interfaces/",
     "RNTForest\\core\\plugins" => BASE_PATH . "/vendor/rnt-forest/core/plugins/",
+    "RNTForest\\core\\datastructures" => BASE_PATH . "/vendor/rnt-forest/core/datastructures/",
 
     // ovz
     "RNTForest\\ovz\\controllers" => BASE_PATH . "/vendor/rnt-forest/ovz/controllers/",
@@ -399,11 +410,12 @@ $loader->registerNamespaces(array(
     "RNTForest\\ovz\\interfaces" => BASE_PATH . "/vendor/rnt-forest/ovz/interfaces/",
     "RNTForest\\ovz\\utilities" => BASE_PATH . "/vendor/rnt-forest/ovz/utilities/",
     "RNTForest\\ovz\\functions" => BASE_PATH . "/vendor/rnt-forest/ovz/functions/",
+    "RNTForest\\ovz\\datastructures" => BASE_PATH . "/vendor/rnt-forest/ovz/datastructures/",
     
     // ovzhost
     "RNTForest\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
     "RNTForest\\OVZJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/general/jobs/",
-));
+),true);
 
 $loader->register();
 

@@ -17,11 +17,24 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers; 
+namespace RNTForest\ovz\models;
 
-class IndexController extends \RNTForest\core\controllers\IndexControllerBase
+use RNTForest\bil\interfaces\BilPeriodicInterface;
+
+/**
+* @property \RNTForest\core\models\Customers $Customer
+* @property \RNTForest\ovz\models\VirtualServers $VirtualServer
+* @property \RNTForest\hws\models\HostingUsers $MainUser
+* 
+*/
+class VirtualServers extends VirtualServersBase
 {
-    public function indexAction()
+    /**
+    * Initialize method for model.
+    */
+    public function initialize()
     {
+        parent::initialize();
+        $this->hasOne("id",'RNTForest\hws\models\VirtualServersHws',"virtual_servers_id",array("alias"=>"VirtualServersHws", "foreignKey"=>true));
     }
 }

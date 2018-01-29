@@ -1,3 +1,21 @@
+.huge {
+    font-size: 40px;
+}
+
+.btn-default {
+    text-shadow: none !important;
+}
+
+table.break-word-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+table.break-word-table td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Snapshots */
 td#snapshots ul {
     list-style: none;
@@ -30,7 +48,11 @@ td#snapshots ul:first-child {
 
 .selectTheme .current {
     border-width: 5px;
-    margin-bottom: 5px;
+    padding: 0px;
+}
+
+.selectTheme .caption p {
+    min-height: 42px;
 }
 
 .selectTheme .bootswatchThemes {
@@ -66,24 +88,17 @@ td#snapshots ul:first-child {
 }
 
 /* Server filter */
-.serverFilter label {
+.serverFilter .select {
     padding-left: 0px;
     padding-right: 0px;
 }
 
-.serverFilter .physicalServersFilterLabel, .serverFilter .colocationsFilterLabel {
+.serverFilter .physicalServersFilterLabel, .serverFilter .colocationsFilterLabel, .serverFilter .virtualServersFilterLabel {
     padding-right: 10px;
 }
 
-.serverFilter > label > select {
-    height: 36px;
-    font-size: 15px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-
 @media (max-width: 767px) {
-    .serverFilter .physicalServersFilterLabel, .serverFilter .colocationsFilterLabel {
+    .serverFilter .physicalServersFilterLabel, .serverFilter .colocationsFilterLabel, .serverFilter .virtualServersFilterLabel {
         padding-right: 0px;
     }
     
@@ -92,23 +107,38 @@ td#snapshots ul:first-child {
     }
 }
 
+#toolbar .input-group .input-group-addon, #slidedatatoolbar .input-group .input-group-addon {
+    cursor: pointer;
+}
+
 #slidedatatoolbar #selectRows {
     vertical-align: top;
+} 
+
+#slidedatatoolbar #selectRows button {
+    font-weight: bold;
 }
 
-.serverFilter > label > select  {
-    font-size: 15px;
-    height: 37px;
-    padding: 3px 16px;
-    margin: 0px;
-}
-
-.serverFilter > #searchFilter, .serverFilter > #searchFilter > span, .serverFilter > #searchFilter > input {
+.serverFilter #searchFilter, .serverFilter #searchFilter > span, .serverFilter #searchFilter > input, .filterCustomer input, .filterCustomer span {
     font-size: 15px;
     height: 37px !important;
 }
 
-#slidedatatoolbar .buttons .createButton, #slidedatatoolbar .buttons .orderButton {
+#slidedatatoolbar .buttons .createButton, #slidedatatoolbar .buttons .orderButton, #selectRows > div {
+    margin-bottom: 5px;
+}
+
+.serverFilter button {
+    height: 37px;
+    line-height: 20px;
+}
+
+.hideSubmit {
+    margin-left: -100000px;
+}
+
+/* customer filter */
+#slidedatatoolbar #searchFilter, #toolbar #searchFilter, .serverFilter .select {
     margin-bottom: 5px;
 }
 
@@ -151,3 +181,85 @@ td#snapshots ul:first-child {
 .form-group .input-group-addon #genPassword {
     color: unset !important;
 }
+
+/* DNS Zone file */
+textarea.dnsZoneFile{
+    font-family: courier;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}       
+
+/* Slide */
+.panel-group .panel .panel-heading .panel-title a.removePending {
+    color: inherit;
+}
+
+.panel-group .panel .panel-heading .panel-title .panelPending {
+    margin-left: auto;
+}
+
+table .tableBtns {
+    width: 1%;
+    white-space: nowrap;
+} 
+
+.removePadding {
+    padding: 0px !important;
+}
+
+.padding-small-right {
+    padding-right: 5px !important;
+}
+
+.padding-small-left {
+    padding-left: 5px !important;
+}
+
+.panel .sub-panel {
+    margin-bottom: 5px;
+}
+
+.panel-group .tab-content {
+    margin-top: 10px;
+}
+
+.panel-group .row > div {
+    margin-top: 5px;
+}
+
+.panel-sub-table {
+    margin-bottom: 0px !important;
+}
+
+.leSslButtonImg {
+    width: 12px;
+    margin-bottom: 3px;
+}
+
+.slide>.panel-heading>span>.panel-title {
+    display: flex;
+    align-items: center;
+}
+
+.slide>.panel-heading>span>.panel-title>i {
+    margin-right: .5em;
+}
+
+/* Hosting Tools */
+#whoisResultWrapper, #idnConverterResult {
+    display: none;
+}
+
+#whoisResult {
+    line-height: 17px;
+}
+
+/* Jobs */
+.toggleJobDetails {
+    cursor: pointer;
+}
+
+.jobDetailWrapper {
+    padding: 8px;
+}   

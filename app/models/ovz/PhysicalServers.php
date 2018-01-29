@@ -17,11 +17,16 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers; 
+namespace RNTForest\ovz\models;
 
-class IndexController extends \RNTForest\core\controllers\IndexControllerBase
+use RNTForest\bil\interfaces\BilPeriodicInterface;
+
+/**
+* @property \RNTForest\core\models\Customers $Customer
+* @property \RNTForest\ovz\models\VirtualServers $VirtualServer
+* @property \RNTForest\hws\models\HostingUsers $MainUser
+* 
+*/
+class PhysicalServers extends PhysicalServersBase
 {
-    public function indexAction()
-    {
-    }
 }

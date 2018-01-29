@@ -3,6 +3,7 @@
 </div>
 
 
-<div class="jumbotron">
-    <p>{{ _("index_welcome") }}</p>
+<div class="well">
+    <h3>{{ _("index_welcome") }}</h3>
 </div>
+<hr>

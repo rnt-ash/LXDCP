@@ -5,7 +5,9 @@ $( document ).ready(
 function activateGadgets() {
     activateConfirmButton(),
     activateToolTips(),
-    activatePending()
+    activatePopovers(),
+    activatePending(),
+    preventToggleInSubpanel()
 }
 
 function activateConfirmButton() {
@@ -37,8 +39,25 @@ function activateToolTips() {
     $('[data-toggle="tooltip"]').tooltip()
 }
 
-function toggleIcon(icon) {
-    $(icon).toggleClass('fa fa-chevron-down fa fa-chevron-right');
+function activatePopovers() {
+    $('[data-toggle="popover"]').popover();
+}
+
+function toggleIcon(icon,event) {
+    if(!$(event.target).hasClass('dropdown-toggle') && $(event.target).parents('.dropdown-toggle').length == 0 ){
+        $(icon).toggleClass('fa fa-chevron-down fa fa-chevron-right');
+    }
+}
+
+function toggleSectionState(slideSectionId,controller,defaultState,event){
+    toggleIcon('#'+slideSectionId+'_icon',event);
+    $.ajax({
+        url: '/'+controller+'/toggleSectionState/'+slideSectionId+'/'+defaultState
+    })
+}
+
+function toggleSlidePanel(panel) {
+    $(panel).toggleClass('panel panel-default panel panel-primary');
 }
 
 function loadingScreen() {
@@ -57,4 +76,13 @@ function loadingScreen() {
 
 function activatePending() {
     $("div.pending").find(".btn.pending").addClass("disabled");
+}
+
+function preventToggleInSubpanel() {
+    $(".sub-panel .panel-heading a, .sub-panel .panel-heading .btn").not(".dropdown-toggle").click(function(event){
+        if($(this).hasClass('loadingScreen')){
+            loadingScreen();
+        }
+        event.stopPropagation();
+    });
 }

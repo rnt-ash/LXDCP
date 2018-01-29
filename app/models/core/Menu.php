@@ -17,11 +17,8 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers; 
+namespace RNTForest\core\models;
 
-class IndexController extends \RNTForest\core\controllers\IndexControllerBase
+class Menu extends MenuBase
 {
-    public function indexAction()
-    {
-    }
 }

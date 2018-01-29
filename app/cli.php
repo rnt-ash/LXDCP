@@ -141,6 +141,11 @@ $loader->registerDirs([
     __DIR__ . "/../vendor/rnt-forest/core/tasks",
 ]);
 
+$loader->registerNamespaces(array(
+    "RNTForest\\core\\models" => APP_PATH . "/models/core/",
+    "RNTForest\\ovz\\models" => APP_PATH . "/models/ovz/",
+));
+
 $loader->registerNamespaces([
     // OVZCP
     "RNTForest\\OVZCP\\controllers" => APP_PATH . "/controllers/",
