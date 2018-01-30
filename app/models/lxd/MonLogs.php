@@ -17,8 +17,8 @@
 *
 */
 
-namespace RNTForest\ovz\models;
+namespace RNTForest\lxd\models;
 
-class MonJobs extends MonJobsBase
+class MonLogs extends MonLogsBase
 {
 }

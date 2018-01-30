@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/virtual_servers/slidedata") }}
+{{ partial("partials/lxd/virtual_servers/slidedata") }}

@@ -17,16 +17,16 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
 use \RNTForest\core\models\Customers;
 use \RNTForest\core\models\CustomersPartners;
 use \RNTForest\core\models\Logins;
 use \RNTForest\core\models\Groups;
-use \RNTForest\ovz\models\Colocations;
-use \RNTForest\ovz\models\PhysicalServers;
-use \RNTForest\ovz\models\VirtualServers;
-use \RNTForest\ovz\models\IpObjects;
+use \RNTForest\lxd\models\Colocations;
+use \RNTForest\lxd\models\PhysicalServers;
+use \RNTForest\lxd\models\VirtualServers;
+use \RNTForest\lxd\models\IpObjects;
 use \RNTForest\core\libraries\Helpers;
 
 class AdministrationController extends \RNTForest\core\controllers\AdministrationControllerBase
@@ -107,7 +107,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
                     
                     $this->session->set("IpObjectsForm", array(
                         "op" => "new",
-                        "server_class" => '\RNTForest\ovz\models\VirtualServers',
+                        "server_class" => '\RNTForest\lxd\models\VirtualServers',
                         "server_id" => intval($virtualServer->getId()),
                     ));
                     
@@ -141,7 +141,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
     }
     
     public function deployRootKeysAction(){
-        $physicalServers = \RNTForest\ovz\models\PhysicalServers::find(["ovz=1"]);
+        $physicalServers = \RNTForest\lxd\models\PhysicalServers::find(["ovz=1"]);
         $push = $this->getPushService();
         
         $jobFailures = array();
@@ -534,7 +534,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
             $physicalServer->setCustomersId($customer->getId());
 
-            $colocation = $this->getRandomEntry('\RNTForest\ovz\models\Colocations',1);
+            $colocation = $this->getRandomEntry('\RNTForest\lxd\models\Colocations',1);
             $physicalServer->setColocationsId($colocation->getId());
 
             $physicalServer->setJobPublicKey($faker->sha256);
@@ -590,7 +590,7 @@ class AdministrationController extends \RNTForest\core\controllers\Administratio
             $customer = $this->getRandomEntry('\RNTForest\core\models\Customers',3);
             $virtualServer->setCustomersId($customer->getId());
 
-            $physicalServer = $this->getRandomEntry('\RNTForest\ovz\models\PhysicalServers',1);
+            $physicalServer = $this->getRandomEntry('\RNTForest\lxd\models\PhysicalServers',1);
             $virtualServer->setPhysicalServersId($physicalServer->getId());
 
             $virtualServer->setJobPublicKey($faker->sha256);

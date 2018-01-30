@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/virtual_servers/rootPasswordChangeForm") }}
+{{ partial("partials/lxd/virtual_servers/rootPasswordChangeForm") }}

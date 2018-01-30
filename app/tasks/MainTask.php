@@ -3,7 +3,7 @@
 use Phalcon\Cli\Task;
 
 use RNTForest\core\services\Push;
-use RNTForest\ovz\models\VirtualServers;
+use RNTForest\lxd\models\VirtualServers;
 
 class MainTask extends Task
 {

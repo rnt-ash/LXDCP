@@ -17,8 +17,8 @@
 *
 */
  
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
  
-class PhysicalServersController extends \RNTForest\ovz\controllers\PhysicalServersControllerBase
+class PhysicalServersController extends \RNTForest\lxd\controllers\PhysicalServersControllerBase
 {
 }

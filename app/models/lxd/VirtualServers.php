@@ -17,8 +17,24 @@
 *
 */
 
-namespace RNTForest\ovz\models;
+namespace RNTForest\lxd\models;
 
-class MonLogs extends MonLogsBase
+use RNTForest\bil\interfaces\BilPeriodicInterface;
+
+/**
+* @property \RNTForest\core\models\Customers $Customer
+* @property \RNTForest\lxd\models\VirtualServers $VirtualServer
+* @property \RNTForest\hws\models\HostingUsers $MainUser
+* 
+*/
+class VirtualServers extends VirtualServersBase
 {
+    /**
+    * Initialize method for model.
+    */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->hasOne("id",'RNTForest\hws\models\VirtualServersHws',"virtual_servers_id",array("alias"=>"VirtualServersHws", "foreignKey"=>true));
+    }
 }

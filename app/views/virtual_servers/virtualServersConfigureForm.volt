@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/virtual_servers/virtualServersConfigureForm") }}
+{{ partial("partials/lxd/virtual_servers/virtualServersConfigureForm") }}

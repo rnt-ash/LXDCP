@@ -38,7 +38,7 @@ define('APP_PATH', BASE_PATH . '/app');
     if(!file_exists(APP_PATH."/views/partials")) mkdir(APP_PATH."/views/partials",0770,true);
     if(!file_exists(APP_PATH."/views/templates/core")) symlink("../../../vendor/rnt-forest/core/views/templates",APP_PATH."/views/templates/core");
     if(!file_exists(APP_PATH."/views/partials/core")) symlink("../../../vendor/rnt-forest/core/views",APP_PATH."/views/partials/core");
-    if(!file_exists(APP_PATH."/views/partials/ovz")) symlink("../../../vendor/rnt-forest/ovz/views",APP_PATH."/views/partials/ovz");
+    if(!file_exists(APP_PATH."/views/partials/lxd")) symlink("../../../vendor/rnt-forest/lxd/views",APP_PATH."/views/partials/lxd");
     
     // Bootstrap
     include APP_PATH . "/config/bootstrap.php";

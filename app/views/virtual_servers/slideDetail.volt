@@ -1,0 +1,1 @@
+{{ partial("partials/lxd/virtual_servers/slideDetail") }}

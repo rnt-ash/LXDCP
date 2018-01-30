@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/ip_objects/edit") }}
+{{ partial("partials/lxd/ip_objects/edit") }}

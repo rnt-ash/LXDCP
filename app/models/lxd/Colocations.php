@@ -17,8 +17,8 @@
 *
 */
 
-namespace RNTForest\ovz\models;
+namespace RNTForest\lxd\models;
 
-class MonLocalDailyLogs extends MonLocalDailyLogsBase
+class Colocations extends ColocationsBase
 {
 }

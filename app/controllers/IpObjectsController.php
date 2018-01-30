@@ -17,9 +17,9 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
-class IpObjectsController extends \RNTForest\ovz\controllers\IpObjectsControllerBase
+class IpObjectsController extends \RNTForest\lxd\controllers\IpObjectsControllerBase
 {
 
 }

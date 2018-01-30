@@ -17,7 +17,7 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
 use Phalcon\Paginator\Adapter\Model as Paginator;
 use Phalcon\Filter;

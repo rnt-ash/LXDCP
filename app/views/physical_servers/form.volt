@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/physical_servers/form") }}
+{{ partial("partials/lxd/physical_servers/form") }}

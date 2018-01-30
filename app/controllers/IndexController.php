@@ -17,7 +17,7 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers; 
+namespace RNTForest\LXDCP\controllers; 
 
 class IndexController extends \RNTForest\core\controllers\IndexControllerBase
 {

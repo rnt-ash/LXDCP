@@ -17,10 +17,10 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
 use Phalcon\Mvc\Model\Criteria;
-use RNTForest\OVZCP\models\Customers;
+use RNTForest\LXDCP\models\Customers;
 
 class CustomersController extends \RNTForest\core\controllers\CustomersControllerBase
 {

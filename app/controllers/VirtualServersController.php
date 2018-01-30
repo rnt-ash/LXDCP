@@ -17,11 +17,11 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
 use Phalcon\Http\Client\Request;
 
-class VirtualServersController extends \RNTForest\ovz\controllers\VirtualServersControllerBase
+class VirtualServersController extends \RNTForest\lxd\controllers\VirtualServersControllerBase
 {
 
 }

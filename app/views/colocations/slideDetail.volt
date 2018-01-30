@@ -1,1 +1,1 @@
-{{ partial("partials/ovz/colocations/slideDetail") }}
+{{ partial("partials/lxd/colocations/slideDetail") }}

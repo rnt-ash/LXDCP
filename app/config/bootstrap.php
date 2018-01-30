@@ -51,7 +51,7 @@ $di->set('dispatcher', function () {
         // Handle 404 exceptions
         if ($exception instanceof DispatchException) {
             $dispatcher->forward(array(
-                "namespace"  => "RNTForest\\OVZCP\\controllers",
+                "namespace"  => "RNTForest\\LXDCP\\controllers",
                 "controller" => "errors",
                 "action" => "show404"
             ));
@@ -64,7 +64,7 @@ $di->set('dispatcher', function () {
                 case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                 case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                     $dispatcher->forward(array(
-                        "namespace"  => "RNTForest\\OVZCP\\controllers",
+                        "namespace"  => "RNTForest\\LXDCP\\controllers",
                         "controller" => "errors",
                         "action" => "show404"
                     ));
@@ -91,7 +91,7 @@ $di->setShared('config', function () {
     $config = include APP_PATH . "/config/config.php";
     $config->merge(include APP_PATH . "/config/permissionbase.php");
     $config->merge(include BASE_PATH . "/vendor/rnt-forest/core/config/permissionbase.php");
-    $config->merge(include BASE_PATH . "/vendor/rnt-forest/ovz/config/permissionbase.php");
+    $config->merge(include BASE_PATH . "/vendor/rnt-forest/lxd/config/permissionbase.php");
     
     if (is_readable(APP_PATH . '/config/config.ini')) {
         $override = new ConfigIni(APP_PATH . '/config/config.ini');
@@ -119,7 +119,7 @@ $di->setShared('url', function () {
 $di->setShared('router',function (){
     
     $router = new Router();
-    $router->setDefaultNamespace("RNTForest\\OVZCP\\controllers");
+    $router->setDefaultNamespace("RNTForest\\LXDCP\\controllers");
     
     // default
     $router->add(
@@ -360,7 +360,7 @@ $di->setShared('push', function() use ($di) {
 
 // Replica
 $di->setShared('replica', function() use ($di) {
-    return new \RNTForest\ovz\services\Replica($di);
+    return new \RNTForest\lxd\services\Replica($di);
 });
 
 // Permissions
@@ -380,15 +380,15 @@ $loader = new \Phalcon\Loader();
 
 $loader->registerNamespaces(array(
     "RNTForest\\core\\models" => APP_PATH . "/models/core/",
-    "RNTForest\\ovz\\models" => APP_PATH . "/models/ovz/",
+    "RNTForest\\lxd\\models" => APP_PATH . "/models/lxd/",
 ));
 
 $loader->registerNamespaces(array(
-    // OVZCP
-    "RNTForest\\OVZCP\\controllers" => APP_PATH . "/controllers/",
-    "RNTForest\\OVZCP\\models" => APP_PATH . "/models/",
-    "RNTForest\\OVZCP\\forms" => APP_PATH . "/forms/",
-    "RNTForest\\OVZCP\\libraries" => APP_PATH . "/libraries/",
+    // LXDCP
+    "RNTForest\\LXDCP\\controllers" => APP_PATH . "/controllers/",
+    "RNTForest\\LXDCP\\models" => APP_PATH . "/models/",
+    "RNTForest\\LXDCP\\forms" => APP_PATH . "/forms/",
+    "RNTForest\\LXDCP\\libraries" => APP_PATH . "/libraries/",
 
     // core
     "RNTForest\\core\\controllers" => BASE_PATH . "/vendor/rnt-forest/core/controllers/",
@@ -400,21 +400,21 @@ $loader->registerNamespaces(array(
     "RNTForest\\core\\plugins" => BASE_PATH . "/vendor/rnt-forest/core/plugins/",
     "RNTForest\\core\\datastructures" => BASE_PATH . "/vendor/rnt-forest/core/datastructures/",
 
-    // ovz
-    "RNTForest\\ovz\\controllers" => BASE_PATH . "/vendor/rnt-forest/ovz/controllers/",
-    "RNTForest\\ovz\\models" => BASE_PATH . "/vendor/rnt-forest/ovz/models/",
-    "RNTForest\\ovz\\forms" => BASE_PATH . "/vendor/rnt-forest/ovz/forms/",
-    "RNTForest\\ovz\\services" => BASE_PATH . "/vendor/rnt-forest/ovz/services/",
-    "RNTForest\\ovz\\connectors" => BASE_PATH . "/vendor/rnt-forest/ovz/connectors/",
-    "RNTForest\\ovz\\libraries" => BASE_PATH . "/vendor/rnt-forest/ovz/libraries/",
-    "RNTForest\\ovz\\interfaces" => BASE_PATH . "/vendor/rnt-forest/ovz/interfaces/",
-    "RNTForest\\ovz\\utilities" => BASE_PATH . "/vendor/rnt-forest/ovz/utilities/",
-    "RNTForest\\ovz\\functions" => BASE_PATH . "/vendor/rnt-forest/ovz/functions/",
-    "RNTForest\\ovz\\datastructures" => BASE_PATH . "/vendor/rnt-forest/ovz/datastructures/",
+    // lxd
+    "RNTForest\\lxd\\controllers" => BASE_PATH . "/vendor/rnt-forest/lxd/controllers/",
+    "RNTForest\\lxd\\models" => BASE_PATH . "/vendor/rnt-forest/lxd/models/",
+    "RNTForest\\lxd\\forms" => BASE_PATH . "/vendor/rnt-forest/lxd/forms/",
+    "RNTForest\\lxd\\services" => BASE_PATH . "/vendor/rnt-forest/lxd/services/",
+    "RNTForest\\lxd\\connectors" => BASE_PATH . "/vendor/rnt-forest/lxd/connectors/",
+    "RNTForest\\lxd\\libraries" => BASE_PATH . "/vendor/rnt-forest/lxd/libraries/",
+    "RNTForest\\lxd\\interfaces" => BASE_PATH . "/vendor/rnt-forest/lxd/interfaces/",
+    "RNTForest\\lxd\\utilities" => BASE_PATH . "/vendor/rnt-forest/lxd/utilities/",
+    "RNTForest\\lxd\\functions" => BASE_PATH . "/vendor/rnt-forest/lxd/functions/",
+    "RNTForest\\lxd\\datastructures" => BASE_PATH . "/vendor/rnt-forest/lxd/datastructures/",
     
-    // ovzhost
-    "RNTForest\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
-    "RNTForest\\OVZJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/general/jobs/",
+    // lxdhost
+    "RNTForest\\LXDJOB\\lxd\\jobs" => BASE_PATH . "/vendor/rnt-forest/lxd/lxdhost/lxdjob/lxd/jobs/",
+    "RNTForest\\LXDJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/lxd/lxdhost/lxdjob/general/jobs/",
 ),true);
 
 $loader->register();

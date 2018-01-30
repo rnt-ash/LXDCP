@@ -17,7 +17,7 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
 class ErrorsController extends \RNTForest\core\controllers\ErrorsControllerBase
 {

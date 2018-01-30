@@ -17,13 +17,13 @@
 *
 */
 
-namespace RNTForest\ovz\models;
+namespace RNTForest\lxd\models;
 
 use RNTForest\bil\interfaces\BilPeriodicInterface;
 
 /**
 * @property \RNTForest\core\models\Customers $Customer
-* @property \RNTForest\ovz\models\VirtualServers $VirtualServer
+* @property \RNTForest\lxd\models\VirtualServers $VirtualServer
 * @property \RNTForest\hws\models\HostingUsers $MainUser
 * 
 */

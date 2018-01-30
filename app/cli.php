@@ -20,7 +20,7 @@ $di->setShared('config', function () {
     $config = include APP_PATH . "/config/config.php";
     $config->merge(include APP_PATH . "/config/permissionbase.php");
     $config->merge(include BASE_PATH . "/vendor/rnt-forest/core/config/permissionbase.php");
-    $config->merge(include BASE_PATH . "/vendor/rnt-forest/ovz/config/permissionbase.php");
+    $config->merge(include BASE_PATH . "/vendor/rnt-forest/lxd/config/permissionbase.php");
     
     if (is_readable(APP_PATH . '/config/config.ini')) {
         $override = new ConfigIni(APP_PATH . '/config/config.ini');
@@ -121,13 +121,13 @@ $di->set('modelsManager', function() {
 
 // Services for Monitoring
 $di->set('monAlarm', function() {
-    return new \RNTForest\ovz\services\MonAlarm();
+    return new \RNTForest\lxd\services\MonAlarm();
 });
 $di->set('monSystem', function() {
-    return new \RNTForest\ovz\services\MonSystem();
+    return new \RNTForest\lxd\services\MonSystem();
 });
 $di->set('monHealing', function() {
-    return new \RNTForest\ovz\services\MonHealing();
+    return new \RNTForest\lxd\services\MonHealing();
 });
 
 /**
@@ -137,21 +137,21 @@ $loader = new Loader();
 
 $loader->registerDirs([
     __DIR__ . "/tasks",
-    __DIR__ . "/../vendor/rnt-forest/ovz/tasks",
+    __DIR__ . "/../vendor/rnt-forest/lxd/tasks",
     __DIR__ . "/../vendor/rnt-forest/core/tasks",
 ]);
 
 $loader->registerNamespaces(array(
     "RNTForest\\core\\models" => APP_PATH . "/models/core/",
-    "RNTForest\\ovz\\models" => APP_PATH . "/models/ovz/",
+    "RNTForest\\lxd\\models" => APP_PATH . "/models/lxd/",
 ));
 
 $loader->registerNamespaces([
-    // OVZCP
-    "RNTForest\\OVZCP\\controllers" => APP_PATH . "/controllers/",
-    "RNTForest\\OVZCP\\models" => APP_PATH . "/models/",
-    "RNTForest\\OVZCP\\forms" => APP_PATH . "/forms/",
-    "RNTForest\\OVZCP\\libraries" => APP_PATH . "/libraries/",
+    // LXDCP
+    "RNTForest\\LXDCP\\controllers" => APP_PATH . "/controllers/",
+    "RNTForest\\LXDCP\\models" => APP_PATH . "/models/",
+    "RNTForest\\LXDCP\\forms" => APP_PATH . "/forms/",
+    "RNTForest\\LXDCP\\libraries" => APP_PATH . "/libraries/",
 
     // core
     "RNTForest\\core\\controllers" => BASE_PATH . "/vendor/rnt-forest/core/controllers/",
@@ -162,19 +162,19 @@ $loader->registerNamespaces([
     "RNTForest\\core\\interfaces" => BASE_PATH . "/vendor/rnt-forest/core/interfaces/",
     "RNTForest\\core\\plugins" => BASE_PATH . "/vendor/rnt-forest/core/plugins/",
 
-    // ovz
-    "RNTForest\\ovz\\controllers" => BASE_PATH . "/vendor/rnt-forest/ovz/controllers/",
-    "RNTForest\\ovz\\datastructures" => BASE_PATH . "/vendor/rnt-forest/ovz/datastructures/",
-    "RNTForest\\ovz\\models" => BASE_PATH . "/vendor/rnt-forest/ovz/models/",
-    "RNTForest\\ovz\\forms" => BASE_PATH . "/vendor/rnt-forest/ovz/forms/",
-    "RNTForest\\ovz\\services" => BASE_PATH . "/vendor/rnt-forest/ovz/services/",
-    "RNTForest\\ovz\\libraries" => BASE_PATH . "/vendor/rnt-forest/ovz/libraries/",
-    "RNTForest\\ovz\\interfaces" => BASE_PATH . "/vendor/rnt-forest/ovz/interfaces/",
-    "RNTForest\\ovz\\utilities" => BASE_PATH . "/vendor/rnt-forest/ovz/utilities/",
+    // lxd
+    "RNTForest\\lxd\\controllers" => BASE_PATH . "/vendor/rnt-forest/lxd/controllers/",
+    "RNTForest\\lxd\\datastructures" => BASE_PATH . "/vendor/rnt-forest/lxd/datastructures/",
+    "RNTForest\\lxd\\models" => BASE_PATH . "/vendor/rnt-forest/lxd/models/",
+    "RNTForest\\lxd\\forms" => BASE_PATH . "/vendor/rnt-forest/lxd/forms/",
+    "RNTForest\\lxd\\services" => BASE_PATH . "/vendor/rnt-forest/lxd/services/",
+    "RNTForest\\lxd\\libraries" => BASE_PATH . "/vendor/rnt-forest/lxd/libraries/",
+    "RNTForest\\lxd\\interfaces" => BASE_PATH . "/vendor/rnt-forest/lxd/interfaces/",
+    "RNTForest\\lxd\\utilities" => BASE_PATH . "/vendor/rnt-forest/lxd/utilities/",
     
-    // ovzhost
-    "RNTForest\\OVZJOB\\ovz\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/ovz/jobs/",
-    "RNTForest\\OVZJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/ovz/ovzhost/ovzjob/general/jobs/",
+    // lxdhost
+    "RNTForest\\LXDJOB\\lxd\\jobs" => BASE_PATH . "/vendor/rnt-forest/lxd/lxdhost/lxdjob/lxd/jobs/",
+    "RNTForest\\LXDJOB\\general\\jobs" => BASE_PATH . "/vendor/rnt-forest/lxd/lxdhost/lxdjob/general/jobs/",
 ]);
 $loader->register();
 

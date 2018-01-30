@@ -17,8 +17,8 @@
 *
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
  
-class ColocationsController extends \RNTForest\ovz\controllers\ColocationsControllerBase
+class ColocationsController extends \RNTForest\lxd\controllers\ColocationsControllerBase
 {
 }

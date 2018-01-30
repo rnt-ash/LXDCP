@@ -41,9 +41,9 @@ return new \Phalcon\Config([
         'vendorDir'             => BASE_PATH . '/vendor/',
         'baseUrl'               => 'baseUrl: to define in config.ini',  
         'baseUri'               => '/',
-        'appBaseNamespaceName'  => "\\RNTForest\\OVZCP\\",
-        'appTitle'              => 'OVZ Control Panel',
-        'appName'               => 'ovz-control-panel',
+        'appBaseNamespaceName'  => "\\RNTForest\\LXDCP\\",
+        'appTitle'              => 'LXD Control Panel',
+        'appName'               => 'lxd-control-panel',
         'securitySalt'          => '',
         'hashTokenExpiryHours'  => 4,
         'logLevel'              => \Phalcon\Logger::DEBUG,
@@ -66,13 +66,13 @@ return new \Phalcon\Config([
         'footer' => "My PDF Footer",
     ],
     'mail' => [
-        'from' => "ovzcp@domain.org",
+        'from' => "lxdcp@domain.org",
     ],
     'replica' =>[
         'osTemplate' => 'debian-8.0-x86_64-minimal',
         'defaultHost' => 0,
     ],
-    'ovz' => [
+    'lxd' => [
         'defaultNameserver' => '8.8.8.8',
     ],
     'monitoring' => [

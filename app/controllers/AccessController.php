@@ -22,10 +22,10 @@
 * Log In, Log out, Reset password, New sign up
 */
 
-namespace RNTForest\OVZCP\controllers;
+namespace RNTForest\LXDCP\controllers;
 
-use RNTForest\OVZCP\models\Logins;
-use RNTForest\OVZCP\models\Groups;
+use RNTForest\LXDCP\models\Logins;
+use RNTForest\LXDCP\models\Groups;
 
 
 class AccessController extends \RNTForest\core\controllers\AccessControllerBase

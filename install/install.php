@@ -201,10 +201,10 @@ function install(){
         return;
     }
     
-    // create ovz tables
+    // create lxd tables
     unset($output);
     $output = array();
-    $cmd = "mysql -u ".$dbUser." -p'".$dbPassword."' -D ".$dbName." < ".$webRoot."vendor/rnt-forest/ovz/config/install.sql 2>&1";
+    $cmd = "mysql -u ".$dbUser." -p'".$dbPassword."' -D ".$dbName." < ".$webRoot."vendor/rnt-forest/lxd/config/install.sql 2>&1";
     exec($cmd,$output,$exitstatus);
     if($exitstatus != 0) {
         $errors = $output;

@@ -1,5 +1,5 @@
 <?php
-namespace RNTForest\OVZCP\libraries;
+namespace RNTForest\LXDCP\libraries;
 
 class PermissionFunctions{
     /**

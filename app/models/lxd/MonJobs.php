@@ -17,8 +17,8 @@
 *
 */
 
-namespace RNTForest\ovz\models;
+namespace RNTForest\lxd\models;
 
-class IpObjects extends IpObjectsBase
+class MonJobs extends MonJobsBase
 {
 }

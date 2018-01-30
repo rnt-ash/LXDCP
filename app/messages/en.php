@@ -1,7 +1,7 @@
 <?php
 
 $coremessages = include BASE_PATH."/vendor/rnt-forest/core/messages/en.php";
-$ovzmessages = include BASE_PATH."/vendor/rnt-forest/ovz/messages/en.php";
+$lxdmessages = include BASE_PATH."/vendor/rnt-forest/lxd/messages/en.php";
 
 $messages = [
 
@@ -14,4 +14,4 @@ $messages = [
 
 ];
 
-$messages = array_merge($coremessages,$ovzmessages,$messages);
+$messages = array_merge($coremessages,$lxdmessages,$messages);

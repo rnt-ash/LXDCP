@@ -51,7 +51,7 @@ function renderHTML($content){
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-            <title>Install - OVZCP</title>
+            <title>Install - LXDCP</title>
             <meta name="description" content="">
             <meta name="author" content="">
             
@@ -78,7 +78,7 @@ function renderHTML($content){
         </head>
         <body>
             <div id="content" class="container">
-                <h1 class="page-header">Install OVZCP</h1>
+                <h1 class="page-header">Install LXDCP</h1>
                 '.$content.'
             </div>
         </body>
@@ -167,7 +167,7 @@ function renderForm() {
         <div class="well clearfix">
             <h4>Define the password for the user admin</h4>
             <p>
-                This user is used to log in to the OVZCP webapplication. <br /> 
+                This user is used to log in to the LXDCP webapplication. <br /> 
                 Choose a secure password in productive use (minimal length 4)
             </p>
             <div class="form-group col-xs-12 row">
@@ -214,7 +214,7 @@ function renderForm() {
         <div class="well clearfix">
             <h4>(Optional) Specify the mailconfiguration for receiving additional error mails</h4>
             <p>
-            This configuration is not crucial for the functionality of OVZCP. You can absolutely skip it and change it later manually in the config.<br/>
+            This configuration is not crucial for the functionality of LXDCP. You can absolutely skip it and change it later manually in the config.<br/>
             (The rootalias is used i.e. to send an email to with the output of a cronjob running under root user, the relayhost is used for sending mails over a real mailserver to do not run in anti-spam problems)
             </p>
             <div class="form-group col-xs-12 row">
@@ -237,7 +237,7 @@ function renderForm() {
 
 function renderInstalled() {
     $content = '
-        The OVZ Control Panel is now successfully installed. Please delete the install folder. <br /><br />
+        The LXD Control Panel is now successfully installed. Please delete the install folder. <br /><br />
         <a href="/login" title="Continue to login" class="btn btn-primary">Continue</a>
     ';
     renderHTML($content);
