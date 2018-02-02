@@ -44,16 +44,16 @@ function activatePopovers() {
 }
 
 function toggleIcon(icon,event) {
-    if(!$(event.target).hasClass('dropdown-toggle') && $(event.target).parents('.dropdown-toggle').length == 0 ){
-        $(icon).toggleClass('fa fa-chevron-down fa fa-chevron-right');
-    }
+    $(icon).toggleClass('fa fa-chevron-down fa fa-chevron-right');
 }
 
 function toggleSectionState(slideSectionId,controller,defaultState,event){
-    toggleIcon('#'+slideSectionId+'_icon',event);
-    $.ajax({
-        url: '/'+controller+'/toggleSectionState/'+slideSectionId+'/'+defaultState
-    })
+    if(!$(event.target).hasClass('dropdown-toggle')){
+        toggleIcon('#'+slideSectionId+'_icon',event);
+        $.ajax({
+            url: '/'+controller+'/toggleSectionState/'+slideSectionId+'/'+defaultState
+        })
+    }
 }
 
 function toggleSlidePanel(panel) {
