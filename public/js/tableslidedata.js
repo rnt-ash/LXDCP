@@ -19,10 +19,10 @@ function activateConfirmButton() {
             size: 'small',
             buttons: {
                 cancel: {
-                    label: '<i class="fa fa-times"></i> No',
+                    label: '<i class="fa fa-times"></i> Nein',
                 },
                 confirm: {
-                    label: '<i class="fa fa-check"></i> Yes',
+                    label: '<i class="fa fa-check"></i> Ja',
                 },
             },
             callback: function (result) {
