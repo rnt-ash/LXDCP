@@ -1,16 +1,15 @@
-function toggleSidebar() {
-    $("#sidebarWrapper").toggleClass("large");
-    $(".sideBarText").toggle();
-}
-
 $( document ).ready(function() {
     if($("#pageWrapper").hasClass("toggled")){
-        toggleSidebar();
+        $(".sideBarText").toggle();
     }
     $("#menu-toggle").click(function(e) {
-        toggleSidebar();
-        e.preventDefault();
-        $("#pageWrapper").toggleClass("toggled");
+        if($("#pageWrapper").hasClass("toggled")){
+            $("#pageWrapper").toggleClass("toggled");
+            $(".sideBarText").delay(400).fadeToggle('fast');
+        }else {
+            $(".sideBarText").toggle();
+            $("#pageWrapper").toggleClass("toggled");
+        }
         $.ajax({
             url: "/index/toggleSidebar",
         });
@@ -23,4 +22,22 @@ $( document ).ready(function() {
         $("#sidebarWrapper .sidebar-nav li#" + navpoint + "Nav a").addClass("active");
         $("#navbar .navbar-nav li#" + navpoint + "Nav a").addClass("active");
     }
+    
+    // sub menus
+    // hide chevron if there is no submenu due to permissions
+    $(".nav li .toggle").each(function() {
+        var subMenu = $(this).parents("li").find("ul.subMenu");
+        if($(subMenu).has("li").length == 0){
+            $(subMenu).parents("li").find("i.toggle").hide();
+        }
+    });
+    
+    // toggle chevron
+    $('.nav li [data-toggle="collapse"]').click(function() {
+        $(this).find(".toggle").toggleClass("fa-chevron-up fa-chevron-down");
+    });
+    
+    // toggle chevron if submenu point is active
+    $(".nav .collapse > li > .active").parents(".subMenu").addClass("in");
+    $(".nav .collapse > li > .active").parents(".subMenu").prev().find(".toggle").toggleClass("fa-chevron-up fa-chevron-down");
 });

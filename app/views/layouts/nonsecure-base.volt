@@ -37,6 +37,7 @@
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
                 min-height: 100%;
+                background-image: linear-gradient(#d7eaff, #4D8DD3);
             }
             body::after {
               content: "";
@@ -52,6 +53,34 @@
               -webkit-filter: grayscale(0.5);
               filter: grayscale(0.5);
             }
+            .panel-heading {
+                background-color: #004086 !important;
+            }
+            
+            .panel {
+                border-color: rgba(26, 90, 160, 0.9) !important;
+            }
+            
+            .btn {
+                background-color: #004086 !important;
+                border-color: #004086 !important;
+            } 
+            
+            .form-group .input-group-addon {
+                color: #c20049 !important;
+            }
+            a.btn-default {
+                color: white !important;
+            }
+            
+            .panel-body h4 {
+                margin-bottom: 15px;
+            }
+            
+            .logoWrapper {
+                margin: 0 auto;
+                width: 180px;
+            }
         </style>
         
         <!-- FAVICONS -->
@@ -61,10 +90,8 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="page-header">{{ appTitle }}</h1>
-
             <div id="main" role="main">
-                <div id="content" class="container">
+                <div id="content">
                     {% block main %}{% endblock %}
                 </div>
             </div>
